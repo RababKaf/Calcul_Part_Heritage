@@ -1,0 +1,1 @@
+INSERT INTO `roleh` (`id_role`,`name`) VALUES ('1', 'defunt'), ('2', 'héritier'), ('3','temoin');
