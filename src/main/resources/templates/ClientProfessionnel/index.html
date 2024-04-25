@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>   موقع المواريث        • الرئيسية  </title>
+
+    <link href="css1/bootstrap.min1.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img1/law-favicon.svg">
+    <link href="css1/plugins/iCheck/custom.css" rel="stylesheet">
+    
+
+    <!-- Gritter -->
+    <link href="js1/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    
+    
+    <link href="css1/animate1.css" rel="stylesheet">
+    <link href="css1/style1.css" rel="stylesheet">
+    
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	
+	<style type="text/css">
+    	@import url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+    	*{
+    		font-family: 'Droid Arabic Kufi';
+    	}
+    </style>
+</head>
+
+<body class="rtls">
+
+    <div id="wrapper">
+
+   <nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image != null}" th:src="@{${'/display?id=' + office.id}}" width="120" /></a>
+								<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image == null}" src="/img1/justice-green.png" width="120" /></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"
+								th:object="${user}"> <span class="block m-t-xs font-bold"
+								th:text="${user.firstName}+' '+${user.lastName}">Unknown</span>
+								<span class="text-muted text-xs block">عادل<b
+									class="caret"></b></span>
+							</a> <input type="text" id="logged_in_user" th:value="${user.id}"
+								style="display: none">
+
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a class="dropdown-item" th:href="@{/ClientProfessionnel/modInfo}">الصفحة
+										الشخصية</a></li>
+								<li><a class="dropdown-item" th:href="@{/mailbox}">صندوق
+										البريد</a></li>
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<a th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+								class="fa fa-home"></i></a>
+						</div>
+					</li>
+					
+					<li class="active"><a
+						th:href="@{/ClientProfessionnel/index}"><i
+							class="fa fa-home"></i> <span class="nav-label">الرئيسية 
+								</span></a></li>
+
+					<li ><a
+						th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+							class="fa fa-plus"></i> <span class="nav-label">إضافة ملف
+								جديد</span></a></li>
+
+					<!-- <li><a href="#"><i class="fa fa-gavel"></i> <span
+							class="nav-label">الجلسات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/ClientProfessionnel/seancesAujourdhui}">جلسات
+									اليوم</a></li>
+							<li><a th:href="@{/ClientProfessionnel/prochainesSeances}">الجلسات
+									المقبلة</a></li>
+						</ul></li> -->
+
+					<li><a th:href="@{/ClientProfessionnel/consulterDossier}"><i
+							class="fa fa-book-open"></i> <span class="nav-label">إطِّلاع</span></a>
+					</li>
+
+					<!-- <li><a th:href="@{/ClientProfessionnel/rechercher}"><i
+							class="fa fa-search"></i> <span class="nav-label">بحث</span></a></li> -->
+
+					<li><a href="#"><i class="fa fa-globe-africa"></i> <span
+							class="nav-label">إعدادات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+						<li><a th:href="@{/ClientProfessionnel/modInfo}">تعديل المعلومات الشخصية</a></li>
+							<li class="active"><a th:href="@{/ClientProfessionnel/modBureau}">تعديل معلومات
+									المكتب</a></li>
+						</ul></li>
+
+					<!-- 					<li><a href="#"><i class="fa fa-database"></i> <span -->
+					<!-- 							class="nav-label">قاعدة البيانات</span><span class="fa arrow"></span></a> -->
+					<!-- 						<ul class="nav nav-second-level collapse"> -->
+					<!-- 							<li><a th:href="@{/table_basic}">استيراد</a></li> -->
+					<!-- 							<li><a th:href="@{/table_data_tables}">تصدير</a></li> -->
+					<!-- 						</ul></li> -->
+				</ul>
+
+			</div>
+		</nav>
+
+		
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+        
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" th:action="@{/ClientProfessionnel/rechercher}">
+                        <div class="form-group">
+                            <input type="text" placeholder="ابحث عن شيء ما..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+            
+                <ul class="nav navbar-top-links navbar-right">
+                
+                    <li style="padding: 20px">
+                        <span class="m-r-sm text-muted welcome-message" th:text="${user.email}"></span>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" th:href="@{/ClientProfessionnel/seancesAujourdhui}">
+                            <i class="fa fa-bell"></i>  <span class="label label-primary" th:text="${nombreSeancesAujourdhui}">0</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a th:href="@{/login}">
+                            <i class="fa fa-sign-out-alt"></i> خروج
+                        </a>
+                    </li>
+                    
+                </ul>
+    
+            </nav>
+        </div>
+
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-9">
+                <h2 style="text-align:right">موقع المواريث</h2>
+                <p>مرحبا بكم في موقع <strong>إدارة  المواريث</strong> يمكنكم حساب ارتكم  بكل سهولة</p>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="widget style1">
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <i class="fas fa-folder fa-5x"></i>
+                                </div>
+                                <div class="col-8 text-right">
+                                    <span> عدد الملفات الاجمالية </span>
+                                    <h2 class="font-bold" th:text="${nombreDossiers}">0</h2>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget style1 navy-bg">
+                        <div class="row">
+                            <div class="col-4">
+                                <i class="fas fa-plus-square fa-5x"></i>
+                            </div>
+                            <div class="col-8 text-right">
+                                <span> آخر ملف تمت إضافته </span>
+                                <h3 class="font-bold" th:text="${dernierDossier}">D00</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                 <div class="col-lg-3"> -->
+<!--                     <div class="widget style1 lazur-bg"> -->
+<!--                         <div class="row"> -->
+<!--                             <div class="col-4"> -->
+<!--                             	<i class="fas fa-calendar-day fa-5x"></i> -->
+<!--                             </div> -->
+<!--                             <div class="col-8 text-right">
+<!--                                 <span> عدد جلسات اليوم </span> -->
+<!--                                 <h2 class="font-bold" th:text="${nombreSeancesAujourdhui}">0</h2> -->
+<!--                             </div> --> 
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--                 <div class="col-lg-3"> -->
+<!--                     <div class="widget navy-bg no-padding"> -->
+<!--                         <div class="p-m" style="padding-right: 50px;">
+<!--                             <h1 class="m-xs">أقرب جلسة</h1> -->
+<!--                             <h3 class="font-bold" style="padding-right: 7px;" th:text="${#dates.format(seancePlusProche.dateSeance, 'yyyy / MM / dd')}">dd / mm / yyyy</h3> -->
+<!--                             <br> -->
+                            
+<!--                             <span class="font-bold"> المحكمة: </span><span th:text="${seancePlusProche.tribunal}"></span><br> -->
+<!--                             <span class="font-bold"> الملاحظة: </span><span th:text="${seancePlusProche.commentaire}"></span> -->
+                            
+<!--                         </div> --> 
+<!--                     </div> -->
+<!--                 </div> -->
+                </div>
+
+          <div class="col-lg-3">
+                    
+            </div>
+            <div class="row" style="text-align: right">
+                
+                <!-- <div class="col-lg-3">
+                    <div class="widget style1 yellow-bg">
+                        <div class="row" onclick="window.open('https://www.mahakim.ma/', '_blank');" style="cursor:pointer;">
+                            <div class="col-4">
+                            	<i class="fas fa-gavel fa-4x"></i>
+                            </div>
+                            <div class="col-8 text-right">
+                                <span> موقع محاكم </span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-lg-3">
+                    <!-- <div class="widget style1 yellow-bg">
+                        <div class="row" onclick="window.open('http://www.justice.gov.ma/', '_blank');" style="cursor:pointer;">
+                            <div class="col-4">
+                            	<i class="fas fa-balance-scale fa-4x"></i>
+                            </div>
+                            <div class="col-8 text-right">
+                                <span> موقع وزارة العدل </span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+                <div class="float-right">
+                    <strong>موقع المواريث</strong>
+                </div>
+                <div class="float-left">
+                    <strong>جميع الحقوق محفوظة</strong> &copy; 2023-2024
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+ <script type="text/javascript">
+		//clicks
+
+		$(document).click(function() {
+			alert("Click !!");
+		});
+	</script>
+
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+	<script type="text/javascript" src="js1/api/taawidat.js"></script>
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+
+</body>
+
+</html>

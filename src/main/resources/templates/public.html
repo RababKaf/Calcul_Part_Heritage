@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>الرئيسية</title>
+	<base href="/" />
+	<link href="css1/bootstrap.min1.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+	<link href="css1/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet">
+	<link href="css1/animate1.css" rel="stylesheet">
+	<link href="css1/style1.css" rel="stylesheet">
+	<link href="css1/Table.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+
+	<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+	<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+	<!-- FooTable -->
+	<link href="css1/plugins/footable/footable.core.css" rel="stylesheet">
+	<script src="js/7ajb.js"></script>
+	<style>
+		.wizard>.steps>ul>li,
+		.wizard>.actions>ul>li {
+			float: right;
+		}
+
+		.obligatoire {
+			color: red;
+		}
+
+		.field_form>.col-sm-12>.row {
+			padding-top: 10px;
+		}
+	</style>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+
+		* {
+			font-family: 'Droid Arabic Kufi';
+		}
+
+		select.form-control:not([size]):not([multiple]) {
+			height: calc(59% - 12px);
+		}
+
+		.close-modal {
+			margin: 20px;
+
+		}
+
+
+		/* Style the tab */
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			background-color: inherit;
+			float: right;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+			background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 25px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		#tab1 {
+			display: block
+		}
+
+		.tab {
+			border-radius: 12px 12px 0 0;
+		}
+
+		.custom-table-size {
+			width: 200%;
+			margin: 0 auto;
+		}
+		.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  right :600px ;
+
+  top: 200px;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+ 
+}
+
+.modal-content {
+
+  background-color: #fefefe;
+  margin:  8% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width:100%;
+  height:350px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.close {
+  color: rgb(0, 0, 0);
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  font-size:35px;
+  text-decoration: none;
+  cursor: pointer;
+}
+	</style>
+
+
+	<!-- Remember to include jQuery :) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+	<!-- jQuery Modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper">
+
+
+		<nav class="navbar-default navbar-static-side">
+			<!--role="navigation"-->
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+				
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a href="#"><img alt="logo" Style="background-color: #fff" class="rounded-circle"
+									src="img1/lsss.png" width="100" height="100" /></a> <a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <span class="text-muted text-xs block">للعموم<b
+										class="caret"></b></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الدخول</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<i class="fa fa-homee"></i>
+						</div>
+					</li>
+					<li class="active"><a th:href="@{/}"><i class="fa fa-home"></i> <span class="nav-label"> الرئيسية
+
+							</span></a></li>
+					<li><a th:href="@{/login}"><i class=" fa fa-calculator"></i>
+							<span class="nav-label">ميراث تفصيلي</span></a></li>
+
+					<li><a th:href="@{/chercher}"><i class=" fa fa-search"></i>
+							<span class="nav-label"> مكتب مهني </span></a></li>
+
+					<li><a th:href="@{/AboutSite}"><i class="fa fa-globe"></i> <span class="nav-label">عن
+								الموقع</span></a></li>
+
+
+				</ul>
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+								class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom" onsubmit="search(this,event)">
+							<div class="form-group">
+								<input type="search" placeholder="ابحث عن شيء ما..." class="form-control"
+									name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li><a th:href="@{/login}"> دخول<i class="fa fa-sign-in in"></i>
+							</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>حاسبة تقسيم الميراث</h2>
+					
+
+				</div>
+				
+				<div class="col-lg-2"></div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+
+
+				<div class="row" style="text-align: right">
+					<div class="col-lg-12">
+						<div class="ibox">
+
+							<div class="ibox-content">
+
+								<p>المرجو الادلاء بجميع المعلومات </p>
+
+								<form id="form" th:action="@{/calculPagee}" method="post" class="wizard-big">
+
+									<h1> المتوفّى</h1>
+									<fieldset>
+										<div class="field_form" id="field_dossier" style="display: block">
+											<h2>معلومات عن المتوفّى</h2>
+											<br><br>
+											<div class="col-sm-10">
+												<div class="row">
+													<div class="col-md-2"></div>
+													<div class="col-md-4">
+														<label class="radio-inline"><input type="radio"
+																class="sexe_victime" id="dakar" name="sexe_dakar"
+																value="ذكر" checked
+																onchange="toggleGender()">ذكر</label>
+													</div>
+													<div class="col-md-4">
+														<label class="radio-inline"><input type="radio"
+																class="sexe_victime" id="onta" name="sexe_onta"
+																value="أنثى" onchange="toggleGender()">
+
+															أنثى</label>
+													</div>
+
+												</div>
+
+											</div>
+										</div>
+
+									</fieldset>
+
+									<h1>الورثة</h1>
+									<fieldset>
+
+										<div class="field_form" id="field_dossier" style="display: block">
+											<h2>معلومات عن الورثة</h2>
+											<br>
+											<div class="row"><h4 style="color:red;">ملاحظة :</h4>
+											إذا مات أحد أفراد العائلة قبل الشخص الذي تمت إحالته إليه الورثة (الهالك)، فلن يكون لهذا الشخص حقوق الوراثة من الميراث.</div>
+
+<br>
+<br>
+
+											<div class="container">
+												<div class="row">
+													<!--<div class="container text-center">
+														<div class="row justify-content-center">
+															<div class="col-30 col-md-10">
+																<div class="row justify-content-center">
+																	<div class="col-md-30 mx-auto">
+																		<table
+																			class="table table-striped custom-table-size">-->
+																		   <div class="col-md-6  mb-4">
+      <table class="table table-striped">	
+      														<tbody>
+      															<tr style="background-color:#b8dfd1 ">
+																					<th id="x"
+																						style="visibility: hidden;">
+																						
+																						زوج ؟ </th>
+																					<th id="sx"
+																						style="visibility: hidden;">
+																						<select style="width:70px;  "
+																							class="form-control m-b"
+																							id="epaux">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+
+																						</select></th>
+																					<th id="se">زوجه ؟</th>
+																					<th id="sse"><select
+																							style="width:70px;"
+																							class="form-control m-b"
+																							id="epause">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+
+																						</select></th>
+      														
+      														
+      														
+      														
+      														</tr>
+																							
+																				<tr >
+																					<th> أب ؟</th>
+																					<th><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ab" onchange="handleSelectChange2()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																					<th> أم ؟</th>
+																					<th><select style="width:70px;"
+																							class="form-control m-b"
+																							id="om" onchange="handleSelectChange3()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+</tr>
+																	
+															
+<tr id="jodod">
+
+																					<th id="jadth">جد (أب الأب) ؟</th>
+																					<th id="jadthh"> <select style="width:70px;"
+																							class="form-control m-b"
+																							id="jad" onchange="handleSelectChange4()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																					<th id="jadath">أم الأب ؟ </th>
+																					<th id="jadaths"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="jada">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+
+																				</tr>
+																				<tr >
+																					<th></th>
+																					<th></th>
+																					<th id="jada1th">أم الأم ؟ </th>
+																					<th id="jada1ths"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="jada1">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																				</tr>
+
+																				<tr>
+
+																					<th id="ibnth">ابن ؟ </th>
+																					<th id="ibnthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ibn" onchange="handleSelectChange()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+</select>
+ 
+
+
+
+
+																						</th>
+																					<th id="bntth">بنت ؟ </th>
+																					<th id="bntthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="bnt" onchange="handleSelectChange5()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+
+																				<tr id="abnae">
+																					<th id="ibn1th">ابن الابن ؟ </th>
+																					<th id="ibn1thh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ibn1" onchange="handleSelectChange1()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+
+
+																						</select></th>
+																					<th id="bnt1th">بنت الابن ؟ </th>
+																					<th id="bnt1thh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="bnt1"  onchange="handleSelectChange6()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+
+														
+																			</tbody>
+																		</table>
+																	</div>
+																
+														
+   
+																			   <div class="col-md-6  mb-4" >
+                                                                             <table id="t" class="table table-striped">
+																				<tbody>
+						<tr>
+																					<th id="akhth">أخ شقيق ؟ </th>
+																					<th  id="akhthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="akh"  onchange="handleSelectChange7()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+
+
+																						</select></th>
+																					<th id="okhtth">أخت شقيقة ؟ </th>
+																					<th  id="okhtthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="okht" onchange="handleSelectChange14()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+																					<tr>
+																						<th id="akh1th">أخ لأب ؟ </th>
+																						<th id="akh1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="akh1" onchange="handleSelectChange8()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="okht1th">أخت لأب ؟ </th>
+																						<th id="okht1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="okht1" onchange="handleSelectChange16()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+																					<tr>
+																						<th id="akh2th">أخ لأم ؟ </th>
+																						<th id="akh2thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="akh2">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="okht2th">أخت لأم ؟ </th>
+																						<th id="okht2thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="okht2">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+																					<tr>
+																						<th id="ibnakhth">ابن أخ شقيق ؟ </th>
+																						<th id="ibnakhthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibnakh" onchange="handleSelectChange9()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="ibnakh1th">ابن أخ لأب ؟ </th>
+																						<th id="ibnakh1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibnakh1" onchange="handleSelectChange10()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+																					<tr>
+																						<th id="3amth">عم شقيق ؟ </th>
+																						<th id="3amthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="3am" onchange="handleSelectChange11()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="3am1th">عم لأب ؟ </th>
+																						<th id="3am1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="3am1" onchange="handleSelectChange12()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+
+																					<tr>
+																						<th id="ibn3amth">ابن عم شقيق ؟ </th>
+																						<th id="ibn3amthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibn3am" onchange="handleSelectChange13()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="ibn3am1th">ابن عم لأب ؟ </th>
+																						<th id="ibn3am1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibn3am1">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+
+
+
+
+
+
+
+
+
+																				</tbody>
+																		
+														
+									</table></div></div></div></div>
+									
+									</fieldset>
+
+									<h1>الأملاك</h1>
+									<fieldset>
+
+
+										<div class="panel-group" id="accordion">
+
+											<div class="panel panel-default" >
+												<div class="panel-heading" id="hya">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFour">1 - معلومات التركه </a>
+													</h5>
+												</div>
+												<div id="collapseFour" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form" id="liste_accuse"
+															style="display: block">
+															<div class="row">
+
+																<div class="col-md-2"></div>
+																<div class="col-md-5">
+																	<label class="">مقدار التركه ؟</label><br>
+																	<input type="number"
+																		placeholder=" اكتب مقدار التركه.."
+																		class="form-control" name="somme" id="somme" onclick="backtoinit()" >
+																  	<span th:text="#{champs.user}" id="sommeError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none ;color:#ED5565"></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFive" id="officierCivil">2 - ديون و
+															تجهيز الميت </a>
+													</h4>
+												</div>
+												<div id="collapseFive" class="panel-collapse collapse">
+													<div class="panel-body">
+														<div class="field_form" id="liste_officier_civil"
+															style="display: block">
+
+														</div>
+														<div class="f" id="f">
+
+															<div class="col-sm-12">
+																<div class="row">
+																	<div class="col-md-4">
+																		<label>ديون؟</label><input type="number"
+																			placeholder=" اكتب مقدار الديون.."
+																			class="form-control" name="doyon"
+																			id="doyon">
+																	</div>
+																	<div class="col-md-4">
+																		<label>تجهيز الميت؟</label><input type="number"
+																			placeholder=" اكتب نفقات تجهيز الميت..  "
+																			class="form-control" name="tajhez"
+																			id="tajhez">
+																	</div>
+
+																</div>
+
+															</div>
+															<br> <br>.
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseSix" id="avocatAccuse">3 -
+															الوصية</a>
+													</h4>
+												</div>
+												<div id="collapseSix" class="panel-collapse collapse">
+													<div class="panel-body">
+														<div class="field_form" id="liste_avocat_victime"
+															style="display: block">
+															<h5> مثال: للثُلث إختر 1/3 </h5>
+															<div style="color:red  ;"> لا تتجاوز الوصية الثُلث </div>
+															<div class="row">
+
+																<div class="col-md-2"></div>
+																<div class="col-md-5">
+																	<label>هل يوجد وصية ؟ </label>
+																	<select style="width:100px;"
+																		class="form-control m-b" id="wasiya">
+																		<option value="0">وصية ؟</option>
+																		<option value="">1/3</option>
+																		<option value="0.25">1/4</option>
+																		<option value="0.2">1/5</option>
+																		<option value="0.1666666667">1/6</option>
+																		<option value="0.1428571429">1/7</option>
+																		<option value="0.125">1/8</option>
+																		<option value="0.1111111111">1/9</option>
+																		<option value="0.1">1/10</option>
+																	</select>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</fieldset>
+
+
+								</form>
+
+		</div></div></div></div></div>
+
+			<div class="footer">
+				<div class="float-right">
+					<strong>موقع المواريث</strong>
+				</div>
+				<div class="float-left">
+					<strong>جميع الحقوق محفوظة</strong> &copy; 2022-2023
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+ <!-- Modal 7ajb ebn  -->
+ 
+  	<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الفرع الوارث المذكر(مثل الإبن وإبن الإبن) </p>
+    <li>لا يتم توريث الإخوه الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور </li>
+    </ul>
+  
+    
+  </div>
+</div>
+
+  	<div id="myModal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأب </p>
+    <li>  لا يرث أبو الأب ولا أمه </li>
+       <li> لا يتم توريث الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور </li>
+    </ul>
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  
+  
+
+  
+  	<div id="myModal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود البنات   </p>
+
+    <li>لا ترث بنت الإبن إذا كان هناك أكثر من بنت صلبيه لأنهن سيستغرقن الثلثين فلا ترث بنت الإبن فى هذه الحاله الا اذا كان معها ابن ابن فى درجتها أو أدنى منها درجة فيعصبها </li>
+    <li>لا يرث الإخوه لأم سواء من ذكور او الإناث  </li>
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+  
+ 
+ 
+   
+  	<div id="myModal6" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود البنت أو بنت الابن   </p>
+
+  
+    <li>لا يرث الإخوه لأم سواء من ذكور او الإناث  </li>
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+ 
+ 
+ <div id="myModal7" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأخ الشقيق   </p>
+
+   <li>لا يتم توريث ابناء أخ الشقيق   </li> 
+    <li>لا يتم توريث الأخوة للأب  سواء كانوا ذكورًا أو إناثًا</li>
+      <li>ا يتم توريث ابناء أخ لأب</li>
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+
+    </ul>
+  
+    
+  </div>
+  </div> 
+ 
+  <div id="myModal8" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأخ للأب   </p>
+
+    <li>لا يتم توريث ابناء أخ الشقيق ولأب   </li> 
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+   
+    </ul>
+  
+    
+  </div>
+  </div> 
+ 
+ 
+  
+  
+  
+  
+   	<div id="myModal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+
+    <p style="text-align:center; color:#1F4638">الأم تحجب جميع الجدات سواء من جهتها أو من جهة الأب </p>
+
+    
+  </div>
+  
+</div>
+
+<div id="myModal4" class="modal">
+  <div class="modal-content" style="height:450px; width:440px">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+    <li>لا يتم توريث الإخوه الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام والعمات أشقاء ولأب وابناؤهم الذكور </li><br>
+   <p style="text-align:center; color:red"> 
+    توريث الإخوة مع الجد : المختلف في توريث الإخوة الأشقاء والإخوة الأب مع الجد : هل هو بمنزلة أبيهم فيسقطهم ، فلا يرث معه منهم أحد ،أم هو بمنزلة أخيهم فيقاسمهم المال ،على أن له معهم أوفر نصيب ممكن ؟ أما الإخوة الأم وابن الأخ الشقيق ومن بعده فيحجبهم الجد اتفاقا .ولذلك جاء الخط من الجد متصلا و متقطعا .
+  </p>
+    </ul>
+    
+  </div>
+  </div> 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="myModal9" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">   عند وجود ابن أخ شقيق</p>
+
+  
+    
+     <li>لا يتم توريث ابناء أخ لأب ؟   </li> 
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+
+    </ul>
+  
+    
+  </div>
+  </div> 
+
+
+
+
+  <div id="myModal10" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  	عند وجود ابن أخ لأب     </p>
+
+  
+    
+    
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+     
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+  
+  
+  <div id="myModal11" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود عم شقيق    </p>
+
+  
+    
+     <li>لا يتم توريث ابناء عم شقيق    </li> 
+    <li>لا يتم توريث الأعمام لأب وابناؤهم الذكور   </li>
+  
+    </ul>
+  </div>
+  </div> 
+
+
+
+
+
+<div id="myModal12" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> 	عند وجود عم لأب    </p>
+ 
+     <li>لا يتم توريث ابناء عم شقيق ولأب     </li> 
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  
+  <div id="myModal13" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود ابن عم شقيق   </p>
+
+  
+    
+     <li>لا يتم توريث ابناء عم لأب    </li> 
+  
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+
+
+ <div id="myModal14" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود الأخوات الشقيقات وليس هنالك اخوه لاب      </p>
+
+  
+    
+     <li>لا يتم توريث بنات الاب الشقيقات    </li> 
+  
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  
+   <div id="myModal15" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+
+ 
+
+    <li style="text-align:center; color:#1F4638">  لا يتم توريث الإخوة والأخوات لأب عند إجتماع الشقيقة مع البنات لأن الشقيقة تصير بالبنات عصبة مع الغيروتحجب الأخوة لأب رجالا ونساء    </li>
+
+
+
+  
+   <li style="text-align:center; color:#1F4638">    لا يتم توريث  ابناء الاخ الشقيق ولاب و عم شقيق ولاب وابناؤهم الذكور عند إجتماع أخت الشقيقة مع أحد البنات(البنت او بنت الابن)
+    
+  
+    </li>
+   
+  
+    
+  </div>
+  </div>
+  
+   
+   <div id="myModal16" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+
+ 
+
+    <p style="text-align:center; color:#1F4638">   لا يتم توريث  ابناء الاخ الشقيق ولاب و عم شقيق ولاب وابناؤهم الذكور عند إجتماع أخت لأب مع أحد البنات(البنت او بنت الابن)
+      </p>
+
+  
+    
+    
+  
+    
+   
+  
+    
+  </div>
+  </div>
+
+
+<!--------------------------------------------------------------->
+
+
+
+
+
+
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+	<!-- Steps -->
+	<script src="js1/plugins/steps/jquery.steps.min.js"></script>
+
+	<!-- Jquery Validate -->
+	<script src="js1/plugins/validate/jquery.validate.min.js"></script>
+
+
+
+	<script type="text/javascript">
+
+	</script>
+
+
+	<!-- FooTable -->
+	<script src="js1/plugins/footable/footable.all.min.js"></script>
+
+	<!-- Page-Level Scripts -->
+	<script>
+
+
+		/* $(document).ready(function() {
+
+			$('.footable').footable();
+
+			$('#date_added').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			});
+
+			$('#date_modified').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			}); 
+			
+			
+
+		});*/
+
+		// toggle AddDawiBtn
+
+		function toggleAddDawiBtn(res) {
+			if (res === true)
+				document.getElementById('addDawiBtn').style.display = 'block';
+			else
+				document.getElementById('addDawiBtn').style.display = 'none';
+		}
+
+
+		// toggle Wadifa & salary inputs visibility
+
+
+
+	</script>
+	<script type="text/javascript" src="js1/api/ajouterDossier.js"></script>
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+	<script>
+
+		function toggleGender() {
+			
+			var checkboxWoman = document.getElementById("onta");
+			var checkboxMan = document.getElementById("dakar");
+			var tdA = document.getElementById("x");
+			var tdB = document.getElementById("sx");
+
+			var tdC = document.getElementById("se");
+			var tdD = document.getElementById("sse");
+
+
+			if (checkboxWoman.checked) {
+
+				tdA.style.visibility = "visible";
+				tdB.style.visibility = "visible";
+				tdC.style.visibility = "hidden";
+				tdD.style.visibility = "hidden";
+			} else if (checkboxMan.checked) {
+
+				tdC.style.visibility = "visible";
+				tdD.style.visibility = "visible";
+				tdA.style.visibility = "hidden";
+				tdB.style.visibility = "hidden";
+				//checkboxWoman.checked = false;
+			} /* else {
+      tdA.style.visibility = "none";
+      tdB.style.visibility= "none";
+    } */	  checkboxMan.checked = false;
+		}
+	</script>
+	<script src="js/7esab.js"></script>
+
+<script> 
+
+function backtoinit(){
+	document.getElementById("hya").style.backgroundColor = "#f5f5f5";
+	document.getElementById("somme").style.borderColor = "#f5f5f5";
+	document.getElementById("sommeError").style.display="none";
+}
+
+</script>
+
+	
+</body>
+
+</html>

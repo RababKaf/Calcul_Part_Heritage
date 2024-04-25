@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>موقع المواريث • إعدادات</title>
+	<base href="/" />
+	<link href="css1/bootstrap.min1.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link href="css1/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet">
+	<link href="css1/animate1.css" rel="stylesheet">
+	<link href="css1/style1.css" rel="stylesheet">
+	<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		
+	<!-- FooTable -->
+	<link href="css1/plugins/footable/footable.core.css" rel="stylesheet">
+	<!-- bootstarp -->
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+
+	<style>
+		.wizard>.steps>ul>li,
+		.wizard>.actions>ul>li {
+			float: right;
+		}
+
+		.obligatoire {
+			color: red;
+		}
+
+		.field_form>.col-sm-12>.row {
+			padding-top: 10px;
+		}
+	</style>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+
+		* {
+			font-family: 'Droid Arabic Kufi';
+		}
+
+		select.form-control:not([size]):not([multiple]) {
+			height: calc(59% - 12px);
+		}
+
+		.close-modal {
+			margin: 20px;
+		}
+
+		/* Style the tab */
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			background-color: inherit;
+			float: right;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+			background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 25px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		#tab1 {
+			display: block
+		}
+
+		.tab {
+			border-radius: 12px 12px 0 0;
+		}
+
+
+		.tijari2 {
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+		
+	 	#overlay {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 700%;
+  height: 50%;
+ 
+  z-index: 999;
+  cursor: pointer;
+}
+
+#image-container {
+  display: none;
+  position: fixed;
+  top: 55%;
+  left: 40%;
+  transform: translate(-5%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+#enlarged-image {
+
+  min-width: 150%;
+  min-height: 150%;
+  text-align:center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}          
+	
+ .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+      height: 40px;
+      border: 2px dashed #ccc;
+      border-radius: 5px;
+      text-align: center;
+      padding-top: 40px;
+      cursor: pointer;
+    }
+
+    .file-input-wrapper:hover {
+      border-color: #999;
+    }
+
+    .file-input-wrapper input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-input-label {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #555;
+      margin-right:5px;
+     
+      justify-content: flex-end;
+      padding: 10px;
+      position: relative;
+      top: -60px;
+    
+    }
+
+    .file-icon {
+        margin-top: 13px;
+      font-size: 25px;
+      color: #555;
+      margin-right: 20px;
+    }
+		
+	</style>
+
+	<!-- bootstarp -->
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+
+	<!-- Remember to include jQuery :) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+	<!-- jQuery Modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+								<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image != null}" th:src="@{${'/display?id=' + office.id}}" width="120" /></a>
+								<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image == null}" src="/img1/justice-green.png" width="120" /></a>
+							
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#" th:object="${user}"> <span
+									class="block m-t-xs font-bold"
+									th:text="${user.firstName}+' '+${user.lastName}">Unknown</span>
+								<span class="text-muted text-xs block">عادل<b class="caret"></b></span>
+							</a> <input type="text" id="logged_in_user" th:value="${user.id}" style="display: none">
+
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a class="dropdown-item" th:href="@{/ClientProfessionnel/modInfo}">الصفحة
+										الشخصية</a></li>
+								<li><a class="dropdown-item" th:href="@{/mailbox}">صندوق
+										البريد</a></li>
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<a th:href="@{/ClientProfessionnel/index}"><i class="fa fa-home"></i></a>
+						</div>
+					</li>
+
+					<li><a th:href="@{/ClientProfessionnel/ajouterDossier}"><i class="fa fa-plus"></i> <span
+								class="nav-label">إضافة ملف
+								جديد</span></a></li>
+
+					<!-- <li><a href="#"><i class="fa fa-gavel"></i> <span
+							class="nav-label">الجلسات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/ClientProfessionnel/seancesAujourdhui}">جلسات
+									اليوم</a></li>
+							<li><a th:href="@{/ClientProfessionnel/prochainesSeances}">الجلسات
+									المقبلة</a></li>
+						</ul></li> -->
+
+					<li><a th:href="@{/ClientProfessionnel/consulterDossier}"><i class="fa fa-book-open"></i> <span
+								class="nav-label">إطِّلاع</span></a>
+					</li>
+
+					<!-- <li><a th:href="@{/ClientProfessionnel/rechercher}"><i
+							class="fa fa-search"></i> <span class="nav-label">بحث</span></a></li> -->
+
+					<li class="active"><a href="#"><i class="fa fa-globe-africa"></i> <span
+								class="nav-label">إعدادات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+						
+							<li><a th:href="@{/ClientProfessionnel/modInfo}">تعديل المعلومات الشخصية</a></li>
+							<li class="active"><a th:href="@{/ClientProfessionnel/modBureau}">تعديل معلومات
+									المكتب</a></li>
+						</ul>
+					</li>
+
+					<!-- 					<li><a href="#"><i class="fa fa-database"></i> <span -->
+					<!-- 							class="nav-label">قاعدة البيانات</span><span class="fa arrow"></span></a> -->
+					<!-- 						<ul class="nav nav-second-level collapse"> -->
+					<!-- 							<li><a th:href="@{/table_basic}">استيراد</a></li> -->
+					<!-- 							<li><a th:href="@{/table_data_tables}">تصدير</a></li> -->
+					<!-- 						</ul></li> -->
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg">
+
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+								class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom" th:action="@{/ClientProfessionnel/rechercher}">
+							<div class="form-group">
+								<input type="text" placeholder="ابحث عن شيء ما..." class="form-control"
+									name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li style="padding: 20px"><span class="m-r-sm text-muted welcome-message"
+								th:text="${user.email}"></span>
+						</li>
+
+						
+
+						<li><a th:href="@{/login}"> <i class="fa fa-sign-out"></i>
+								خروج
+							</a></li>
+
+					</ul>
+
+				</nav>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInLeft">
+			
+									<div class="row">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-content">
+        
+        <div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary">تعديل  معلومات المكتب</h1>
+      <hr>
+      <form  name='ff' th:action="@{/ClientProfessionnel/updateoff/{id}(id=nid)}"  method='POST' enctype="multipart/form-data">
+	<div class="row">
+      <!-- left column -->
+     <div class="col-md-3">
+        <div class="text-center">
+        <!-- src="https://bootdey.com/img/Content/avatar/avatar7.png" -->
+         
+         <img id="preview-image" th:if="${office.image != null}" th:src="@{${'/display?id=' + office.id}}" class="avatar img-circle img-thumbnail" alt="avatar" onclick="showImage(this)">
+         <img id="preview-image" th:if="${office.image == null}" src="/img1/justice-green.png" class="avatar img-circle img-thumbnail" alt="avatar" onclick="showImage(this)">
+     
+      <div id="overlay" onclick="hideImage()"></div>
+      <div id="image-container">
+  <img id="enlarged-image" src="" alt="enlarged image">
+</div>
+      <h6>تحميل صورة جديدة...</h6>
+        <div class="file-input-wrapper">
+    <input name="image" onchange="previewImage(event)" type="file" id="fileInput">
+    <label for="fileInput" class="file-input-label">
+اختر صورة
+      <i class="fas fa-folder file-icon"></i>
+    </label>
+  </div>
+        </div>
+      </div>
+      
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          يمكنك    تعديل معلومات  <strong> مكتبك </strong> بسهولة    
+        </div>
+        <h3>المعلومات الشخصية</h3>
+        
+        
+         
+          <div class="form-group">
+            <label class="col-lg-3 control-label">اسم المكتب:</label>
+            <div class="col-lg-8">
+              <input th:field="${office.label}" 
+														class="form-control" id="label" name="label" value=""
+														type="text" onmousedown="mouseDown()" />
+													<span th:text="#{champs.user}" id="labelError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span> 
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">البريد الإلكتروني:</label>
+            <div class="col-lg-8">
+              <input th:field="${office.officeEmail}" 
+														class="form-control" id="officeEmail" name="officeEmail"
+														value="" type="text" onmousedown="mouseDown1()" />
+													<span th:text="#{champs.user}" id="officeEmailError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span>
+												<span th:text="#{ValidEmail.user.email}" id="emailError"  class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+            </div>
+          </div>
+           <br><br>
+          <div class="form-group">
+            <label for="region" class="col-lg-3 control-label">جهة :</label>
+            <div class="col-lg-8">
+              
+											<select   class="form-control m-b" name="region"
+												id="region" onchange="populateCities(event)">
+												<option disabled selected>اختر جهة</option>
+												<option th:each="r : ${region}" th:value="${r.id}"
+													th:text="${r.nameRegion}"></option>
+													
+											</select>
+												<span th:text="#{champs.user}" id="cityError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span>
+            </div>
+          </div>
+           <br><br>
+          <div class="form-group">
+             <label class="col-lg-3 control-label" for="city">مدينة:</label>
+            <div class="col-lg-8">
+            
+			<select  class="form-control " id="city" name="city" 	onmousedown="mouseDown2()">
+												
+												
+												
+												<option  th:text="${ville.cityName}" th:value="${ville.id}" selected></option>
+
+
+											</select>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label  class="col-lg-3 control-label">عنوان المكتب :</label>
+            <div class="col-lg-8">
+              
+										<input th:field="${office.adresse}"  class="form-control"
+														id="adresse" name=" adresse" value="" type="text"
+														onmousedown="mouseDown3()" />
+													<span th:text="#{champs.user}" id="adresseError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span>
+            </div>
+          </div>
+          <br><br>
+           <div class="form-group">
+            <label  class="col-lg-3 control-label">رقم الفاكس :</label>
+            <div class="col-lg-8">
+              
+										<input th:field="${office.fax}" class="form-control"
+														id="fax" name="fax" value="" type="text"
+														onmousedown="mouseDownn()" />
+													<span th:text="#{champs.user}" id="faxError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span>
+														 <span th:text="#{ValidTel.user.tel}" id="teleError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label  class="col-lg-3 control-label">الهاتف الثابت :</label>
+            <div class="col-lg-8">
+              
+										<input  th:field="${office.fix}" 
+														class="form-control" id="fix" name="fix" value=""
+														type="text" onmousedown="mouseDownnn()" />
+													<span th:text="#{champs.user}" id="fixError"
+														class="form-wrapper-InputWrapper_explain"
+														style="display:none"></span>
+												 <span th:text="#{ValidTel.user.tel}" id="telError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+            </div>
+          </div>
+          
+          
+           <br><br>
+          
+          
+          <div style="display: flex; justify-content: left;">
+<button class="btn btn-primary" name="sub" type="submit" style="width: 100px; " > ارسال </button></div>
+</div>
+        </form>     
+         </div>
+  </div>
+                  
+<br>
+
+
+
+
+</div></div>
+
+
+
+</div></div></div>
+			
+			
+
+			<!-- <div th:insert="Client/index :: footer"></div> -->
+			<div>
+				<div class="footer">
+					<div class="float-right">
+						<strong>موقع المواريث</strong>
+					</div>
+
+					<div class="float-left">
+						<strong>جميع الحقوق محفوظة</strong> &copy; 2022-2023
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+	<!-- Steps -->
+	<script src="js1/plugins/steps/jquery.steps.min.js"></script>
+
+	<!-- Jquery Validate -->
+	<script src="js1/plugins/validate/jquery.validate.min.js"></script>
+
+
+
+
+
+	<script type="text/javascript">
+
+	</script>
+
+
+	<!-- FooTable -->
+	<script src="js1/plugins/footable/footable.all.min.js"></script>
+
+	<!-- Page-Level Scripts -->
+
+     <script type="text/javascript" src="js/modifierOffice.js"></script>
+	<script type="text/javascript" src="js1/api/ajouterDossier.js"></script>
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+	<script>
+				function populateCities(event) {
+
+					event.preventDefault();
+
+					var regionId = event.target.value;
+
+					// alert('regionId'+regionId);
+
+					var citySelect = document.getElementById("city");
+					/*        while (citySelect.firstChild) {
+							   citySelect.removeChild(citySelect.firstChild); */
+
+
+
+					$.ajax({
+						type: "GET",
+						url: "/IBureau/Charge/" + regionId,
+						processData: false,
+						contentType: false,
+						cache: false,
+						timeout: 600000,
+
+						success: function (data) {
+							//  alert(data.length);
+							console.log(data);
+
+
+							var html = "<option disabled selected>اختر مدينة</option>";
+							for (var i = 0; i < data.length; i++) {
+								var a = data[i];
+								var wlist = a.split("_");
+
+
+								html = html + "<option value=\"" + wlist[1] + "\">" + wlist[0] + "</option>";
+							}
+							$("#city").empty();
+							$("#city").append(html);
+
+						}
+					});
+				}
+					
+			</script>
+			
+			<script>
+	function previewImage(event) {
+		  var input = event.target;
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+
+		    reader.onload = function (e) {
+		     document.getElementById('preview-image').src = e.target.result;
+		    };
+
+		    reader.readAsDataURL(input.files[0]);
+		  }
+		}
+	
+	function showImage(element) {
+		  var imageUrl = element.src;
+		  var enlargedImage = document.getElementById("enlarged-image");
+		  enlargedImage.src = imageUrl;
+
+		  var overlay = document.getElementById("overlay");
+		  overlay.style.display = "block";
+
+		  var imageContainer = document.getElementById("image-container");
+		  imageContainer.style.display = "block";
+		}
+
+		function hideImage() {
+		  var overlay = document.getElementById("overlay");
+		  overlay.style.display = "none";
+
+		  var imageContainer = document.getElementById("image-container");
+		  imageContainer.style.display = "none";
+		}
+
+	
+	
+	
+	
+	</script>
+	
+</body>
+
+</html>

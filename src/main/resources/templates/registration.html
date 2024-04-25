@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title th:text="#{label.form.title}"></title>
+<!-- <link href="css1/bootstrap.min1.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style_registration_ar.css">
+<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}" rel="stylesheet">
+<link rel="stylesheet" href="font/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<link href="css/bootstrap.rtl.css" rel="stylesheet">
+<style>
+.password-verdict{
+color:#000;
+}
+ 
+        .page {
+            display: none;}
+            
+      .custom-file {
+    position: relative;
+    display: inline-block;
+    width: 270px;
+    height: 33px;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .custom-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .custom-file-label {
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #e9ecef;
+    cursor: pointer;
+  }
+  
+  .custom-file-label:hover {
+    background-color: #d2d6de;
+  }
+  
+  .custom-file-label::before {
+    content: '\f07c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+</style>
+<!-- <script src="js1/jquery-3.1.1.min.js"></script> -->
+<script src="js1/popper.min.js"></script>
+<!-- <script src="js1/bootstrap1.js"></script> -->
+ <script src="js/jquery.js"></script>
+ <!-- had script pour mdps -->
+<script th:src="@{/resources/pwstrength.js}"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+ 
+    <link rel="stylesheet" href="css/styles.css">
+
+    
+    
+  
+   
+    
+<title th:text="#{label.form.title}">form</title>
+
+
+
+
+ <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
+ -->
+
+
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	
+	
+	
+	
+</head>
+  
+
+
+
+
+
+
+
+<body class="rtls">
+<div class="alert alert-info text-center"  th:if="${procced} != null" ><p style="font-size: 16px;">congratulation you are a licensed client.!  <strong th:text="${procced}"></strong></p></div>
+    <div class="alert alert-danger text-center"  th:if="${procced1} != null" ><p style="font-size: 16px;">ops! you are not registered with us   <strong th:text="${procced1}"></strong></p></div>
+    
+    <div class="wrapper" id="wrapper" style="background-image: url('img/bg-registration-form-2.jpg');">
+        
+        <div class="inner" id="ibox-content">
+         <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+          </div>
+         <a  th:href="@{/login}"><img th:src="@{/img1/justice-blue.png}" width="150" alt="Menu principal"  class="logologin" style="display: block;margin: 0 auto;padding-top: 20px;"/></a>
+             <h3 th:text="#{label.form.title}">form</h3>
+            <form action="/" method="POST" enctype="utf8" >
+             <!-- <h3 th:text="#{label.form.title}">form</h3> -->
+             <div class=page>
+             <div class="form-wrapper">
+					<label th:text="#{label.office.name}"> nameOffice</label> <input name="label" id="label"
+						type="text" class="form-control"  
+						value="" /> 
+						    <span id="nameOfficeError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+				</div>
+				<div class="form-group">
+					<div class="form-wrapper">
+
+						
+							
+								<label for="region">جهة : </label>
+						
+							<select class="form-control m-b" name="region" id="region" onchange="populateCities(event)">
+							<option disabled selected>اختر جهة</option>
+							<option th:each="r : ${region}" th:value="${r.id}" th:text="${r.nameRegion}"></option>
+
+						</select>
+					</div>
+					
+					<div class="form-wrapper">
+					
+			
+					<label for="city" th:text="#{label.office.cityName}">cityOffice</label>
+						  <select class="form-control m-b" id="city" name="city">
+						  <option disabled selected>اختر مدينة</option>
+            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.cityName}"></option>
+            
+						
+							
+						</select>
+						    <span id="cityError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+					</div>
+					
+					
+ 
+           
+				
+</div>
+				<div class="form-wrapper">
+					<label th:text="#{label.office.adress}">officeAdress</label> <input name="Adresse" id="Adresse"
+						type="text" class="form-control"
+						value="" /> 
+							    <span id="AdresseError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+						
+				</div>
+
+				
+				<div class="form-wrapper">
+					<label th:text="#{label.office.faxNumber}">faxNumber</label> 
+					<input name="fax" type="tel" class="form-control"   value="" />
+						    <span id="faxError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+						         <span id="faxValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+<!--  <span    
+
+						id="telError" class="form-wrapper-InputWrapper_explain"
+						style="display: none"></span> <span id="telValid"
+						class="form-wrapper-InputWrapper_explain" style="display: none"></span> -->
+				</div>
+					<div class="form-wrapper">
+					<label th:text="#{label.office.fix}">fixNumber</label> 
+					<input id="fix" name="fix" type="tel" class="form-control"  value="" />
+						    <span id="fixError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+						         <span id="fixValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+<!--  <span    
+						id="telError" class="form-wrapper-InputWrapper_explain"
+						style="display: none"></span> <span id="telValid"
+						class="form-wrapper-InputWrapper_explain" style="display: none"></span> -->
+				</div>
+				
+				<div class="form-wrapper">
+					<label  th:text="#{label.office.email}">email</label> <input id="officeEmail"
+						class="form-control" name="officeEmail"  value="" /> 
+							    <span id="officeEmailError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+				</div>
+				
+<!--				
+					<div class="form-wrapper">
+  <label for="fileInput" >صورة :</label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input"  name="image">
+    <label class="custom-file-label" for="fileInput">اختر صورة</label>
+  </div>
+</div>-->
+				
+<button id="nextButton" class="btn btn-primary">التالي</button>
+			</div>
+			<div class=page>
+             
+             
+                <div class="form-group" >
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.firstName}">first</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="" />
+                    <span id="firstNameError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div> 
+                 <div class="form-wrapper">
+							<label th:text="#{label.user.lastName}">last</label>
+                           <input class="form-control" id="lastName" name="lastName" value="" />
+                            <span id="lastNameError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+						</div>  
+                </div>
+             <div class="form-wrapper">
+                    <label  th:text="#{label.user.phone}">last</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" value="" />
+                    <span id="telError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                   <span id="telValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                  </div>  
+                  <div class="form-group" >
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.email}">email</label>
+                    <input  class="form-control" id="email" name="email" value="" />                  
+                    <span id="emailError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                    <span id="emailValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div> 
+              <!--     <div class="form-wrapper">
+							<label  th:text="#{label.user.confirmemail}">email</label>
+                    <input type="email" class="form-control" name="email" value="" required="required"/>                  
+                    <span id="emailError" class="alert alert-danger" style="display:none"></span>
+						</div>  -->
+                </div>   
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.password}">password</label>
+                    <input id="password" class="form-control" name="password" value="" type="password" />
+                    <span id="passwordError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div>  
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.confirmPass}">confirm</label>
+                    <input id="matchPassword" class="form-control" name="matchingPassword" value="" type="password" />
+                    <span id="globalError" class="form-wrapper-InputWrapper_explain " style="display:none"></span>
+                    <span id="matchPasswordError" class="form-wrapper-InputWrapper_explain " style="display:none"></span>
+                 </div> 
+                <!-- <div class="checkbox">
+                    <label >
+                    <input type="checkbox" th:name="#{label.user.2fa}" value="true"/> <span th:text="#{label.user.2fa}"></span>
+                    <span class="checkmark"></span>
+                    </label>
+                </div> -->
+                
+                <button id= "idsubmit" type="submit" class="btn btn-primary" th:text="#{label.form.submit}">submit</button>
+           <button id="previousButton" class="btn btn-primary">السابق</button>
+            </div>
+            </form>
+             <a class="button1 btn btn-primary" th:href="@{/login}" th:text="#{label.form.loginLink}">login</a>
+           <!--  <div class="signup-image">
+                        <figure><img src="img/logo-site.svg" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div>--> 
+        </div>
+         
+    </div>
+
+<script th:inline="javascript">
+var serverContext = [[@{/}]];
+
+$(document).ready(function () {
+	$('form').submit(function(event) {
+		register(event);
+	});
+	
+	$(":password").keyup(function(){
+		if($("#password").val() != $("#matchPassword").val()){
+	        $("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
+	    }else{
+	    	$("#globalError").html("").hide();
+	    }
+	});
+	
+	
+	
+	$("#label")
+    .mouseup(function() {
+    	$("#nameOfficeError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#nameOfficeError").html("").hide();
+        	
+    });
+	
+	$("#firstName")
+    .mouseup(function() {
+    	$("#firstNameError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#firstNameError").html("").hide();
+        	
+    });
+	$("#lastName")
+    .mouseup(function() {
+    	$("#lastNameError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#lastNameError").html("").hide();
+        	
+    });
+	$("#tel")
+    .mouseup(function() {
+    	$("#telError").html("").hide(); 
+    	("#telValid").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#telError").html("").hide();
+        	("#telValid").html("").hide(); 
+        	
+    });
+	$("#email")
+    .mouseup(function() {
+    	$("#emailError").html("").hide(); 
+    	$("#emailValid").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#emailError").html("").hide();
+        	$("#emailValid").html("").hide();  	
+    });
+	$("#password")
+    .mouseup(function() {
+    	$("#passwordError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#passwordError").html("").hide();
+        	
+    });
+	
+
+	
+
+       /*  $('#idsubmit').on('click', function(){
+        $('#wrapper').children('.inner').toggleClass('sk-loading'); 
+        	// $(this).loadButton('on');
+        }); */
+
+   
+	
+	options = {
+		    common: {minChar:6},
+		    ui: {
+		    	showVerdictsInsideProgressBar:true,
+		    	showErrors:true,
+		    	errorMessages:{
+		    		  wordLength: /*[[#{error.wordLength}]]*/,
+		    		  wordNotEmail: /*[[#{error.wordNotEmail}]]*/,
+		    		  wordSequences: /*[[#{error.wordSequences}]]*/,
+		    		  wordLowercase: /*[[#{error.wordLowercase}]]*/,
+		    		  wordUppercase: /*[[#{error.wordUppercase}]]*/,
+		    	          wordOneNumber: /*[[#{error.wordOneNumber}]]*/,
+		    		  wordOneSpecialChar: /*[[#{error.wordOneSpecialChar}]]*/
+		    		}
+		    	}
+		};
+	 $('#password').pwstrength(options);
+});
+
+function register(event){
+	event.preventDefault();
+    $(".alert").html("").hide();
+    $(".error-list").html("");
+    if($("#password").val() != $("#matchPassword").val()){
+    	$("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
+    	return;
+    }
+    
+
+    if($("#firstName").val() == ""){
+    	$("#firstNameError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    if($("#lastName").val() == ""){
+    	$("#lastNameError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    
+    
+ 
+    
+    if($("#tel").val() == ""){
+    	$("#telError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    else{
+    	if(!phonenumber($("#tel").val())){
+    		$("#telValid").show().html(/*[[#{ValidTel.user.tel}]]*/);
+        	return;
+    	}
+    }
+    if($("#email").val() == ""){
+    	$("#emailError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    else{
+    	if(!validateEmail($("#email").val())){
+    		$("#emailValid").show().html(/*[[#{ValidEmail.user.email}]]*/);
+        	return;
+    	}
+    	
+    }
+    if($("#password").val() == ""){
+    	$("#passwordError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    if($("#matchPassword").val() == ""){
+    	$("#matchPasswordError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+
+    
+ 
+    
+    
+   
+
+ 
+    	     
+    	      
+   
+    $('#wrapper').children('.inner').toggleClass('sk-loading');
+    //champs.user:Champ requis  Ce champs est requis
+    var formData= $('form').serialize();
+    var selectedCityId = $("#city").val();
+ 
+ 
+   formData += "&city=" + selectedCityId;
+   
+
+  
+     $.post(serverContext + "user/registration",formData ,function(data){
+        if(data.message == "success"){ 
+            window.location.href = serverContext + "successRegister.html";
+        }
+        if(data.message == "fail"){
+        	
+        	$('#wrapper').children('.inner').toggleClass('sk-loading');
+            window.location.href = serverContext + "successRegister.html?error="+data.message;
+        }
+        
+    })
+    .fail(function(data) {
+    	$('#wrapper').children('.inner').toggleClass('sk-loading');
+        if(data.responseJSON.error.indexOf("MailError") > -1)
+        {
+            window.location.href = serverContext + "emailError.html";
+        }
+        else if(data.responseJSON.error == "UserAlreadyExist"){
+            $("#emailError").show().html(data.responseJSON.message);
+        }
+        else if(data.responseJSON.error.indexOf("InternalError") > -1){
+            window.location.href = serverContext + "login?message=" + data.responseJSON.message;
+        }
+        else{
+        	var errors = $.parseJSON(data.responseJSON.message);
+            $.each( errors, function( index,item ){
+            	if (item.field){
+            		$("#"+item.field+"Error").show().append(item.defaultMessage+"<br/>");
+            	}
+            	else {
+            		$("#globalError").show().append(item.defaultMessage+"<br/>");
+            	}
+               
+            });
+        }
+    });
+    function validateEmail(email) 
+    {
+      var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
+      return re.test(email);
+    }
+    
+    function phonenumber(inputtxt)
+    {
+      var phoneno = /^\d{10}$/;
+      return phoneno.test(inputtxt);
+     /*  if(inputtxt.value.match(phoneno))
+      {
+          return true;
+      }
+      else
+      {
+         return false;
+      } */
+      }
+
+}
+ $(function(){
+
+    $('#toggleSpinners').on('click', function(){
+
+        $('#ibox2').children('.ibox-content').toggleClass('sk-loading');
+
+    })
+
+}) 
+
+</script>
+ <script th:inline="javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  var nextButton = document.getElementById('nextButton');
+  var previousButton = document.getElementById('previousButton');
+  var pages = document.querySelectorAll('.page');
+  var currentPageIndex = 0;
+
+  // Function to show the current page and hide the rest
+  function showCurrentPage() {
+    for (var i = 0; i < pages.length; i++) {
+      if (i === currentPageIndex) {
+        pages[i].style.display = 'block';
+      } else {
+        pages[i].style.display = 'none';
+      }
+    }
+  }
+
+  // Show the first page initially
+  showCurrentPage();
+
+  // Function to handle the "Next" button click event
+  function onNextButtonClick() {
+	  
+	    
+	    if($("#label").val() == ""){
+	    	$("#nameOfficeError").show().html(/*[[#{champs.user}]]*/);
+	    	return;
+	    }
+	    
+	    $("#Adresse")
+	    .mouseup(function() {
+	      $("#AdresseError").html("").hide(); 
+	      })
+	    .mousedown(function() {
+	          $("#AdresseError").html("").hide();
+	          
+	    });
+	    
+	    $("#city")
+	    .mouseup(function() {
+	      $("#cityError").html("").hide(); 
+	      })
+	    .mousedown(function() {
+	          $("#cityError").html("").hide();
+	          
+	    });
+	    
+	    $("#fix")
+	    .mouseup(function() {
+	      $("#fixError").html("").hide(); 
+	      ("#fixValid").html("").hide(); 
+	      })
+	    .mousedown(function() {
+	          $("#fixError").html("").hide();
+	          ("#fixValid").html("").hide(); 
+	          
+	    });
+	    
+	    let selectElement = document.getElementById("city");
+
+	 // Get the selected option
+	 let selectedOption = selectElement.options[selectElement.selectedIndex];
+	 
+	    if(!selectedOption || selectedOption.disabled){
+		      $("#cityError").show().html(/*[[#{champs.user}]]*/);
+		      return;
+		    } 
+		  
+	  
+	    if($("#Adresse").val() == ""){
+	        $("#AdresseError").show().html(/*[[#{champs.user}]]*/);
+	        return;
+	      }
+	  
+
+	    if($("#fix").val() == ""){
+	      $("#fixError").show().html(/*[[#{champs.user}]]*/);
+	      return;
+	    } 
+	  
+	 
+	 
+
+	    
+    currentPageIndex++;
+    if (currentPageIndex >= pages.length) {
+      currentPageIndex = 0;
+    }
+    showCurrentPage();
+  }
+
+  // Function to handle the "Previous" button click event
+  function onPreviousButtonClick() {
+    currentPageIndex--;
+    if (currentPageIndex < 0) {
+      currentPageIndex = pages.length - 1;
+    }
+    showCurrentPage();
+  }
+
+  // Add onclick event listeners to the nextButton and previousButton
+  nextButton.addEventListener('click', onNextButtonClick);
+  previousButton.addEventListener('click', onPreviousButtonClick);
+});
+</script>
+
+
+	 <script>
+        function populateCities(event) {
+        
+        	 event.preventDefault();
+        		
+        	     var regionId = event.target.value; 
+             
+                // alert('regionId'+regionId);
+                 
+                 var citySelect = document.getElementById("city");
+          /*        while (citySelect.firstChild) {
+                     citySelect.removeChild(citySelect.firstChild); */
+                 
+               
+              
+         $.ajax({
+		type: "GET",
+		url: "/IBureau/Charge/"+regionId,
+		processData: false,
+		contentType: false,
+		cache: false,
+		timeout: 600000,
+	
+                success: function(data) {
+                  //  alert(data.length);
+                  console.log(data);
+                 
+         
+		    var html = "<option disabled selected>اختر مدينة</option>";
+		    for(var i=0 ; i<data.length ;i++)
+		   {
+		    	var a=data[i];
+		    	var wlist=a.split("_");
+		    	
+		    
+            html = html +"<option value=\""+ wlist[1]+"\">"+ wlist[0]  +"</option>";
+         	}
+			$("#city").empty();
+			$("#city").append(html);
+               
+                }
+            });
+        }
+    </script>
+    
+    
+    
+    
+    
+    
+  
+
+</body>
+<!-- <script src="js/script.js"></script> -->
+</html>

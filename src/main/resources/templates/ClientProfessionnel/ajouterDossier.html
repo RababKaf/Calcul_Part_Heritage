@@ -1,0 +1,3664 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>موقع المواريت               • إضافة ملف     </title>
+<base href="/" />
+<link href="css1/bootstrap.min1.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="css1/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet">
+<link href="css1/animate1.css" rel="stylesheet">
+<link href="css1/style1.css" rel="stylesheet">
+<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css"
+	rel="stylesheet">
+<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- FooTable -->
+<link href="css1/plugins/footable/footable.core.css" rel="stylesheet">
+<!-- bootstarp -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+<script src="js/7ajb.js"></script>
+<style>
+.wizard>.steps>ul>li, .wizard>.actions>ul>li {
+	float: right;
+}
+
+.obligatoire {
+	color: red;
+}
+
+.field_form>.col-sm-12>.row {
+	padding-top: 10px;
+}
+</style>
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+
+* {
+	font-family: 'Droid Arabic Kufi';
+}
+
+select.form-control:not([size]):not([multiple]) {
+	height: calc(59% - 12px);
+}
+
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	float: right;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 25px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+#tab1 {
+	display: block
+}
+
+.tab {
+	border-radius: 12px 12px 0 0;
+}
+
+
+                                           
+                                     
+    .custom-align {
+        text-align: right;
+         margin-right: 550px;
+    }
+    
+.close-modal {
+			margin: 20px;
+
+		}
+			.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  right :600px ;
+
+  top: 200px;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+ 
+}
+
+.modal-content {
+
+  background-color: #fefefe;
+  margin:  8% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width:100%;
+  height:350px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.close {
+  color: rgb(0, 0, 0);
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  font-size:35px;
+  text-decoration: none;
+  cursor: pointer;
+}  
+
+.custom-margin-argent{
+    margin-right: 350px;
+    margin-top:20px;
+    margin-bottom:10px;
+
+} 
+
+.custom-margin-temoin{
+    margin-right: 150px;
+    }
+
+.custom-margin-Margent{
+    margin-right: 180px;
+
+}
+
+
+.button-style {
+  background-color: white;
+  border-color: #6fd1bd;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px 20px;
+  margin-top:15px;
+  
+  
+   display: inline-block;
+  border-radius: 50%; /* Applique une bordure arrondie pour créer une forme de cercle */
+   /* Couleur de fond du bouton */
+   
+  border: none; /* Supprime la bordure par défaut du bouton */
+  color: #20c997; /* Couleur du texte du bouton */
+  text-align: center; /* Centre le texte horizontalement */
+  font-size: 30px; /* Taille du texte */
+  padding: 14px 40px; /* Espacement intérieur du bouton */
+  text-decoration: none; /* Supprime le soulignement du texte */
+  border-color: #6fd1bd;
+  cursor: pointer;
+  
+}
+
+.button-style:hover {
+  background-color: #e7eaec;
+}
+
+.btn1{
+  margin-right:200px;
+}
+
+</style>
+
+<!-- bootstarp -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+
+<!-- Remember to include jQuery :) -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image != null}" th:src="@{${'/display?id=' + office.id}}" width="120" /></a>
+								<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image == null}" src="/img1/justice-green.png" width="120" /></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"
+								th:object="${user}"> <span class="block m-t-xs font-bold"
+								th:text="${user.firstName}+' '+${user.lastName}">Unknown</span>
+								<span class="text-muted text-xs block">عادل<b
+									class="caret"></b></span>
+							</a> <input type="text" id="logged_in_user" th:value="${user.id}"
+								style="display: none">
+
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a class="dropdown-item" th:href="@{/ClientProfessionnel/modInfo}">الصفحة
+										الشخصية</a></li>
+								
+								<li><a class="dropdown-item" th:href="@{/mailbox}">صندوق
+										البريد</a></li>
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<a th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+								class="fa fa-home"></i></a>
+						</div>
+					</li>
+					
+                    <li ><a
+						th:href="@{/ClientProfessionnel/index}"><i
+							class="fa fa-home"></i> <span class="nav-label">الرئيسية 
+								</span></a></li> 
+					<li class="active"><a
+						th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+							class="fa fa-plus"></i> <span class="nav-label">إضافة ملف
+								جديد</span></a></li>
+
+					<!-- <li><a href="#"><i class="fa fa-gavel"></i> <span
+							class="nav-label">الجلسات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/ClientProfessionnel/seancesAujourdhui}">جلسات
+									اليوم</a></li>
+							<li><a th:href="@{/ClientProfessionnel/prochainesSeances}">الجلسات
+									المقبلة</a></li>
+						</ul></li> -->
+
+					<li><a th:href="@{/ClientProfessionnel/consulterDossier}"><i
+							class="fa fa-book-open"></i> <span class="nav-label">إطِّلاع</span></a>
+					</li>
+
+					<!-- <li><a th:href="@{/ClientProfessionnel/rechercher}"><i
+							class="fa fa-search"></i> <span class="nav-label">بحث</span></a></li> -->
+
+					<li><a href="#"><i class="fa fa-globe-africa"></i> <span
+							class="nav-label">إعدادات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+						<li><a th:href="@{/ClientProfessionnel/modInfo}">تعديل المعلومات الشخصية</a></li>
+							<li class="active"><a th:href="@{/ClientProfessionnel/modBureau}">تعديل معلومات
+									المكتب</a></li>
+						</ul></li>
+
+					<!-- 					<li><a href="#"><i class="fa fa-database"></i> <span -->
+					<!-- 							class="nav-label">قاعدة البيانات</span><span class="fa arrow"></span></a> -->
+					<!-- 						<ul class="nav nav-second-level collapse"> -->
+					<!-- 							<li><a th:href="@{/table_basic}">استيراد</a></li> -->
+					<!-- 							<li><a th:href="@{/table_data_tables}">تصدير</a></li> -->
+					<!-- 						</ul></li> -->
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg">
+
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							th:action="@{/ClientProfessionnel/rechercher}">
+							<div class="form-group">
+								<input type="text" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li style="padding: 20px"><span
+							class="m-r-sm text-muted welcome-message" th:text="${user.email}"></span>
+						</li>
+
+						<li class="dropdown"><a class="dropdown-toggle count-info"
+							data-toggle="dropdown"
+							th:href="@{/ClientProfessionnel/seancesAujourdhui}"> <i
+								class="fa fa-bell"></i> <span class="label label-primary"
+								th:text="${nombreSeancesAujourdhui}">0</span>
+						</a></li>
+
+						<li><a th:href="@{/login}"> <i class="fa fa-sign-out"></i>
+								خروج
+						</a></li>
+
+					</ul>
+
+				</nav>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>ملف جديد</h2>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a
+							href="/ClientProfessionnel/index.html">الرئيسية</a></li>
+						<li class="breadcrumb-item active"><strong>ملف جديد</strong>
+						</li>
+					</ol>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+
+
+				<div class="row" style="text-align: right">
+					<div class="col-lg-12">
+						<div class="ibox">
+
+							<div class="ibox-content">
+								<h2>إنشاء ملف جديد</h2>
+								<h3 id="numero_dossier"></h3>
+								<p>المرجو الادلاء بجميع المعلومات الخاصة بالملف</p>
+
+								<form id="form" name="form" th:action="@{/calcul{id}(id=nid)}" method="post" class="wizard-big">
+
+									<h1>الملف</h1>
+									<fieldset>
+										<div class="field_form" id="field_dossier"
+											style="display: block">
+											<h2>معلومات عن الملف</h2>
+											<div class="col-sm-12">
+												<div class="row"></div>
+
+												<div class="row">
+
+													<div class="col-md-4">
+														<label>تاريخ الملف</label> <input type="date"
+															placeholder="تاريخ الملف" class="form-control" onmousedown="mouseDowndate()" 
+															name="date_dossier" id="date_dossier">
+															<span th:text="#{champs.user}" id="dateDossierError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>
+													</div>
+													
+
+
+
+
+												</div>
+												<br>
+
+												<div class="row">
+													<div class="col-md-4">
+														<label>اسم الملف:</label> <input type="text"
+															placeholder="الاسم" class="form-control"
+															name="nom_dossier" id="nom_dossier">
+															
+													</div>
+													<div class="col-md-4">
+														<label>رقم الملف:</label> <input type="number"
+															placeholder="الرقم" class="form-control" onmousedown="mouseDownNumero()"
+															name="numero_dossier1" id="numero_dossier1">
+															<span th:text="#{champs.user}" id="numeroDossierError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>
+													</div>
+													
+
+
+													<div class="col-md-4 align-self-end">
+														<br>
+														<button type="button" class="btn btn-primary" id="btnDossier"
+															data-toggle="modal" data-target="#dossierModal"
+															onclick="addFolderEvent(event);">إضافة
+															الملف</button>
+															
+
+														<div class="modal inmodal fade" id="dossierModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">الملف</h4>
+																	</div>
+																	<div class="modal-body" id="dossierModalBody"></div>
+																	<div class="modal-footer" id="dossierModalBtn">
+																		<button type="button" class="btn btn-white"
+																			data-dismiss="modal">غلق</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<span th:text="#{champs.user}" id="btnDossierError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none; margin-right:800px;
+													  color:red;" ></span>
+
+												</div>
+											</div>
+										</div>
+
+									</fieldset>
+
+									<h1>المتوفى</h1>
+									<fieldset>
+										<div class="field_form" id="field_dossier"
+											style="display: block">
+
+											<h2>معلومات عن المتوفى</h2>
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<label style="margin-top: 20px;">الجنس:</label>
+													<div class="row">
+														<div class="col-md-4"></div>
+														<div class="col-md-4">
+															<label class="radio-inline"><input type="radio" id="dakar"
+																class="sexe_defunt" name="sexe_defunt" value="ذكر" onchange="toggleGender()"
+																checked>ذكر</label>
+														</div>
+														<div class="col-md-4">
+															<label class="radio-inline"><input type="radio" id="onta" onchange="toggleGender()"
+																class="sexe_defunt" name="sexe_defunt" value="أنثى">أنثى</label>
+														</div>
+														
+														<div class="col-md-5 custom-margin-argent">
+														<button type="button" class="btn btn-primary" id="btnDefunt"
+															data-toggle="modal" data-target="#defuntModal"
+															onclick="addDefuntEvent(event);">إضافة المتوفى</button>
+														<span th:text="#{champs.user}" id="btnDefuntError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>	
+													</div>
+													</div>
+												</div>
+
+											</div>
+											
+
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<br>
+
+													
+													<div class="modal inmodal fade" id="defuntModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">المتوفى</h4>
+																</div>
+																<div class="modal-body" id="defuntModalBody"></div>
+																<div class="modal-footer" id="defuntModalBtn">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+
+									</fieldset>
+
+
+
+
+									<h1>الشهود</h1>
+									<fieldset>
+									
+										<div class="field_form" id="liste_temoin"
+											style="display: block">
+											<div class="row">
+											
+												<!-- <div class="col-md-5">
+													<label id="labelTemoin1" name="labelTemoin1">إسم
+														الشاهد 1 :</label> <select class="form-control m-b"
+														name="liste_temoins" id="liste_temoins">
+														<option disabled selected>اختر الشاهد</option>
+														<option th:each="temoin : ${temoins}"
+															th:value="${temoin.id}"
+															th:text="${temoin.prenom} +' '+${temoin.nom} "></option>
+													</select>
+												</div> -->
+												<div class="col-md-2"></div>
+												<!-- <div class="col-md-5">
+													<label class="" id="labelTemoin2">الشاهد ليس في
+														القائمة؟</label><br> <input type="checkbox"
+														name="check_temoin" id="check_temoin"
+														onchange="afficheTemoinInput()"><span>
+														إضافة الشاهد </span> 
+												</div> -->
+
+											</div>
+										</div>
+
+										<div class="field_form" id="field_temoin"
+											>
+											<h2>معلومات عن الشاهد</h2>
+											<label id="labelTemoin1" name="labelTemoin1" style="margin-right:350px">
+														الشاهد 1 :</label> <br> <br>
+											<div class="col-sm-12 custom-margin-temoin">
+												<div class="row">
+													<div class="col-md-4">
+													
+														<label class="obligatoire">رقم البطاقة الوطنية:</label>
+										<input list="personnes" name="cni_temoin" id="cni_temoin" autocomplete="off" value="" onfocus="this.value=''" onchange="handleChange(this);" class="form-control form-control-sm mb-2" placeholder="---" >
+												<datalist id="personnes" >
+													<option th:each="personne : ${personnes}" th:attr="data-value=${personne.id}" th:value="${personne.cin}"></option>
+												</datalist>
+                                                <input type="number" hidden="hidden" value="" name="personne_id" id="personne_id" />
+													</div>
+													<div class="col-md-4">
+													<label>تاريخ انتهاء الصلاحية:</label>
+															
+															<input  type="date" class="form-control" name="date_expiration_carte" id="date_expiration_carte"   >
+
+                                                
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<label>الإسم:</label><input type="text" placeholder=""
+															class="form-control" name="prenom_temoin"
+															id="prenom_temoin">
+													</div>
+													<div class="col-md-4">
+														<label>النسب:</label><input type="text" placeholder=""
+															class="form-control" name="nom_temoin" id="nom_temoin">
+													</div>
+
+												</div>
+
+												<div class="row">
+
+													<div class="col-md-4">
+														<label>الوظيفة:</label> <select class="form-control m-b"
+															name="job_temoin" id="job_temoin">
+															<option>أستاذ</option>
+															<option>موظف</option>
+															<option>تاجر</option>
+															<option>أجير</option>
+														</select>
+													</div>
+													<div class="col-md-4">
+														<label>الجنس:</label>
+														<div class="row">
+															<div class="col-md-4"></div>
+															<div class="col-md-4">
+																<label class="radio-inline"><input type="radio"
+																	class="sexe_temoin" name="sexe_temoin" value="ذكر"
+																	checked>ذكر</label>
+															</div>
+															<div class="col-md-4">
+																<label class="radio-inline"><input type="radio"
+																	class="sexe_temoin" name="sexe_temoin" value="أنثى">أنثى</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-8">
+														<label>تاريخ الإزدياد:</label><input type="date"
+																placeholder="" class="form-control"
+															name="date_naissance_temoin" id="date_naissance_temoin">
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-8">
+														<label>إسم الأب:</label><input type="text" placeholder=""
+															class="form-control" name="pere_temoin" id="pere_temoin">
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-8">
+														<label>العنوان:</label><input type="text" placeholder=""
+															class="form-control" name="addresse_temoin"
+															id="addresse_temoin">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+
+											
+
+
+
+											<div class="col-md-4">
+												<br>
+
+												<div class="col-md-4 custom-align ">
+
+													<button type="button" class="btn btn-primary" style="margin-right: 380px;"
+														id="btnTemoin" name="ajouterTemoin"
+														data-toggle="modal" data-target="#temoinModal"
+														onclick="addTemoinhEvent(event);">إضافة الشاهد</button>
+														<span th:text="#{champs.user}" id="btnTemoinError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>
+												</div>
+												<div class="modal inmodal fade" id="temoinModal"
+													tabindex="-1" role="dialog" aria-hidden="true">
+													<div class="modal-dialog modal-sm">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal">
+																	<span aria-hidden="true">&times;</span><span
+																		class="sr-only">Close</span>
+																</button>
+																<h4 class="modal-title">الشاهد</h4>
+															</div>
+															<div class="modal-body" id="temoinModalBody"></div>
+															<div class="modal-footer" id="temoinModalBtn">
+																<button type="button" class="btn btn-white"
+																	data-dismiss="modal">غلق</button>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="field_form" id="field_table_accuse"
+											style="display: block">
+											<br> <br>
+											<h2>قائمة الشهود</h2>
+											<div class="col-sm-12">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="ibox">
+															<div class="ibox-content">
+
+																<table
+																	class="footable table table-stripped toggle-arrow-tiny"
+																	data-page-size="10">
+																	<thead>
+																		<tr>
+
+																			<th>ب.و.ت</th>
+																			<th data-hide="phone">الإسم</th>
+																			<th data-hide="phone">النسب</th>
+																			<th data-hide="phone">الوظيفة</th>
+																			<!-- <th data-hide="phone" class="text-right">الإعدادات</th> -->
+
+																		</tr>
+																	</thead>
+																	<tbody id="table_temoin_body1"></tbody>
+																	<tfoot>
+																		<!--<tr>
+								                                    <td colspan="7">
+								                                        <ul class="pagination float-right"></ul>
+								                                    </td>
+								                                </tr>-->
+																	</tfoot>
+																</table>
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									
+									
+										
+									
+									
+																	
+
+									</fieldset>
+
+
+									<h1>الاملاك</h1>
+									<fieldset>
+									
+									<div class="panel-group" id="accordion">
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFour">1 - النقود </a>
+													</h5>
+												</div>
+												<div id="collapseFour" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form custom-margin-Margent" id="liste_accuse"
+															style="display: block">
+												<div class="col-sm-12">
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control" onmousedown="mouseDownSomme()"
+																name="sommeArgent" id="sommeArgent">
+																<span th:text="#{champs.user}" id="sommeDossierError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+
+
+
+											<div class="row">
+
+												
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseSevene">2 - عقار تجاري  </a>
+													</h5>
+												</div>
+												<div id="collapseSevene" class="panel-collapse collapse in">
+													<div class="panel-body">
+								<div class="field_form custom-margin-Margent" id="tijari1" name="tijari1"		>	
+								<label>عقار تجاري 1 </label>												
+												<div class="col-sm-12">
+
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia1" id="qima_malia1">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface1"
+																id="surface1">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari1"
+																id="addressetijari1">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											        <div class="col-md-4">
+
+														<button type="button" class="btn button-style btn1"
+															name="nextBtnTijari" data-toggle="modal"
+															data-target="#tijariModal1" 
+															>   <  </button>
+													</div>
+											
+												
+												
+													
+
+													<div class="col-md-4 ">
+
+														<button type="button" class="btn  button-style"
+															name="nextBtnTijari" data-toggle="modal"
+															data-target="#tijariModal1" id="nextBtnTijari"
+															onclick="addTijariScript();">></button>
+													</div>
+													
+
+												
+														</div></div>
+													
+											
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										<div class="field-form custom-margin-Margent " id="tijari5" name="tijari2"  style="display: none;"
+															>
+															<label>عقار تجاري 2 </label>	
+												<div class="col-sm-12">
+
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia2" id="qima_malia2">
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface2"
+																id="surface2">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari2"
+																id="addressetijari2">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											
+												
+													<br>
+													
+													<div class="col-md-4">
+													<button type="button" class="btn button-style btn1 " onclick="goToPreviousDiv()"><</button>
+													</div>
+													
+
+													<div class="col-md-4">
+
+														<button type="button" class="btn  button-style "
+															name="nextBtnTemoin" id="nextBtnTemoin"
+															onclick="addTijariScript2();">></button>
+													</div>
+													
+
+												
+														</div>
+													</div>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+						<div class="field_form custom-margin-Margent" id="tijari3" name="tijari3"  style="display: none;"
+															>
+												<div class="col-sm-12">
+<label>عقار تجاري 3 </label>	
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia3" id="qima_malia3">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface3"
+																id="surface3">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari3"
+																id="addressetijari3">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											<br>
+											<div class="col-md-4">
+													<button type="button" class="btn button-style btn1" onclick="goToPreviousDiv()"  ><</button>
+													</div>
+											
+												
+												<div class="col-md-4">
+													<button type="button" class="btn button-style "  >></button>
+													</div>
+											
+											<br>
+														</div>
+													</div>
+													
+													
+													
+													
+													
+												
+													
+													
+													
+								</div>					
+													
+																					
+									</div>
+											</div>
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseEight" id="officierCivil">3 - قطع أرضية</a>
+													</h4>
+												</div>
+												<div id="collapseEight" class="panel-collapse collapse">
+													<div class="panel-body">
+													
+													
+													
+														<div class="field_form custom-margin-Margent" id="ared1" name="ared1"		>
+
+														
+														<div class="f" id="f">
+
+															
+
+												<div class="col-sm-12">
+
+
+												<label>   1 قطعة أرضية</label>
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia_ared1" id="qima_malia_ared1">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface_ared1"
+																id="surface_ared1">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="adresse_ared1"
+																id="adresse_ared1">
+														</div>
+													</div>
+												</div>
+											
+											
+											
+											
+
+
+											<div class="row">
+
+												
+
+													<div class="col-md-4">
+														<button type="button" class="btn button-style btn1"
+															id="ajouterTemoin" name="ajouterTemoin"
+															
+															><</button>
+													</div>
+													
+												
+                                           <div class="col-md-4">
+														<button type="button" class="btn button-style "
+															id="ajouterTemoin" name="ajouterTemoin"
+															onclick="addAredScript();"
+															>></button>
+													</div>
+											</div>
+															<br> <br>.
+														</div>
+
+													</div>
+													
+													
+													
+													
+													<div class="field_form custom-margin-Margent" id="ared2" style="display: none;"
+															>
+                                       <label>   2 قطعة أرضية</label>
+														
+														<div class="f" id="f">
+
+															
+
+												<div class="col-sm-12">
+
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia_ared2" id="qima_malia_ared2">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface_ared2"
+																id="surface_ared2">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="adresse_ared2"
+																id="adresse_ared2">
+														</div>
+													</div>
+												</div>
+											
+											
+											
+											
+
+
+											<div class="row">
+													<div class="col-md-4">
+														<button type="button" class="btn button-style btn1"
+															
+															onclick="goToPreviousDivAred()"
+															><</button>
+													</div>
+												
+												<div class="col-md-4">
+													
+													<button type="button" class="btn button-style " onclick="addAredScript2();" >></button>
+													
+												</div>
+											</div>
+															<br> <br>.
+														</div>
+
+													</div>
+													
+													
+													
+													
+													
+													<div class="field_form custom-margin-Margent" id="ared3" style="display: none;"
+															>
+
+														
+														<div class="f" id="f">
+
+															
+
+												<div class="col-sm-12">
+
+<label>   3 قطعة أرضية</label>
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia_ared3" id="qima_malia_ared3">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface_ared3"
+																id="surface_ared3">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="adresse_ared3"
+																id="adresse_ared3">
+														</div>
+													</div>
+												</div>
+											
+											
+											
+											
+
+
+											<div class="row">
+
+											
+
+												<div class="col-md-4">
+													<br>
+
+													<button type="button" class="btn button-style btn1" onclick="goToPreviousDivAred()"><</button>
+													
+												</div>
+												
+												<div class="col-md-4">
+													<br>
+
+													<button type="button" class="btn button-style " > > </button>
+													
+												</div>
+											</div>
+															<br> <br>.
+														</div>
+
+													</div>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													</div>
+												</div>
+											</div>
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseNine">4 -آخر  </a>
+													</h5>
+												</div>
+												<div id="collapseNine" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form custom-margin-Margent" id="liste_accuse"
+															style="display: block">
+															
+															
+															
+															
+															
+															
+															
+												<div class="col-sm-12" id="autre1">
+												<label>النوع 1</label>
+												<div class="row">
+														<div class="col-md-8">
+															<label>نوع الملك :</label><input type="text"
+																placeholder="" class="form-control"
+																name="type1" id="type1">
+														</div>
+													</div>
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_autre1" id="qima_autre1">
+														</div>
+													</div>
+													
+													
+													<div class="row">
+													<div class="col-md-4">
+														<button type="button" class="btn button-style btn1"
+																													
+															><</button>
+													</div> 
+													<div class="col-md-4">
+														<button type="button" class="btn button-style "
+																													
+															onclick="addAutreScript1();">></button>
+													</div>
+												
+												
+											</div>
+												</div>
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												<div class="field-form  " id="autre2" style="display: none;">
+												<label>النوع 2</label>
+												<div class="row">
+														<div class="col-md-8">
+															<label>نوع الملك :</label><input type="text"
+																placeholder="" class="form-control"
+																name="type2" id="type2">
+														</div>
+													</div>
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_autre2" id="qima_autre2">
+														</div>
+													</div>
+													
+													
+													<div class="row">
+													<div class="col-md-4">
+														<button type="button" class="btn button-style btn1" onclick="goToPreviousDivAutre()"
+																													
+															><</button>
+													</div> 
+													<div class="col-md-4">
+														<button type="button" class="btn button-style "
+																													
+															onclick="addAutreScript2();">></button>
+													</div>
+												
+												
+											</div>
+													
+													
+												</div>
+												
+												
+												
+												
+												
+												
+												
+												
+												<div class="field-form " id="autre3" style="display: none;" >
+												<label>النوع 3</label>
+												
+												
+												<div class="row">
+														<div class="col-md-8">
+															<label>نوع الملك :</label><input type="text"
+																placeholder="" class="form-control"
+																name="type3" id="type3">
+														</div>
+													</div>
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_autre3" id="qima_autre3">
+														</div>
+													</div>
+													
+													<div class="row">
+													<div class="col-md-4">
+														<button type="button" class="btn button-style btn1" onclick="goToPreviousDivAutre()"
+																													
+															><</button>
+													</div> 
+													<div class="col-md-4">
+														<button type="button" class="btn button-style "
+																													
+															>></button>
+													</div>
+												
+												
+											</div>
+											
+												</div>
+											</div>
+
+
+
+<br>
+
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<br>
+
+													
+													
+
+												</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="col-md-4">
+													<br>
+
+													<div class="col-md-4 custom-align">
+														<button type="button" class="btn btn-primary" id="btnAmlak"
+															 
+															data-toggle="modal" data-target="#argentModal" style="margin-right: 590px;"
+															onclick="addArgentEvent(event);">إضافة الاملاك</button>
+													</div>
+													<span th:text="#{champs.user}" id="btnAmlakError" 
+													 class="form-wrapper-InputWrapper_explain" style="display:none;
+													  color:red;" ></span>
+													<div class="modal inmodal fade" id="argentModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الاملاك</h4>
+																</div>
+																<div class="modal-body" id="argentModalBody"></div>
+																<div class="modal-footer" id="argentModalBtn">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											<br><br><br> <br>
+											
+											
+											
+											
+									
+											<script>
+  // Attachez un gestionnaire d'événements au lien "3aqar tijari"
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseSevene"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseSevene');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseEight"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseEight');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseNine"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseNine');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+</script>
+											
+											
+											
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFive" id="officierCivil">5 - ديون و
+															تجهيز الميت </a>
+													</h4>
+												</div>
+												<div id="collapseFive" class="panel-collapse collapse custom-margin-Margent">
+													<div class="panel-body">
+														<div class="field_form" id="liste_officier_civil"
+															style="display: block">
+
+														</div>
+														<div class="f" id="f">
+
+															<div class="col-sm-12">
+																<div class="row">
+																	<div class="col-md-4">
+																		<label>ديون؟</label><input type="number"
+																			placeholder=" اكتب مقدار الديون.."
+																			class="form-control" name="doyon"
+																			id="doyon">
+																	</div>
+																	<div class="col-md-4">
+																		<label>تجهيز الميت؟</label><input type="number"
+																			placeholder=" اكتب مقدار تجهيز الميت..  "
+																			class="form-control" name="tajhez"
+																			id="tajhez">
+																	</div>
+
+																</div>
+<br>
+															</div>
+															<br> <br>
+															
+														<div class="col-md-4  custom-align">
+														<button type="button" class="btn btn-primary"
+															id="ajouterPrelevement" name="ajouterPrelevement" style="margin-right: 40px;"
+															data-toggle="modal" data-target="#prelevementModal"
+															onclick="addPrelevementEvent(event);">إضافة الاقتطاعات</button>
+													</div> <br> <br>
+													<div class="modal inmodal fade" id="prelevementModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الاقتطاعات   </h4>
+																</div>
+																<div class="modal-body" id="prelevementModalBody"></div>
+																<div class="modal-footer" id="prelevementModalBtn">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<br>
+													
+															<br> <br>
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseSix" id="avocatAccuse">6 -
+															الوصية</a>
+													</h4>
+												</div>
+												<div id="collapseSix" class="panel-collapse collapse custom-margin-Margent">
+													<div class="panel-body">
+														<div class="field_form" id="liste_avocat_victime"
+															style="display: block">
+															<h5> مثال: للثُلث إختر 1/3 </h5>
+															<div style="color:red  ;"> لا تتجاوز الوصية الثُلث </div>
+															<br>
+															<div class="row">
+													<div class="col-md-8">
+													
+														<label >رقم البطاقة الوطنية:</label><input
+															type="text" placeholder="" class="form-control"
+															name="cni_wasiya" id="cni_wasiya">
+														<div id="errorMsg" class="alert alert-danger"
+															style="display: none;">Veuillez remplir le champ.</div>
+													</div>
+													
+
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+													<br>
+														<label>الإسم:</label><input type="text" placeholder=""
+															class="form-control" name="prenom_wasiya"
+															id="prenom_wasiya">
+															<br>
+													</div>
+													<div class="col-md-4">
+													<br>
+														<label>النسب:</label><input type="text" placeholder=""
+															class="form-control" name="nom_wasiya" id="nom_wasiya">
+													<br></div>
+
+												</div>
+															
+															<div class="row">
+																
+																<div class="col-md-8">
+																<div class="col-md-5 text-right ">	
+																<label >اختر وصية</label>
+																
+																 </div>
+																	<div class="col-md-	15"> 
+																	<select style="width:645px;"
+																		class="form-control m-b" id="wasiya">
+																		<option value="0"> اختر قيمة</option>
+																		<option value="1/3">1/3</option>
+																		<option value="1/4">1/4</option>
+																		<option value="1/5">1/5</option>
+																		<option value="1/6">1/6</option>
+																		<option value="1/7">1/7</option>
+																		<option value="1/8">1/8</option>
+																		<option value="1/9">1/9</option>
+																		<option value="1/10">1/10</option>
+																	</select>
+																	</div>
+																	
+																	
+																	
+																	
+<!-- 													<div class="col-md-900"> -->
+<!-- 													<label id="labelTemoin1" name="labelTemoin1">اختر وصية  :</label> <select class="form-control m-b" -->
+<!-- 														name="liste_temoins" id="liste_temoins"> -->
+<!-- 														<option disabled selected>اختر قيمة  </option> -->
+<!-- 																		<option value="1/3">1/3</option> -->
+<!-- 																		<option value="1/4">1/4</option> -->
+<!-- 																		<option value="1/5">1/5</option> -->
+<!-- 																		<option value="1/6">1/6</option> -->
+<!-- 																		<option value="1/7">1/7</option> -->
+<!-- 																		<option value="1/8">1/8</option> -->
+<!-- 																		<option value="1/9">1/9</option> -->
+<!-- 																		<option value="1/10">1/10</option> -->
+<!-- 													</select> -->
+<!-- 												</div> -->
+												
+												
+																</div>
+																
+																
+														<div class="col-md-8 custom-align" >
+																
+														<button type="button" class="btn btn-primary"
+															
+															data-toggle="modal" data-target="#wasiyaModal" style="margin-right: 40px;"
+															onclick="addWasiyaEvent(event);">إضافة الوصية</button>
+													
+													<div class="modal inmodal fade" id="wasiyaModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الوصية</h4>
+																</div>
+																<div class="modal-body" id="wasiyaModalBody"></div>
+																<div class="modal-footer" id="wasiyaModalBtn">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+																
+																
+																</div>
+																
+																
+															</div>
+															<br>
+															
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</fieldset>
+
+									<h1>الورتة       </h1>
+									<fieldset>
+									<div class="field_form" id="field_dossier" style="display: block">
+											<h2>معلومات عن الورثة</h2>
+
+
+<br>
+
+											<div class="container">
+												<div class="row">
+													<!--<div class="container text-center">
+														<div class="row justify-content-center">
+															<div class="col-30 col-md-10">
+																<div class="row justify-content-center">
+																	<div class="col-md-30 mx-auto">
+																		<table
+																			class="table table-striped custom-table-size">-->
+																		   <div class="col-md-6  mb-4">
+      <table class="table table-striped">	
+      														<tbody>
+      															<tr style="background-color:#b8dfd1 ">
+																					<th id="x"
+																						style="visibility: hidden;">
+																						
+																						زوج ؟ </th>
+																					<th id="sx"
+																						style="visibility: hidden;">
+																						<select style="width:70px;  "
+																							class="form-control m-b" onchange="zawjModal()"
+																							id="epaux">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+
+																						</select></th>
+																						
+														
+																					<th id="se">زوجه ؟</th>
+																					<th id="sse"><select
+																							style="width:70px;"
+																							class="form-control m-b" 
+																				name="epause"			id="epause">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+
+																						</select></th>
+      														
+      														
+      														
+      														
+      														</tr>
+																							
+																				<tr >
+																					<th> أب ؟</th>
+																					<th><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ab" onchange="handleSelectChange2()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																					<th> أم ؟</th>
+																					<th><select style="width:70px;"
+																							class="form-control m-b"
+																							id="om" onchange="handleSelectChange3()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+</tr>
+																	
+															
+<tr id="jodod">
+
+																					<th id="jadth">جد (أب الأب) ؟</th>
+																					<th id="jadthh"> <select style="width:70px;"
+																							class="form-control m-b"
+																							id="jad" onchange="handleSelectChange4()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																					<th id="jadath">أم الأب ؟ </th>
+																					<th id="jadaths"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="jada">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+
+																				</tr>
+																				<tr >
+																					<th></th>
+																					<th></th>
+																					<th id="jada1th">أم الأم ؟ </th>
+																					<th id="jada1ths"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="jada1">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="yes">نعم
+																							</option>
+
+
+																						</select></th>
+																				</tr>
+
+																				<tr>
+
+																					<th id="ibnth">ابن ؟ </th>
+																					<th id="ibnthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ibn" onchange="handleSelectChange()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+</select>
+ 
+
+
+
+
+																						</th>
+																					<th id="bntth">بنت ؟ </th>
+																					<th id="bntthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="bnt" onchange="handleSelectChange5()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+
+																				<tr id="abnae">
+																					<th id="ibn1th">ابن الابن ؟ </th>
+																					<th id="ibn1thh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="ibn1" onchange="handleSelectChange1()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+
+
+																						</select></th>
+																					<th id="bnt1th">بنت الابن ؟ </th>
+																					<th id="bnt1thh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="bnt1"  onchange="handleSelectChange6()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+
+														
+																			</tbody>
+																		</table>
+																	</div>
+																
+														
+   
+																			   <div class="col-md-6  mb-4" >
+                                                                             <table id="t" class="table table-striped">
+																				<tbody>
+						<tr>
+																					<th id="akhth">أخ شقيق ؟ </th>
+																					<th  id="akhthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="akh"  onchange="handleSelectChange7()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+
+
+																						</select></th>
+																					<th id="okhtth">أخت شقيقة ؟ </th>
+																					<th  id="okhtthh"><select style="width:70px;"
+																							class="form-control m-b"
+																							id="okht" onchange="handleSelectChange14()">
+
+																							<option value="non">لا
+																							</option>
+																							<option value="1">1</option>
+
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																							<option value="7">7</option>
+																							<option value="8">8</option>
+																							<option value="9">9</option>
+																							<option value="10">10
+																							</option>
+																							<option value="11">11
+																							</option>
+																							<option value="12">12
+																							</option>
+																							<option value="13">13
+																							</option>
+																							<option value="14">14
+																							</option>
+																							<option value="15">15
+																							</option>
+																							<option value="16">16
+																							</option>
+																							<option value="17">17
+																							</option>
+																							<option value="18">18
+																							</option>
+																							<option value="19">19
+																							</option>
+																							<option value="20">20
+																							</option>
+																							<option value="21">21
+																							</option>
+																							<option value="22">22
+																							</option>
+																							<option value="23">23
+																							</option>
+																							<option value="24">24
+																							</option>
+																							<option value="25">25
+																							</option>
+																							<option value="26">26
+																							</option>
+																							<option value="27">27
+																							</option>
+																							<option value="28">28
+																							</option>
+																							<option value="29">29
+																							</option>
+																							<option value="30">30
+																							</option>
+
+																						</select></th>
+
+																				</tr>
+																					<tr>
+																						<th id="akh1th">أخ لأب ؟ </th>
+																						<th id="akh1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="akh1" onchange="handleSelectChange8()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="okht1th">أخت لأب ؟ </th>
+																						<th id="okht1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="okht1">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+																					<tr>
+																						<th id="akh2th">أخ لأم ؟ </th>
+																						<th id="akh2thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="akh2">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="okht2th">أخت لأم ؟ </th>
+																						<th id="okht2thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="okht2">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+																					<tr>
+																						<th id="ibnakhth">ابن أخ شقيق ؟ </th>
+																						<th id="ibnakhthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibnakh" onchange="handleSelectChange9()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="ibnakh1th">ابن أخ لأب ؟ </th>
+																						<th id="ibnakh1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibnakh1" onchange="handleSelectChange10()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+																					<tr>
+																						<th id="3amth">عم شقيق ؟ </th>
+																						<th id="3amthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="3am" onchange="handleSelectChange11()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="3am1th">عم لأب ؟ </th>
+																						<th id="3am1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="3am1" onchange="handleSelectChange12()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+
+																					<tr>
+																						<th id="ibn3amth">ابن عم شقيق ؟ </th>
+																						<th id="ibn3amthh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibn3am" onchange="handleSelectChange13()">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+
+
+																							</select></th>
+																						<th id="ibn3am1th">ابن عم لأب ؟ </th>
+																						<th id="ibn3am1thh"><select style="width:70px;"
+																								class="form-control m-b"
+																								id="ibn3am1">
+
+																								<option value="non">لا
+																								</option>
+																								<option value="1">1
+																								</option>
+
+																								<option value="2">2
+																								</option>
+																								<option value="3">3
+																								</option>
+																								<option value="4">4
+																								</option>
+																								<option value="5">5
+																								</option>
+																								<option value="6">6
+																								</option>
+																								<option value="7">7
+																								</option>
+																								<option value="8">8
+																								</option>
+																								<option value="9">9
+																								</option>
+																								<option value="10">10
+																								</option>
+																								<option value="11">11
+																								</option>
+																								<option value="12">12
+																								</option>
+																								<option value="13">13
+																								</option>
+																								<option value="14">14
+																								</option>
+																								<option value="15">15
+																								</option>
+																								<option value="16">16
+																								</option>
+																								<option value="17">17
+																								</option>
+																								<option value="18">18
+																								</option>
+																								<option value="19">19
+																								</option>
+																								<option value="20">20
+																								</option>
+																								<option value="21">21
+																								</option>
+																								<option value="22">22
+																								</option>
+																								<option value="23">23
+																								</option>
+																								<option value="24">24
+																								</option>
+																								<option value="25">25
+																								</option>
+																								<option value="26">26
+																								</option>
+																								<option value="27">27
+																								</option>
+																								<option value="28">28
+																								</option>
+																								<option value="29">29
+																								</option>
+																								<option value="30">30
+																								</option>
+
+																							</select></th>
+
+																					</tr>
+
+
+
+
+
+
+
+
+
+
+
+																				</tbody>
+																		
+														
+									</table></div></div></div></div>
+									
+									
+										
+									
+									</fieldset>
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="footer">
+				<div class="float-right">
+					<strong>موقع المواريث</strong>
+				</div>
+				<div class="float-left">
+					<strong>جميع الحقوق محفوظة</strong> &copy; 2023-2024
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+	
+	 <!-- Modal 7ajb ebn  -->
+ 
+  	<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الفرع الوارث المذكر(مثل الإبن وإبن الإبن) </p>
+    <li>لا يتم توريث الإخوه الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام والعمات أشقاء ولأب وابناؤهم الذكور </li>
+    </ul>
+  
+    
+  </div>
+</div>
+
+  	<div id="myModal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأب </p>
+    <li>  لا يرث أبو الأب ولا أمه </li>
+       <li> لا يتم توريث الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام والعمات أشقاء ولأب وابناؤهم الذكور </li>
+    </ul>
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  
+  
+
+  
+  	<div id="myModal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود البنات   </p>
+
+    <li>لا ترث بنت الإبن إذا كان هناك أكثر من بنت صلبيه لأنهن سيستغرقن الثلثين فلا ترث بنت الإبن فى هذه الحاله الا اذا كان معها ابن ابن فى درجتها أو أدنى منها درجة فيعصبها </li>
+    <li>لا يرث الإخوه لأم سواء من ذكور او الإناث  </li>
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+  
+ 
+ 
+   
+  	<div id="myModal6" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود البنت أو بنت الابن   </p>
+
+  
+    <li>لا يرث الإخوه لأم سواء من ذكور او الإناث  </li>
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+ 
+ 
+ <div id="myModal7" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأخ الشقيق   </p>
+
+   <li>لا يتم توريث ابناء أخ الشقيق   </li> 
+    <li>لا يتم توريث الأخوة للأب  سواء كانوا ذكورًا أو إناثًا</li>
+      <li>ا يتم توريث ابناء أخ لأب</li>
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+
+    </ul>
+  
+    
+  </div>
+  </div> 
+ 
+  <div id="myModal8" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود الأخ للأب   </p>
+
+    <li>لا يتم توريث ابناء أخ الشقيق ولأب   </li> 
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+   
+    </ul>
+  
+    
+  </div>
+  </div> 
+ 
+ 
+  
+  
+  
+  
+   	<div id="myModal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+
+    <p style="text-align:center; color:#1F4638">الأم تحجب جميع الجدات سواء من جهتها أو من جهة الأب </p>
+
+    
+  </div>
+  
+</div>
+
+<div id="myModal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+   <p style="text-align:center; color:#1F4638"> عند وجود الجد </p>
+    <li>لا يتم توريث الإخوه الأشقاء و الإخوه للأب وابناؤهم الذكور سواء كانوا ذكورًا أو إناثًا</li>
+     <li>لا يتم توريث الإخوه لأم سواء من ذكور او الإناث</li>
+    <li>لا يتم توريث الأعمام والعمات أشقاء ولأب وابناؤهم الذكور </li>
+    </ul>
+
+  
+    
+  </div>
+  </div> 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="myModal9" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">   عند وجود ابن أخ شقيق</p>
+
+  
+    
+     <li>لا يتم توريث ابناء أخ لأب ؟   </li> 
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+
+    </ul>
+  
+    
+  </div>
+  </div> 
+
+
+
+
+  <div id="myModal10" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  	عند وجود ابن أخ لأب     </p>
+
+  
+    
+    
+    <li>لا يتم توريث الأعمام أشقاء ولأب وابناؤهم الذكور   </li>
+     
+    </ul>
+  
+    
+  </div>
+  </div> 
+  
+  
+  
+  <div id="myModal11" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود عم شقيق    </p>
+
+  
+    
+     <li>لا يتم توريث ابناء عم شقيق    </li> 
+    <li>لا يتم توريث الأعمام لأب وابناؤهم الذكور   </li>
+  
+    </ul>
+  </div>
+  </div> 
+
+
+
+
+
+<div id="myModal12" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> 	عند وجود عم لأب    </p>
+ 
+     <li>لا يتم توريث ابناء عم شقيق ولأب     </li> 
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  
+  <div id="myModal13" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638">  عند وجود ابن عم شقيق   </p>
+
+  
+    
+     <li>لا يتم توريث ابناء عم لأب    </li> 
+  
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+
+
+ <div id="myModal14" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="color:#0F231C">الحجب</h2>
+    <ul class="bulletless-list" style="color:#1F4638">
+ 
+
+    <p style="text-align:center; color:#1F4638"> عند وجود الأخوات الشقيقات وليس هنالك اخوه لاب      </p>
+
+  
+    
+     <li>لا يتم توريث بنات الاب الشقيقات    </li> 
+  
+    
+    </ul>
+  
+    
+  </div>
+  </div>
+
+<div id="personnesData" data-personnes="[[${personnes}]]"></div>
+<!--------------------------------------------------------------->
+
+	
+
+
+
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+	<!-- Steps -->
+	<script src="js1/plugins/steps/jquery.steps.min.js"></script>
+
+	<!-- Jquery Validate -->
+	<script src="js1/plugins/validate/jquery.validate.min.js"></script>
+
+
+	<script>
+		/* $(document)
+				.ready(
+						function() {
+							$("#wizard").steps();
+							$("#form")
+									.steps(
+											{
+												labels : {
+													cancel : "إلغاء",
+													current : "current step:",
+													pagination : "Pagination",
+													finish : "إضافة",
+													next : "التالي",
+													previous : "السابق",
+													loading : "تحميل ..."
+												},
+												bodyTag : "fieldset",
+												onStepChanging : function(
+														event, currentIndex,
+														newIndex) {
+													// Always allow going backward even if the current step contains invalid fields!
+													if (currentIndex > newIndex) {
+														return true;
+													}
+
+													// Forbid suppressing "Warning" step if the user is to young
+													if (newIndex === 3
+															&& Number($("#age")
+																	.val()) < 18) {
+														return false;
+													}
+
+													var form = $(this);
+
+													// Clean up if user went backward before
+													if (currentIndex < newIndex) {
+														// To remove error styles
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") label.error",
+																form).remove();
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") .error",
+																form)
+																.removeClass(
+																		"error");
+													}
+
+													// Disable validation on fields that are disabled or hidden.
+													form.validate().settings.ignore = ":disabled,:hidden";
+
+													// Start validation; Prevent going forward if false
+													return form.valid();
+												},
+												onStepChanged : function(event,
+														currentIndex,
+														priorIndex) {
+													// Suppress (skip) "Warning" step if the user is old enough.
+													if (currentIndex === 2
+															&& Number($("#age")
+																	.val()) >= 18) {
+														$(this).steps("next");
+													}
+
+													// Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+													if (currentIndex === 2
+															&& priorIndex === 3) {
+														$(this).steps(
+																"previous");
+													}
+												},
+												onFinishing : function(event,
+														currentIndex) {
+													var form = $(this);
+
+													// Disable validation on fields that are disabled.
+													// At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+													form.validate().settings.ignore = ":disabled";
+
+													// Start validation; Prevent form submission if false
+													return form.valid();
+												},
+												onFinished : function(event,
+														currentIndex) {
+													var form = $(this);
+
+													// Submit form input
+													form.submit();
+												}
+											}).validate(
+											{
+												errorPlacement : function(
+														error, element) {
+													element.before(error);
+												},
+												rules : {
+													confirm : {
+														equalTo : "#password"
+													}
+												}
+											});
+						}); */
+	</script>
+
+	<!-- la saisi de cin est obligatoire -->
+
+	<script>
+		var myInput = document.getElementById('cni_temoin');
+
+		myInput.addEventListener('input', function() {
+			if (myInput.value.trim() === '') {
+				myInput.classList.add('is-invalid');
+			} else {
+				myInput.classList.remove('is-invalid');
+			}
+		});
+	</script>
+
+
+	<script>
+		var myInput = document.getElementById('myInput');
+		var submit = document.getElementById('inputSubmit');
+		var errorMsg = document.getElementById("errorMsg");
+
+		submit.addEventListener('input', function() {
+			if (myInput.value.trim() === '') {
+				myInput.classList.add('is-invalid');
+				errorMsg.style.display = "block";
+			} else {
+				myInput.classList.remove('is-invalid');
+				errorMsg.style.display = "none";
+			}
+		});
+	</script>
+
+
+
+	<script type="text/javascript">
+		
+	</script>
+
+
+	<!-- FooTable -->
+	<script src="js1/plugins/footable/footable.all.min.js"></script>
+
+	<!-- Page-Level Scripts -->
+	<script>
+		/* $(document).ready(function() {
+
+			$('.footable').footable();
+
+			$('#date_added').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			});
+
+			$('#date_modified').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			}); 
+			
+			
+
+		});*/
+
+		// toggle AddDawiBtn
+		function toggleAddDawiBtn(res) {
+			if (res === true)
+				document.getElementById('addDawiBtn').style.display = 'block';
+			else
+				document.getElementById('addDawiBtn').style.display = 'none';
+		}
+
+		// toggle Wadifa & salary inputs visibility
+
+		function toggleFields(event) {
+			event.preventDefault();
+			if ($("#job_victime").prop("selectedIndex") === 4) {
+				$("#autre_profession_victime").removeAttr("disabled");
+				$("#salaire_annuel_victime").removeAttr("disabled");
+			} else {
+				$("#autre_profession_victime").attr("disabled", "disabled");
+				$("#salaire_annuel_victime").attr("disabled", "disabled");
+			}
+		}
+	</script>
+	<script type="text/javascript" src="js1/api/ajouterDossier.js"></script>
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+    <script type="text/javascript" src="js1/api/warataOperation.js"></script>
+    <script type="text/javascript" src="js1/api/7isabPro.js"></script>
+	<script>
+
+		function toggleGender() {
+			
+			var checkboxWoman = document.getElementById("onta");
+			var checkboxMan = document.getElementById("dakar");
+			var tdA = document.getElementById("x");
+			var tdB = document.getElementById("sx");
+
+			var tdC = document.getElementById("se");
+			var tdD = document.getElementById("sse");
+
+
+			if (checkboxWoman.checked) {
+
+				tdA.style.visibility = "visible";
+				tdB.style.visibility = "visible";
+				tdC.style.visibility = "hidden";
+				tdD.style.visibility = "hidden";
+			} else if (checkboxMan.checked) {
+
+				tdC.style.visibility = "visible";
+				tdD.style.visibility = "visible";
+				tdA.style.visibility = "hidden";
+				tdB.style.visibility = "hidden";
+				//checkboxWoman.checked = false;
+			} /* else {
+      tdA.style.visibility = "none";
+      tdB.style.visibility= "none";
+    } */	  checkboxMan.checked = false;
+		}
+	</script>
+	
+	<script type="text/javascript">
+     
+
+	</script>
+	 <!-- Bouton de soumission -->
+</form>
+
+<script type="text/javascript">
+  function mouseDowndate(){
+    $("#date_dossier").css("border-color", ""); // Réinitialiser la bordure
+    $("#dateDossierError").hide(); // Cacher le message d'erreur
+  }
+  function mouseDownNumero(){
+	  $("#numero_dossier1").css("border-color", ""); // Réinitialiser la bordure
+	    $("#numeroDossierError").hide();
+	  
+  }
+  function mouseDownSomme(){
+	  $("#sommeArgent").css("border-color", ""); // Réinitialiser la bordure
+	    $("#sommeDossierError").hide();
+	  
+  }
+</script>
+	
+	
+</body>
+
+</html>

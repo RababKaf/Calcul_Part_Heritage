@@ -1,0 +1,2693 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>موقع المواريت  • إطّلاع  </title>
+
+<link href="css1/bootstrap.min1.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css"
+	rel="stylesheet">
+<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+
+<!-- Toastr style -->
+<link href="css1/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<link href="css1/animate1.css" rel="stylesheet">
+<link href="css1/style1.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<script type="text/javascript" src="js1/api/consulterDossier.js"></script>
+<script type="text/javascript" src="js1/api/dossierOperations.js"></script>
+<script type="text/javascript" src="js1/api/scripts.js"></script>
+<script type="text/javascript" src="js1/api/victimeOperations.js"></script>
+<script type="text/javascript" src="js1/api/accuseOperations.js"></script>
+<script type="text/javascript" src="js1/api/temoinOperations.js"></script>
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+
+* {
+	font-family: 'Droid Arabic Kufi';
+}
+
+select.form-control:not([size]):not([multiple]) {
+	height: calc(59% - 12px);
+}
+
+.custom-margin {
+    margin-right: 12px; /* Remplacez la valeur selon vos besoins */
+}
+
+.custom-margin-left{
+    margin-right: 	465px;
+
+}
+
+.custom-margin-argent{
+    margin-right: 150px;
+
+}
+
+.custom-margin-wasiya{
+    margin-right: 250px;
+
+}
+.custom-argent{
+    margin-right: 290px;
+
+}
+
+
+.custom-margin-tijari{
+  margin-right: 460px;
+}
+
+.custom-margin-amlak{
+  margin-right: 160px;
+}
+
+.custom-leftH{
+  margin-right: -110px;
+}
+
+.custom-1-amlak{
+  margin-right: 440px;
+}
+
+
+
+</style>
+
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper" style="text-align: right">
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image != null}" th:src="@{${'/display?id=' + office.id}}" width="120" /></a>
+								<a th:href="@{/ClientProfessionnel/index}"><img alt="image"
+								class="rounded-circle" th:if="${office.image == null}" src="/img1/justice-green.png" width="120" /></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"
+								th:object="${user}"> <span class="block m-t-xs font-bold"
+								th:text="${user.firstName}+' '+${user.lastName}">Unknown</span>
+								<span class="text-muted text-xs block">عادل<b
+									class="caret"></b></span>
+							</a> <input type="text" id="logged_in_user" th:value="${user.id}"
+								style="display: none">
+
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								
+								<li><a class="dropdown-item" th:href="@{/ClientProfessionnel/modInfo}">الصفحة
+										الشخصية</a></li>
+								<li><a class="dropdown-item" th:href="@{/mailbox}">صندوق
+										البريد</a></li>
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<a th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+								class="fa fa-home"></i></a>
+						</div>
+					</li>
+					<li ><a
+						th:href="@{/ClientProfessionnel/index}"><i
+							class="fa fa-home"></i> <span class="nav-label">الرئيسية 
+								</span></a></li>
+
+					<li ><a
+						th:href="@{/ClientProfessionnel/ajouterDossier}"><i
+							class="fa fa-plus"></i> <span class="nav-label">إضافة ملف
+								جديد</span></a></li>
+
+					<!-- <li><a href="#"><i class="fa fa-gavel"></i> <span
+							class="nav-label">الجلسات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/ClientProfessionnel/seancesAujourdhui}">جلسات
+									اليوم</a></li>
+							<li><a th:href="@{/ClientProfessionnel/prochainesSeances}">الجلسات
+									المقبلة</a></li>
+						</ul></li> -->
+
+					<li class="active"><a th:href="@{/ClientProfessionnel/consulterDossier}"><i
+							class="fa fa-book-open"></i> <span class="nav-label">إطِّلاع</span></a>
+					</li>
+
+					<!-- <li><a th:href="@{/ClientProfessionnel/rechercher}"><i
+							class="fa fa-search"></i> <span class="nav-label">بحث</span></a></li> -->
+
+					<li><a href="#"><i class="fa fa-globe-africa"></i> <span
+							class="nav-label">إعدادات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+					<li><a th:href="@{/ClientProfessionnel/modInfo}">تعديل المعلومات الشخصية</a></li>
+							<li class="active"><a th:href="@{/ClientProfessionnel/modBureau}">تعديل معلومات
+									المكتب</a></li>
+						</ul></li>
+
+					<!-- 					<li><a href="#"><i class="fa fa-database"></i> <span -->
+					<!-- 							class="nav-label">قاعدة البيانات</span><span class="fa arrow"></span></a> -->
+					<!-- 						<ul class="nav nav-second-level collapse"> -->
+					<!-- 							<li><a th:href="@{/table_basic}">استيراد</a></li> -->
+					<!-- 							<li><a th:href="@{/table_data_tables}">تصدير</a></li> -->
+					<!-- 						</ul></li> -->
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg">
+
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							th:action="@{/Client/rechercher}">
+							<div class="form-group">
+								<input type="text" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li style="padding: 20px"><span
+							class="m-r-sm text-muted welcome-message" th:text="${user.email}"></span>
+						</li>
+
+						<li class="dropdown"><a class="dropdown-toggle count-info"
+							data-toggle="dropdown" th:href="@{/Client/seancesAujourdhui}">
+								<i class="fa fa-bell"></i> <span class="label label-primary"
+								th:text="${nombreSeancesAujourdhui}">0</span>
+						</a></li>
+
+						<li><a th:href="@{/login}"> <i class="fa fa-sign-out"></i>
+								خروج
+						</a></li>
+
+					</ul>
+
+				</nav>
+			</div>
+
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2 style="text-align: right">الإطلاع على جميع المعلومات</h2>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/Client/index.html">الرئيسية</a>
+						</li>
+						<li class="breadcrumb-item active"><strong>الإطلاع</strong></li>
+					</ol>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+
+			<div class="wrapper wrapper-content animated fadeInRight">
+
+				<div class="col-sm-12">
+					<h1>الملف</h1>
+					<div class="row">
+						<div class="col"></div>
+						
+						<div class="col-md-3">
+							<label>اسم الملف:</label> <select class="form-control m-b"
+								name="numero_dossier1" id="numero_dossier1" onclick="loadDossiersH(event);"
+								   >
+								
+								
+								<option disabled selected>اختر ملف</option>
+								<option th:each="dossier : ${dossiers}"
+									th:value="${dossier.numero}"
+									th:text="${dossier.nomDossier}"></option>
+							</select>
+							
+						</div>
+						<a id="button-link" ><button onclick="loadDossiersH(event)"
+						style="color:#6c757d; border-color:#6c757d ;  background-color:white; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+						
+						
+						<div class="col"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div class="row">
+								
+								<div class="col-md-4">
+														<label>اسم الملف:</label> <input type="text"
+															placeholder="الاسم" class="form-control"
+															name="nom_dossier" id="nom_dossier" disabled >
+													</div>
+
+								<div class="col-md-4">
+									<label>تاريخ الملف:</label> <input type="text"
+										class="form-control" name="date_dossier" id="date_dossier"
+										value="تاريخ الملف" disabled >
+								</div>
+
+								
+													
+													<div class="col-md-4">
+														<label>رقم الملف:</label> <input type="number"
+															placeholder="الرقم" class="form-control"
+															name="numero_dossier12" id="numero_dossier12" disabled >
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								
+								<div class="col-md-12">
+									<label>ملاحظة:</label>
+									<textarea class="form-control" id="remarque" rows="1"
+										placeholder="لا يوجد ملاحظات" disabled></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-10">
+									<br> <br>
+									<div class="row">
+										<div class="col-md-4">
+											<button type="button" class="btn btn-dark"
+												data-toggle="modal" data-target="#rmqDossierModal"
+												style="width: 120px">تسجيل ملاحظة</button>
+										</div>
+										<div class="modal inmodal fade" id="rmqDossierModal"
+											tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">
+															<span aria-hidden="true">&times;</span><span
+																class="sr-only">Close</span>
+														</button>
+														<h4 class="modal-title">تسجيل ملاحظة</h4>
+													</div>
+													<div class="modal-body" id="rmqDossierModalBody">
+														<span>المرجو إدخال الملاحظة المراد إضافتها</span><br>
+														<br>
+														<textarea class="form-control" id="remarque_dossier"
+															rows="2" placeholder="لا يوجد ملاحظات"></textarea>
+													</div>
+													<div class="modal-footer" id="rmqDossierModalBtn">
+														<a style="color: white" type="button"
+															class="btn btn-primary"
+															onClick="addRemarqueEventh(event);">إضافة</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-4">
+											<button type="button" class="btn btn-dark"
+												data-toggle="modal" data-target="#dateSeanceDossierModal"
+												style="width: 120px">تعديل  البيانات </button>
+										</div>
+										<div class="modal inmodal fade" id="dateSeanceDossierModal"
+											tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">
+															<span aria-hidden="true">&times;</span><span
+																class="sr-only">Close</span>
+														</button>
+														<h4 class="modal-title">تعديل  البيانات </h4>
+													</div>
+													<div class="modal-body" id="dateSeanceDossierModalBody">
+														<span>المرجو ادخال اسم الملف</span><br> <br>
+														<input type="text" class="form-control"
+															name="nomm_dossier" id="nomm_dossier">
+													</div>
+													<div class="modal-footer" id="dateSeanceDossierModalBtn">
+														<a style="color: white" type="button"
+															class="btn btn-primary"
+															onClick="addNomEvent(event);">تعديل  </a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-4">
+											<button type="button" class="btn btn-warning"
+												data-toggle="modal" data-target="#deleteDossierModal"
+												style="width: 120px">حذف الملف</button>
+										</div>
+										<div class="modal inmodal fade" id="deleteDossierModal"
+											tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">
+															<span aria-hidden="true">&times;</span><span
+																class="sr-only">Close</span>
+														</button>
+														<h4 class="modal-title">حذف الملف</h4>
+													</div>
+													<div class="modal-body" id="deleteDossierModalBody">
+														<span>هل انت متأكد من حذف الملف؟</span><br>
+													</div>
+													<div class="modal-footer" id="deleteDossierModalBtn">
+														<a style="color: white" type="button"
+															class="btn btn-danger"
+															onClick="deleteDossierEvent(event);">حذف</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<br>
+								</div>
+								<div class="col-md-1"></div>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="tabs-container">
+							<ul class="nav nav-tabs" role="tablist">
+								<li><a class="nav-link active" data-toggle="tab"
+									href="#tab-1">الاملاك</a></li>
+								<li><a class="nav-link" data-toggle="tab" href="#tab-2">الورتة</a></li>
+								<li><a class="nav-link" data-toggle="tab" href="#tab-3">الشهود</a></li>
+							</ul>
+							<div class="tab-content">
+
+								<div role="tabpanel" id="tab-1" class="tab-pane active">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-9  custom-margin-amlak">
+												<div class="row">
+													<div class="col"></div>
+													
+													<div class="col"></div>
+												</div>
+
+
+												<div class="field_form" id="field_victime_info"
+													>
+												
+													<div class="panel-group" id="accordion">
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseOne">1 - النقود </a>
+													</h5>
+												</div>
+												<div id="collapseOne" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form col-sm-12" id="liste_accuse"
+															style="display: block">
+												
+												<div class="row">
+												
+														<div class="col-md-5 custom-argent">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="sommeArgent_info" id="sommeArgent_info">
+																<input type="hidden" id="id_argent">
+																<div class="col"></div>
+														</div>
+													</div>
+												
+												
+							<div class="row">			
+				                                     <div class="col-md-3 custom-margin">
+															<br>
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateArgentModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+														<div class="modal inmodal fade" id="updateArgentModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل البيانات</h4>
+																	</div>
+																	<div class="modal-body" id="updateArgentModalBody">
+																		<span>هل حقاً تريد تعديل البيانات</span><br>
+																	</div>
+																	<div class="modal-footer" id="updateArgentModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateArgent(event);">تعديل</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														
+														
+														
+														
+														
+                                                    
+                                                    
+                                                    <div class="col-md-3 custom-1-amlak">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteArgentModal"
+																style="width: 120px">حذف النقود</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteArgentModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف النقود</h4>
+																	</div>
+																	<div class="modal-body" id="deleteArgentModalBody">
+																		<span>هل حقاً تريد حذف النقود</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteArgentModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteArgent(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+			</div>											
+			<br>										
+											</div>
+
+
+
+
+
+
+											<div class="row">
+
+												
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseTwo">2 - عقار تجاري  </a>
+													</h5>
+												</div>
+												<div id="collapseTwo" class="panel-collapse collapse in">
+													<div class="panel-body">
+													
+													<div class="field_form">
+													
+													
+													
+													<div class="col-sm-12">
+                                                    
+                                                    <div class="row">
+													<div class="col"></div>
+													<div class="col-md-5">
+														<label>إسم العقار التجاري:</label> <select
+															class="form-control m-b" name="liste_tijari_info"
+															id="liste_tijari_info"
+															onchange="loadTijariInfos(event);">
+															<option disabled selected>اختر  عقار تجاري</option>
+														</select>
+														
+													</div>
+													<a id="button-link" ><button onclick="loadTijariInfos(event)"
+						style="color:#6c757d; border-color:#6c757d ; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+													<div class="col"></div>
+												</div>
+												
+												<div class="field_form " id="tijari1" name="tijari1"	style="display:none; "	>	
+																				
+												
+													<div class="row">
+													<!-- <div class="col-md-4"></div> -->
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control" 
+																name="qima_malia1_info" id="qima_malia1_info">
+														</div>
+													</div>
+													<div class="row">
+													
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface1_info" 
+																id="surface1_info">
+														</div>
+													</div>
+
+													<div class="row">
+													
+														<div class="col-md-8">
+														
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari1_info" 
+																id="addressetijari1_info">
+														</div>
+														<input id="id_tijari" type="hidden">
+													</div>
+												</div>
+												
+												
+                                                    
+													<div class="row">
+																												
+
+														<div class="col-md-3">
+															<br>
+															
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateTijariModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+														<div class="modal inmodal fade" id="updateTijariModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل العقار</h4>
+																	</div>
+																	<div class="modal-body" id="updateTijariModalBody">
+																		<span>هل حقاً تريد تعديل العقار </span><br>
+																	</div>
+																	<div class="modal-footer" id="updateTijariModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateTijari(event);">تعديل</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+                                                    
+                                                    
+                                                    <div class="col-md-3 custom-margin-tijari">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteTijariModal"
+																style="width: 120px">حذف العقار</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteTijariModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف العقار</h4>
+																	</div>
+																	<div class="modal-body" id="deleteTijariModalBody">
+																		<span>هل حقاً تريد حذف العقار تجاري</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteTijariModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteTijari(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<br> <br>
+
+													</div>
+													
+													
+													
+													
+													
+													<br> <br><br><br>
+													
+													
+													
+													</div>
+								
+											
+
+
+
+
+
+
+											<div class="row">
+											
+												
+												<div class="col-md-4">
+													<br>
+													
+
+													
+												</div>
+														</div>
+													</div>
+										</div>		
+																					
+									</div>
+											</div>
+											
+											
+											
+											<div class="col-md-4">
+													<br>
+
+													
+													
+												</div>
+											<br><br><br> <br>
+											
+																						
+											<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion"
+				href="#collapseThree" id="officierCivil">3 - قطعة ارضية</a>
+		</h5>
+	</div>
+	<div id="collapseThree" class="panel-collapse collapse">
+		<div class="panel-body">
+		
+		<div class="field_form">
+		
+			<div class="col-sm-12">
+		<div class="row">
+		<div class="col"></div>
+		<div class="col-md-5">
+			<label>   اختر عنوان القطعة الارضية   :</label> <select
+				class="form-control m-b" name="liste_areds_info"
+				id="liste_areds_info"
+				onchange="loadAredInfos(event);">
+				<option disabled selected>اختر قطع أرضية</option>
+			</select>
+		</div>
+		<a id="button-link" ><button onclick="loadAredInfos(event)"
+						style="color:#6c757d; border-color:#6c757d ; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+		<div class="col"></div>
+	</div>
+	
+	<div class="field_form " id="ared1" name="ared1"	style="display:none;"	>
+
+	
+		<div class="row">
+			
+			<div class="col-md-8">
+				<label>القيمة المالية :</label><input type="Number"
+					placeholder="" class="form-control"
+					name="qima_malia_ared1_info" id="qima_malia_ared1_info">
+			</div>
+		</div>
+		<div class="row">
+			
+			<div class="col-md-8">
+				<label>المساحة :</label><input type="Number" placeholder=""
+					class="form-control" name="surface_ared1_info"
+					id="surface_ared1_info">
+			</div>
+		</div>
+
+		<div class="row">
+			
+			<div class="col-md-8">
+				<label> عنوان :</label><input type="text" placeholder=""
+					class="form-control" name="adresse_ared1_info"
+					id="adresse_ared1_info">
+			</div>
+			<input id="id_ared" type="hidden">
+		</div>
+	
+
+
+		</div>
+		
+		<div class="row">
+																	
+
+			<div class="col-md-3">
+				<br>
+				<button type="button" class="btn btn-outline-dark"
+					data-toggle="modal" data-target="#updateAredModal"
+					style="width: 120px">تعديل البيانات</button>
+			</div>
+			<div class="modal inmodal fade" id="updateAredModal"
+				tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close"
+								data-dismiss="modal">
+								<span aria-hidden="true">&times;</span><span
+									class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title">تعديل الارض</h4>
+						</div>
+						<div class="modal-body" id="updateAredModalBody">
+							<span>هل حقاً تريد تعديل  قطع أرضية</span><br>
+						</div>
+						<div class="modal-footer" id="updateAredModalBtn">
+							<a style="color: white" type="button"
+								class="btn btn-primary"
+								onClick="updateAred(event);">تعديل  </a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		
+		
+		<div class="col-md-3 custom-margin-tijari">
+				<br>
+				<button type="button" class="btn btn-outline-warning"
+					data-toggle="modal" data-target="#deleteAredModal"
+					style="width: 120px">حذف ارض</button>
+			</div>
+			<div class="modal inmodal fade" id="deleteAredModal"
+				tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close"
+								data-dismiss="modal">
+								<span aria-hidden="true">&times;</span><span
+									class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title">   حدف الأرض <h4>
+						</div>
+						<div class="modal-body" id="deleteAredModalBody">
+							<span>هل حقاً تريد حذف قطع أرضية</span><br>
+						</div>
+						<div class="modal-footer" id="deleteAredModalBtn">
+							<a style="color: white" type="button"
+								class="btn btn-warning"
+								onClick="deleteAred(event);">حذف</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br> <br>
+		</div>
+		
+		<br> <br><br><br>
+	</div>
+		
+		
+		<div class="row">
+
+	
+	
+			</div>
+		
+		
+		
+		
+		
+						
+
+
+
+
+
+
+
+		</div>
+															
+			
+		
+		</div>
+	</div>
+	
+</div>
+											
+											
+											
+											
+											
+																						
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapse">4 -آخر  </a>
+													</h5>
+												</div>
+												<div id="collapse" class="panel-collapse collapse in">
+													<div class="panel-body">
+													<div class="field_form">
+													
+													
+													
+													<div class="col-sm-12">
+                                                    
+                                                    <div class="row">
+													<div class="col"></div>
+													<div class="col-md-5">
+														<label>إسم الملك:</label> <select
+															class="form-control m-b" name="liste_autres_info"
+															id="liste_autres_info"
+															onchange="loadAutreInfos(event);">
+															<option disabled selected>اختر نوع اخر</option>
+														</select>
+													</div>
+													<a id="button-link" ><button onclick="loadAutreInfos(event);"
+						style="color:#6c757d; border-color:#6c757d ; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+													
+													<div class="col"></div>
+												</div>
+												
+												<div class="field_form" id="liste_autre"
+															style="display: none">
+															
+												<div class="col-sm-12" id="autre1">
+												
+												<div class="row">
+												
+														<div class="col-md-8">
+															<label>نوع الملك :</label><input type="text"
+																placeholder="" class="form-control"
+																name="type1_info" id="type1_info">
+														</div>
+														<br>
+													</div>
+													<br>
+												<div class="row">
+												
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_autre1_info" id="qima_autre1_info">
+																<br>
+														</div>
+													</div>
+													<input id="id_autre" type="hidden">
+												</div>
+																							
+											</div>
+                                                   
+													<div class="row">
+																												
+
+														<div class="col-md-3">
+															<br>
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateAutreModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+														<div class="modal inmodal fade" id="updateAutreModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل</h4>
+																	</div>
+																	<div class="modal-body" id="updateAutreModalBody">
+																		<span>هل حقاً تريد تعديل  البيانات </span><br>
+																	</div>
+																	<div class="modal-footer" id="updateAutreModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateAutre(event);">تعديل</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+                                                    
+                                                    
+                                                    <div class="col-md-3 custom-margin-tijari">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteAutreModal"
+																style="width: 120px">حذف النوع</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteAutreModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف النوع</h4>
+																	</div>
+																	<div class="modal-body" id="deleteAutreModalBody">
+																		<span>هل حقاً تريد حذف  هدا النوع</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteAutreModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteAutre(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+													</div>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													</div>
+								
+
+
+											
+													</div>
+														
+
+
+
+<br>
+
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<br>
+
+													
+													
+
+												</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="col-md-4">
+													<br>
+
+													
+													
+												</div>
+											<br><br><br> <br>
+											
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+	<h4 class="panel-title">
+		<a data-toggle="collapse" data-parent="#accordion"
+			href="#collapseFour" id="officierCivil">5 - ديون و
+			تجهيز الميت </a>
+	</h4>
+</div>
+<div id="collapseFour" class="panel-collapse collapse">
+	<div class="panel-body">
+	
+	
+		<div class="field_form" id="liste_officier_civil"
+			style="display: block">
+
+		
+
+			
+				<div class="row custom-margin-argent">
+					<div class="col-md-4">
+						<label>ديون :</label><input type="number"
+							placeholder=" اكتب مقدار الديون.."
+							class="form-control" name="doyon_info"
+							id="doyon_info">
+					</div>
+					<div class="col-md-4">
+						<label>تجهيز الميت :</label><input type="number"
+							placeholder=" اكتب مقدار تجهيز الميت..  "
+							class="form-control" name="tajhez_info"
+							id="tajhez_info">
+					</div>
+					<input  id="id_prele" type="hidden">
+
+				</div>
+
+			</div>
+			
+			
+			<div class="row" >
+			<div class="col-md-3">
+			<br>
+			<button type="button" class="btn btn-outline-dark"
+				data-toggle="modal" data-target="#updatePrelevementModal"
+				style="width: 120px">تعديل البيانات</button>
+		</div>
+		<div class="modal inmodal fade" id="updatePrelevementModal"
+			tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close"
+							data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span
+								class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">تعديل البيانات</h4>
+					</div>
+					<div class="modal-body" id="updatePrelevementModalBody">
+						<span>هل حقاً تريد تعديل البيانات</span><br>
+					</div>
+					<div class="modal-footer" id="updatePrelevementModalBtn">
+						<a style="color: white" type="button"
+							class="btn btn-primary"
+							onClick="updatePrelevement(event);">تعديل</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	<div class="col-md-3 custom-margin-tijari">
+			<br>
+			<button type="button" class="btn btn-outline-warning"
+				data-toggle="modal" data-target="#deletePrelevementModal"
+				style="width: 120px">حذف الاقتطاعات </button>
+		</div>
+		<div class="modal inmodal fade" id="deleteTPrelevementodal"
+			tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close"
+							data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span
+								class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">حذف  الاقتطاعات</h4>
+					</div>
+					<div class="modal-body" id="deletePrelevementModalBody">
+						<span>هل حقاً تريد حذف  الاقتطاعات</span><br>
+					</div>
+					<div class="modal-footer" id="deletePrelevementModalBtn">
+						<a style="color: white" type="button"
+							class="btn btn-warning"
+							onClick="deletePrelevement(event);">حذف</a>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+			<div class="col"></div>
+		
+	
+	 <br>
+		<div class="col"></div>
+
+	</div>
+</div>
+											</div>
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFive" id="avocatAccuse">6 -
+															الوصية</a>
+													</h4>
+												</div>
+												<div id="collapseFive" class="panel-collapse collapse">
+													<div class="panel-body">
+																																							
+														<div class="field_form custom-margin-wasiya" id="liste_avocat_victime"
+															style="display: block">
+														<div class=" custom-leftH ">	
+															<h5> مثال: للثُلث إختر 1/3 </h5>
+															<div style="color:red  ;"> لا تتجاوز الوصية الثُلث </div>
+														</div>	
+															<br>
+															<div class="row">
+													<div class="col-md-8">
+													
+														<label >رقم البطاقة الوطنية:</label><input
+															type="text" placeholder="" class="form-control"
+															name="cni_wasiya_info" id="cni_wasiya_info">
+														<div id="errorMsg" class="alert alert-danger"
+															style="display: none;">Veuillez remplir le champ.</div>
+													</div>
+													
+
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+													<br>
+														<label>الإسم:</label><input type="text" placeholder=""
+															class="form-control" name="prenom_wasiya_info"
+															id="prenom_wasiya_info">
+															<br>
+													</div>
+													<div class="col-md-4">
+													<br>
+														<label>النسب:</label><input type="text" placeholder=""
+															class="form-control" name="nom_wasiya_info" id="nom_wasiya_info">
+													<br></div>
+
+												</div>
+															
+															<div class="row">
+																
+																<div class="col-md-6">
+																<div class="col-md-5 text-right ">	
+																<label >اختر وصية</label>
+																
+																 </div>
+																	<div class="col-md-	8"> 
+																	<select style="width:440px;"
+																		class="form-control m-b" id="wasiya_info">
+																		<option disabled selected> اختر قيمة</option>
+																		<option value="1/3">1/3</option>
+																		<option value="1/4">1/4</option>
+																		<option value="1/5">1/5</option>
+																		<option value="1/6">1/6</option>
+																		<option value="1/7">1/7</option>
+																		<option value="1/8">1/8</option>
+																		<option value="1/9">1/9</option>
+																		<option value="1/10">1/10</option>
+																	</select>
+																	</div>
+																	
+																	<input id="id_wasiya" type="hidden">
+																													
+																</div>
+																</div>
+																
+											</div>					
+														<div class="row " >
+																
+														<div class="col-md-3">
+															<br>
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateWasiyaModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+														<div class="modal inmodal fade" id="updateWasiyaModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل البيانات</h4>
+																	</div>
+																	<div class="modal-body" id="updateWasiyaModalBody">
+																		<span>هل حقاً تريد تعديل البيانات</span><br>
+																	</div>
+																	<div class="modal-footer" id="updateWasiyaModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateWasiya(event);">تعديل </a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													
+													
+													
+                                                    
+                                                    
+                                                    <div class="col-md-3 custom-margin-tijari">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteWasiyaModal"
+																style="width: 120px">حذف الوصية</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteWasiyaModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف  الوصية</h4>
+																	</div>
+																	<div class="modal-body" id="deleteWasiyaModalBody">
+																		<span>هل حقاً تريد حذف  الوصية</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteWasiyaModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteWasiya(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													
+													
+																
+																
+												</div>
+																
+																
+															
+															<br>
+															
+
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										
+													
+													
+													
+													
+													
+													
+													
+													
+													
+																		
+												</div>
+												
+
+											</div>
+											<div class="col-lg-3">
+												<div class="col-sm-12">
+													<div class="row">
+														
+														
+
+														
+
+														<div class="modal inmodal fade" id="updateVictimeModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-lg">
+																<div class="modal-content">
+																	
+																	<div class="modal-body" id="updateVictimeModalBody">
+																		<div class="field_form" id="field_victime"
+																			style="display: block">
+																			
+																		<div class="panel-group" id="accordion">
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseOne">1 - النقود </a>
+													</h5>
+												</div>
+												<div id="collapseOne" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form" id="liste_accuse"
+															style="display: block">
+												<div class="col-sm-12">
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="sommeArgent" id="sommeArgent">
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+
+
+
+											<div class="row">
+
+												
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseTwo">2 - عقار تجاري  </a>
+													</h5>
+												</div>
+												<div id="collapseTwo" class="panel-collapse collapse in">
+													<div class="panel-body">
+								<div class="field_form" id="tijari1" name="tijari1"		>	
+								<label>عقار تجاري 1 </label>												
+												<div class="col-sm-12">
+
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia1" id="qima_malia1">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface1"
+																id="surface1">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari1"
+																id="addressetijari1">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											
+												
+												<div class="col-md-4">
+													<br>
+													
+
+													<div class="col-md-4">
+
+														<button type="button" class="btn btn-primary"
+															name="nextBtnTijari" data-toggle="modal"
+															data-target="#tijariModal1" id="nextBtnTijari"
+															onclick="addTijariScript();">+</button>
+													</div>
+													<!-- <div class="modal inmodal fade" id="tijariModal1"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الشاهد</h4>
+																</div>
+																<div class="modal-body" id="tijariModalBody1"></div>
+																<div class="modal-footer" id="tijariModalBtn1">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+ -->
+												</div>
+														</div>
+													</div>
+										</div>		
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										<div class="tijari2" id="tijari2"  style="display: none;"
+															>
+															<label>عقار تجاري 2 </label>	
+												<div class="col-sm-12">
+
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :*</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia2" id="qima_malia2">
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface2"
+																id="surface2">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari2"
+																id="addressetijari2">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											
+												
+												<div class="col-md-4">
+													<br>
+													
+													<div class="col-md-4">
+													<button type="button" class="btn btn-primary" onclick="goToPreviousDiv()">></button>
+													</div>
+													
+
+													<div class="col-md-4">
+
+														<button type="button" class="btn btn-primary"
+															name="nextBtnTemoin" id="nextBtnTemoin"
+															onclick="addTijariScript2();">+</button>
+													</div>
+													<!-- <div class="modal inmodal fade" id="tijari2Modal1"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الشاهد</h4>
+																</div>
+																<div class="modal-body" id="tijari2ModalBody1"></div>
+																<div class="modal-footer" id="tijari2ModalBtn1">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div> -->
+
+												</div>
+														</div>
+													</div>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+						<div class="field_form" id="tijari3"  style="display: none;"
+															>
+												<div class="col-sm-12">
+<label>عقار تجاري 3 </label>	
+
+													
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia3" id="qima_malia3">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface3"
+																id="surface3">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="addressetijari3"
+																id="addressetijari3">
+														</div>
+													</div>
+												</div>
+											
+
+
+
+
+
+
+											<div class="row">
+											<br>
+											<div class="col-md-4">
+													<button type="button" class="btn btn-primary" onclick="goToPreviousDiv()" style="margin: 20px;" >></button>
+													</div>
+											
+											<br>	
+												<div class="col-md-4">
+													<br>
+
+													
+													
+
+												</div>
+														</div>
+													</div>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+																					
+									</div>
+											</div>
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseThree" id="officierCivil">3 - قطع أرضية</a>
+													</h4>
+												</div>
+												<div id="collapseThree" class="panel-collapse collapse">
+													<div class="panel-body">
+													
+													
+													
+														<div class="field_form" id="ared1" name="ared1"		>
+
+														
+														<div class="f" id="f">
+
+															
+
+												<div class="col-sm-12">
+
+
+												<label>   1 قطعة أرضية</label>
+													<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_malia_ared1" id="qima_malia_ared1">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-8">
+															<label>المساحة :</label><input type="Number" placeholder=""
+																class="form-control" name="surface_ared1"
+																id="surface_ared1">
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-8">
+															<label> عنوان :</label><input type="text" placeholder=""
+																class="form-control" name="adresse_ared1"
+																id="adresse_ared1">
+														</div>
+													</div>
+												</div>
+											
+											
+											
+											
+
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<br>
+
+													<div class="col-md-4">
+														<button type="button" class="btn btn-primary"
+															id="ajouterTemoin" name="ajouterTemoin"
+															
+															onclick="addAredScript();">+</button>
+													</div>
+													
+												</div>
+
+
+
+
+												<div class="col-md-4">
+													<br>
+
+													
+														
+													
+												</div>
+											</div>
+															<br> <br>.
+														</div>
+
+													</div>
+													
+													
+													
+												
+													
+													
+													
+													
+													
+													
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFour">4 -آخر  </a>
+													</h5>
+												</div>
+												<div id="collapseFour" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<div class="field_form" id="liste_accuse"
+															style="display: block">
+															
+															
+															
+															
+															
+															
+															
+												<div class="col-sm-12" id="autre1">
+												<label>النوع 1</label>
+												<div class="row">
+														<div class="col-md-8">
+															<label>نوع الملك :</label><input type="text"
+																placeholder="" class="form-control"
+																name="type1" id="type1">
+														</div>
+													</div>
+												<div class="row">
+														<div class="col-md-8">
+															<label>القيمة المالية :</label><input type="Number"
+																placeholder="" class="form-control"
+																name="qima_autre1" id="qima_autre1">
+														</div>
+													</div>
+													
+													
+													<div class="row">
+													<div class="col-md-4">
+														<button type="button" class="btn btn-primary"
+																													
+															onclick="addAutreScript1();">+</button>
+													</div>
+												
+												
+											</div>
+												</div>
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+											</div>
+
+
+
+<br>
+
+
+											<div class="row">
+
+												<div class="col-md-4">
+													<br>
+
+													
+													
+
+												</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="col-md-4">
+													<br>
+
+													
+													
+
+												</div>
+											<br><br><br> <br>
+											
+											
+											
+											
+									
+											
+
+											
+											
+											
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFive" id="officierCivil">5 - ديون و
+															تجهيز الميت </a>
+													</h4>
+												</div>
+												<div id="collapseFive" class="panel-collapse collapse">
+													<div class="panel-body">
+														<div class="field_form" id="liste_officier_civil"
+															style="display: block">
+
+														</div>
+														<div class="f" id="f">
+
+															<div class="col-sm-12">
+																<div class="row">
+																	<div class="col-md-4">
+																		<label>ديون؟</label><input type="number"
+																			placeholder=" اكتب مقدار الديون.."
+																			class="form-control" name="doyon"
+																			id="doyon">
+																	</div>
+																	<div class="col-md-4">
+																		<label>تجهيز الميت؟</label><input type="number"
+																			placeholder=" اكتب مقدار تجهيز الميت..  "
+																			class="form-control" name="tajhez"
+																			id="tajhez">
+																	</div>
+
+																</div>
+<br> 
+															</div>
+															<br> <br>
+															
+														
+													
+													<br>
+													
+															<br> <br>
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseSix" id="avocatAccuse">6 -
+															الوصية</a>
+													</h4>
+												</div>
+												<div id="collapseSix" class="panel-collapse collapse">
+													<div class="panel-body">
+														<div class="field_form" id="liste_avocat_victime"
+															style="display: block">
+				<div class="custom-margin-wasiya">											
+															<h5 class="custom-margin-wasiya"> مثال: للثُلث إختر 1/3 </h5>
+															<div style="color:red  ;" class="custom-margin-wasiya"> لا تتجاوز الوصية الثُلث </div>
+															<br>
+															<div class="row custom-margin-wasiya">
+													<div class="col-md-8">
+													
+														<label >رقم البطاقة الوطنية:</label><input
+															type="text" placeholder="" class="form-control"
+															name="cni_wasiya" id="cni_wasiya">
+														<div id="errorMsg" class="alert alert-danger"
+															style="display: none;">Veuillez remplir le champ.</div>
+													</div>
+													
+
+												</div>
+												<div class="row custom-margin-wasiya">
+													<div class="col-md-4">
+													<br>
+														<label>الإسم:</label><input type="text" placeholder=""
+															class="form-control" name="prenom_wasiya"
+															id="prenom_wasiya">
+															<br>
+													</div>
+													<div class="col-md-4 custom-margin-wasiya">
+													<br>
+														<label>النسب:</label><input type="text" placeholder=""
+															class="form-control" name="nom_wasiya" id="nom_wasiya">
+													<br></div>
+
+												</div>
+															
+															<div class="row custom-margin-wasiya">
+																
+																
+																<div class="col-md-5 text-right ">	
+																<label >اختر وصية</label>
+																
+																 </div>
+																	<div class="col-md-	8"> 
+																	<select style="width:140px;"
+																		class="form-control m-b" id="wasiya">
+																		<option disabled selected> اختر قيمة</option>
+																		<option value="1/3">1/3</option>
+																		<option value="1/4">1/4</option>
+																		<option value="1/5">1/5</option>
+																		<option value="1/6">1/6</option>
+																		<option value="1/7">1/7</option>
+																		<option value="1/8">1/8</option>
+																		<option value="1/9">1/9</option>
+																		<option value="1/10">1/10</option>
+																	</select>
+																	</div>
+													
+																
+				</div>												
+																
+					</div>											
+														<div class="col-md-8 custom-align" >
+																
+														<button type="button" class="btn btn-primary"
+															
+															data-toggle="modal" data-target="#wasiyaModal" style="margin-right: 530px;"
+															onclick="addWasiyaEvent(event);">إضافة الوصية</button>
+													
+													<div class="modal inmodal fade" id="wasiyaModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">الوصية</h4>
+																</div>
+																<div class="modal-body" id="wasiyaModalBody"></div>
+																<div class="modal-footer" id="wasiyaModalBtn">
+																	<button type="button" class="btn btn-white"
+																		data-dismiss="modal">غلق</button>
+																</div>
+															</div>
+														</div>
+													</div>
+																
+																
+																</div>
+																
+																
+			
+															<br>
+															
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+											
+
+																			
+
+																			
+
+																			
+
+																			
+																		</div>
+																	</div>
+																
+																</div>
+															</div>
+														</div>
+
+														
+
+														
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+								<div role="tabpanel" id="tab-2" class="tab-pane">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-9">
+												<div class="row">
+													<div class="col"></div>
+													<div class="col-md-5">
+														<label>إسم الوريث:</label> <select
+															class="form-control m-b" name="liste_heritier_info"
+															id="liste_heritier_info"
+															onchange="loadheritierInfos(event);">
+															<option disabled selected>اختر الوريث</option>
+														</select>
+													</div>
+													<a id="button-link" ><button onclick="loadheritierInfos(event);"
+						style="color:#6c757d; border-color:#6c757d ; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+													<div class="col"></div>
+												</div>
+
+
+												<div class="field_form" id="field_heritier_info"
+													style="display: none">
+													<h2>معلومات عن الوريث</h2>
+													
+													
+													<div class="row">
+													<div class="col-md-6">
+															<label>الإسم:</label><input type="text" placeholder=""
+																class="form-control" name="prenom_heritier_info"
+																id="prenom_heritier_info" disabled>
+														</div>
+													
+														<div class="col-md-6">
+															<label>النسب:</label><input type="text" placeholder=""
+																class="form-control" name="nom_heritier_info"
+																id="nom_heritier_info" disabled>
+														</div>
+													</div>
+
+													
+
+													<div class="row">
+														<div class="col-md-12">
+															<label>تاريخ الإزدياد:</label><input type="date"
+																placeholder="" class="form-control"
+																name="date_naissance_heritier_info"
+																id="date_naissance_heritier_info" disabled>
+														</div>
+														
+													</div>
+
+													
+														<div>
+															<input  name="id_heritier_info" id="id_heritier_info" type="hidden" >
+														</div>
+													</div>
+												<br>
+
+
+												
+							
+
+
+											</div>
+											<div class="col-lg-3">
+												<div class="col-sm-12">
+													<div class="row">
+														
+														
+
+														<div class="col-md-12">
+															<br>
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateheritierModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+                                                      
+														<div class="modal inmodal fade" id="updateheritierModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-ms">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل الوريث</h4>
+																	</div>
+																	<div class="modal-body" id="updateheritierModalBody">
+																		<div class="field_form" id="field_heritier"
+																			style="display: block">
+																			<br>
+																			<h3>تعديل الوريث</h3>
+																			
+																			
+																			<div class="row">
+																			<div class="col-md-12">
+																					<label>الإسم:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="prenom_heritier_up" id="prenom_heritier_up">
+																				</div>
+																			</div>	
+																			<div class="row">	
+																				<div class="col-md-12">
+																					<label>النسب:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="nom_heritier_up" id="nom_heritier_up">
+																				</div>
+																			</div>
+
+																			
+
+																			<div class="row">
+																				<div class="col-md-12">
+																					<label>تاريخ الإزدياد:</label><input type="date"
+																						placeholder="" class="form-control"
+																						name="date_naissance_heritier_up"
+																						id="date_naissance_heritier_up"  >
+																				</div>
+																				
+																			</div>
+
+																			
+																			<div class="row">
+																				
+																				<div>
+																				<input  name="id_heritier_up" id="id_heritier_up" type="hidden" >
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="modal-footer" id="updateheritierModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateheritier(event);">تعديل الوريث</a>
+																	</div>
+																	
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-12">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteheritierModal"
+																style="width: 120px">حذف الوريث</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteheritierModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف الوريث</h4>
+																	</div>
+																	<div class="modal-body" id="deleteheritierModalBody">
+																		<span>هل حقاً تريد حذف الوريث</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteheritierModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteheritier(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+								<div role="tabpanel" id="tab-3" class="tab-pane">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-9">
+												<div class="row">
+													<div class="col"></div>
+													<div class="col-md-5">
+														<label>إسم الشاهد:</label> <select
+															class="form-control m-b" name="liste_temoins_info"
+															id="liste_temoins_info"
+															onchange="loadTemoinInfos(event);">
+															<option disabled selected>اختر شاهد</option>
+														</select>
+													</div>
+													<a id="button-link" ><button onclick="loadTemoinInfos(event);"
+						style="color:#6c757d; border-color:#6c757d ; margin-top:31px" type="button" 
+						class="btn btn-outline
+						ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+													<div class="col"></div>
+												</div>
+
+
+												<div class="field_form" id="field_temoin_info"
+													style="display: none">
+													<h2>معلومات عن الشاهد</h2>
+													<div class="row">
+														<div class="col-md-6">
+															<label>رقم البطاقة الوطنية:</label><input type="text"
+																placeholder="" class="form-control"
+																name="cni_temoin_info" id="cni_temoin_info" disabled>
+														</div>
+														
+														<div class="col-md-6">
+														                            <label>تاريخ انتهاء الصلاحية:</label><input type="date"
+														                            	placeholder="" class="form-control"
+														                            	name="date_expiration_carte_info" id="date_expiration_carte_info" disabled>
+													                            </div>
+													                            
+														
+													</div>
+													
+													<div class="row">
+													<div class="col-md-6">
+															<label>الإسم:</label><input type="text" placeholder=""
+																class="form-control" name="prenom_temoin_info"
+																id="prenom_temoin_info" disabled>
+														</div>
+														<div class="col-md-6">
+															<label>النسب:</label><input type="text" placeholder=""
+																class="form-control" name="nom_temoin_info"
+																id="nom_temoin_info" disabled>
+														</div>
+													</div>
+
+													<div class="row">
+														
+														<div class="col-md-6">
+															<label>الوظيفة:</label> <select class="form-control m-b"
+																name="job_temoin_info" id="job_temoin_info" disabled>
+																<option>أستاذ</option>
+																<option>موظف</option>
+																<option>تاجر</option>
+																<option>أجير</option>
+															</select>
+														</div>
+														<div class="col-md-6">
+															<label>الجنس:</label>
+															<div class="row">
+																<div class="col-md-4"></div>
+																<div class="col-md-4">
+																	<label class="radio-inline"><input type="radio"
+																		class="sexe_temoin_info" name="sexe_temoin_info"
+																		value="ذكر" checked disabled>ذكر</label>
+																</div>
+																<div class="col-md-4">
+																	<label class="radio-inline"><input type="radio"
+																		class="sexe_temoin_info" name="sexe_temoin_info"
+																		value="أنثى" disabled>أنثى</label>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="row">
+														<div class="col-md-12">
+															<label>تاريخ الإزدياد:</label><input type="date"
+																placeholder="" class="form-control"
+																name="date_naissance_temoin_info"
+																id="date_naissance_temoin_info" disabled>
+														</div>
+														
+													</div>
+
+													<div class="row">
+														<div class="col-md-12">
+															<label>إسم الأب:</label><input type="text" placeholder=""
+																class="form-control" name="pere_temoin_info"
+																id="pere_temoin_info" disabled>
+														</div>
+														
+													</div>
+
+													<div class="row">
+														<div class="col-md-12">
+															<label>العنوان:</label><input type="text" placeholder=""
+																class="form-control" name="addresse_temoin_info"
+																id="addresse_temoin_info" disabled>
+														</div>
+														<div>
+															<input  name="id_info" id="id_info" type="hidden" >
+														</div>
+													</div>
+												</div>
+												<br>
+
+											</div>
+											<div class="col-lg-3">
+												<div class="col-sm-12">
+													<div class="row">
+																												
+
+														<div class="col-md-12">
+															<br>
+															<button type="button" class="btn btn-outline-dark"
+																data-toggle="modal" data-target="#updateTemoinModal"
+																style="width: 120px">تعديل البيانات</button>
+														</div>
+
+														<div class="modal inmodal fade" id="updateTemoinModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-lg">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">تعديل الشاهد</h4>
+																	</div>
+																	<div class="modal-body" id="updateTemoinModalBody">
+																		<div class="field_form" id="field_temoin"
+																			style="display: block">
+																			<br>
+																			<h3>تعديل شاهد</h3>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<label>رقم البطاقة الوطنية:</label><input
+																						type="text" placeholder="" class="form-control"
+																						name="cni_temoin_up" id="cni_temoin_up">
+																				</div>
+																				
+																				<div class="col-md-6">
+														                            <label>تاريخ انتهاء الصلاحية:</label><input type="date"
+														                            	placeholder="" class="form-control"
+														                            	name="date_expiration_carte_up" id="date_expiration_carte_up">
+													                            </div>
+																				
+																			</div>
+																			
+																			<div class="row">
+																			<div class="col-md-6">
+																					<label>الإسم:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="prenom_temoin_up" id="prenom_temoin_up">
+																				</div>
+																				<div class="col-md-6">
+																					<label>النسب:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="nom_temoin_up" id="nom_temoin_up">
+																				</div>
+																			</div>
+
+																			<div class="row">
+																				
+																				<div class="col-md-6">
+																					<label>الوظيفة:</label> <select
+																						class="form-control m-b" name="job_temoin_up"
+																						id="job_temoin_up">
+																						<option>أستاذ</option>
+																						<option>موظف</option>
+																						<option>تاجر</option>
+																						<option>أجير</option>
+																					</select>
+																				</div>
+																				<div class="col-md-6">
+																					<label>الجنس:</label>
+																					<div class="row">
+																						<div class="col-md-4"></div>
+																						<div class="col-md-4">
+																							<label class="radio-inline"><input
+																								type="radio" class="sexe_temoin_up"
+																								name="sexe_temoin_up" value="ذكر" checked>ذكر</label>
+																						</div>
+																						<div class="col-md-4">
+																							<label class="radio-inline"><input
+																								type="radio" class="sexe_temoin_up"
+																								name="sexe_temoin_up" value="أنثى">أنثى</label>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="row">
+																				<div class="col-md-12">
+																					<label>تاريخ الإزدياد:</label><input type="date"
+																						placeholder="" class="form-control"
+																						name="date_naissance_temoin_up"
+																						id="date_naissance_temoin_up">
+																				</div>
+																				
+																			</div>
+
+																			<div class="row">
+																				<div class="col-md-12">
+																					<label>إسم الأب:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="pere_temoin_up" id="pere_temoin_up">
+																				</div>
+																				
+																			</div>
+
+																			<div class="row">
+																				<div class="col-md-12">
+																					<label>العنوان:</label><input type="text"
+																						placeholder="" class="form-control"
+																						name="addresse_temoin_up" id="addresse_temoin_up">
+																				</div>
+																				<div>
+																				<input  name="id_up" id="id_up" type="hidden" >
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="modal-footer" id="updateTemoinModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			onClick="updateTemoin(event);">تعديل الشاهد</a>
+																	</div>
+																	
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-12">
+															<br>
+															<button type="button" class="btn btn-outline-warning"
+																data-toggle="modal" data-target="#deleteTemoinModal"
+																style="width: 120px">حذف الشاهد</button>
+														</div>
+														<div class="modal inmodal fade" id="deleteTemoinModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">حذف الشاهد</h4>
+																	</div>
+																	<div class="modal-body" id="deleteTemoinModalBody">
+																		<span>هل حقاً تريد حذف الشاهد</span><br>
+																	</div>
+																	<div class="modal-footer" id="deleteTemoinModalBtn">
+																		<a style="color: white" type="button"
+																			class="btn btn-warning"
+																			onClick="deleteTemoin(event);">حذف</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer">
+				<div class="float-right">
+					<strong>إدارة حوادث السير</strong>
+				</div>
+				<div class="float-left">
+					<strong>جميع الحقوق محفوظة</strong> &copy; 2020-2021
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+										
+											<script>
+  // Attachez un gestionnaire d'événements au lien "3aqar tijari"
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseSevene"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseSevene');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse4"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse4');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse5"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse5');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse6"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse6');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse7"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse7');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse8"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse8');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+	    var link = document.querySelector('a[href="#collapse9"]');
+	    link.addEventListener('click', function(event) {
+	      event.preventDefault(); // Empêche le comportement par défaut du lien
+	      
+	      var collapseBody = document.querySelector('#collapse9');
+	      if (collapseBody.style.display === 'none') {
+	        collapseBody.style.display = 'block';
+	      } else {
+	        collapseBody.style.display = 'none';
+	      }
+	    });
+	  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseEight"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseEight');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('a[href="#collapseNine"]');
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+      
+      var collapseBody = document.querySelector('#collapseNine');
+      if (collapseBody.style.display === 'none') {
+        collapseBody.style.display = 'block';
+      } else {
+        collapseBody.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+	<script type="text/javascript">
+		//clicks
+
+		$(document).click(function() {
+			alert("Click !!");
+		});
+	</script>
+
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+	<script type="text/javascript" src="js1/api/taawidat.js"></script>
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+</body>
+
+</html>

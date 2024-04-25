@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Meta tag -->
+		<meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="description" content="welcome to codeglim">
+		<meta name='copyright' content='codeglim'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">	
+        
+        
+		
+		<!-- Title Tag -->
+        <title> نتائج الحساب </title>
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="images/favicon.png">	
+		
+        <!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"> 
+
+		<!-- Google Map Api -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM" type="text/javascript"></script>	
+	
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="css/font-awesome.min_page.css">
+
+		<!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.min_page.css">
+
+		<!-- Slicknav CSS -->
+        <link rel="stylesheet" href="css/slicknav.min_page.css">
+
+		<!-- Owl Carousel CSS -->
+		<!-- <link rel="stylesheet" href="css/owl.theme.default_page.css"> -->
+        <!-- <link rel="stylesheet" href="css/owl.carousel.min_page.css"> -->
+		
+		<!-- Magnific Popup CSS -->
+		<link rel="stylesheet" href="css/magnific-popup_page.css">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min_page.css">
+		
+		<!-- Bizpro Style CSS -->
+        <link rel="stylesheet" href="css/style_page.css">
+        <link rel="stylesheet" href="css/style_login.css">
+        <link rel="stylesheet" href="css/default_page.css">	
+        <link rel="stylesheet" href="css/responsive_page.css">	
+		
+		<!-- You Can Use 8 Different color Just remove bottom of the comment tag -->
+		
+		<link rel="stylesheet" href="css/skin/green.css">
+		<!--<link rel="stylesheet" href="css/skin/pink.css">-->
+		<!--<link rel="stylesheet" href="css/skin/yellow.css">-->
+		<!--<link rel="stylesheet" href="css/skin/red.css">-->
+		<!--<link rel="stylesheet" href="css/skin/pink.css">-->
+		<!--<link rel="stylesheet" href="css/skin/orange.css">-->
+		<!--<link rel="stylesheet" href="css/skin/blaze.css">-->
+		<!--<link rel="stylesheet" href="css/skin/blue.css">-->
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="#" id="colors">
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!-- <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	
+	jQuery Modal
+    <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script> -->
+	<!-- <link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet"> -->
+		
+		<!-- Remember to include jQuery :) -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+	<link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet">
+		
+		
+		
+		<style>
+
+
+
+
+.con {
+top:-750px;
+  position: relative;
+  left:-10px;
+  width: 100%;
+  height: 100vh;
+}
+
+.green-white-table {
+
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.green-white-table th {
+height:20px;
+width:40px;
+
+}
+.green-white-table td ,th{
+  padding: 10px;
+  text-align: center;
+  border: 0.5px solid #ddd;
+}
+
+
+.green-white-table th {
+  background-color: #d9edf7;
+  color: #31708f;
+  height:40px;
+width:60px;
+}
+
+.green-white-table tr:nth-child(even) {
+  background-color: white;
+  color:black;
+}
+
+.green-white-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+    color:black;
+}
+ .green-white-table th.small-cell {
+        width: 10px; /* Ajustez la largeur selon vos besoins */
+    }
+    
+     .green-white-table td.small-cell {
+        width: 10px; /* Ajustez la largeur selon vos besoins */
+    }
+    
+    .green-white-table th.large-cell {
+    width: 300px; /* Ajustez la valeur de la largeur selon vos besoins */
+  }
+   
+   .small-btn {
+    width: 90px; /* Ajustez la valeur de la largeur selon vos besoins */
+     background-color:white;
+ 
+  border:3px solid  #d9edf7;
+  text-aligne: center;
+    color:black;
+  } 
+ 
+ 
+ .custom-modal-dialog {
+  max-width: 450px; /* Définissez la largeur souhaitée */
+  margin: 0 auto; /* Pour centrer horizontalement */
+}
+
+.btn-primary {
+  background-color:#31708f;
+  border-color:#31708f;
+}
+
+.right-align {
+  text-align: right !important;
+}
+
+.modal-body {
+  
+    padding: 35px;
+}
+.modal-content {
+text-align: center;
+}
+.modal{
+display: none;
+  position: fixed;
+  
+  
+  top: 200px;
+}
+
+.close-modal {
+			margin: 20px;
+			float: right;
+  font-size: 30px;
+  font-weight: bold;
+    
+		}
+		
+.modal-header		.close {
+  color: rgb(0, 0, 0);
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-header .close:hover, .modal-header
+.close:focus {
+  color: rgb(255, 0, 0);
+  font-size:35px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+button:before {
+  background: none;
+  font-size: 30px;
+}
+ 
+ 
+ .invisible-border {
+    border-collapse: collapse;
+    border-spacing: 80px;
+    
+  }
+  
+  .invisible-border td, .invisible-border th {
+    border: none;
+    padding:-100px;
+width:200px;
+  }
+
+	</style>
+    </head>
+    <body>
+	
+		<!-- Preloader -->
+	<!-- 	<div class="loader">
+			<div class="l-inner">
+				<div class="k-spinner">
+					<div class="k-bubble-1"></div>
+					<div class="k-bubble-2"></div>
+				</div>
+			</div>
+        </div>
+		/ End Preloader
+		
+		Mp Color
+		<div class="mp-color">
+			<div class="icon inOut"><i class="fa fa-cog fa-spin"></i></div>
+			<h4>Choose Color</h4>
+			<span class="color1"></span>
+			<span class="color2"></span>
+			<span class="color3"></span>
+			<span class="color4"></span>
+			<span class="color5"></span>
+			<span class="color6"></span>
+			<span class="color7"></span>
+			<span class="color8"></span>
+		</div>
+		/ ENd Mp Color
+		 -->
+		<!-- Start Header -->
+		<header id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 col-xs-12">
+						<!-- Logo -->
+						<div class="logo">
+						 <a  th:href="@{/}"><img class="displayed1" src="images/logo/abi_cl.svg" width="250" height="70"  /></a>
+						<!-- 	<a href="index.html"><span>biz</span>pro</a> -->
+						</div>
+						<!--/ End Logo -->
+					</div>
+					<div class="col-md-8 col-sm-12 col-xs-12">
+						<div class="nav-area">
+							<!-- Main Menu -->
+							<nav class="mainmenu">
+								<div class="mobile-nav"></div>
+								<!-- <div class="collapse navbar-collapse">
+									<ul class="nav navbar-nav menu">
+										<li class="active"><a href="#j-slider">Home</a></li>
+										<li><a href="#about-us">About Us</a></li>
+										<li><a href="#our-skill">Our Skill</a></li>
+										<li><a href="#why-choose">Why Choose</a></li>
+										<li><a href="#portfolio">Portfolio</a></li>		
+										<li><a href="#blog">Blog</a></li>		
+										<li><a href="#location">Contact</a></li>		
+									</ul>
+								</div> -->
+							</nav>
+							<!--/ End Main Menu -->
+						</div>
+					</div>
+					<div class="col-md-2">
+						<!-- Social -->
+						<ul class="social">
+						<li class="active"><a href="https://www.facebook.com/abi6soft" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/abi6soft" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.linkedin.com/company/abisof" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+							<!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+						</ul>
+						<!--/ End Social -->
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--/ End Header -->
+		
+		<!-- Start Breadcrumbs -->
+		<section id="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>: نتائج حساب الميراث   </h2>
+						<ul style="text-align:right;">
+						<li class="active"><a >نتائج حساب الميراث </a></li>
+							<li><a th:href="@{ClientProfessionnel/index}"> الرئيسية</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Breadcrumbs -->
+		
+		<!-- Start blog -->
+		<section id="mail" class="section">
+		
+		
+			<div class="containner">
+			
+				<div class="row">
+					<div class="col-md-12">
+					
+					
+					<table class="invisible-border">
+  <tr>
+    <th>	<h4 class="aligncenter" style=" text-align:right; color: #31708f;"><a href="#" onclick="show6()">مقدار الميراث</a>
+					: <span th:text="${somme.tarika}" style="color: #16A085; font-size:20px"></span></h4></th>
+    <th><h4 class="aligncenter" style="  font-size:20px ;text-align:right; color: #16A085;"> =
+						</h4></th>
+    <th><h4 class="aligncenter" style="  text-align:right; color: #31708f;"> قيمة التوصية
+						:<span th:text="${somme.wasiya}" style="font-size:18px"></span></h4></th>
+						
+						<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>
+							
+		<th>	<h4 class="aligncenter" style="  text-align:right; color: #31708f;"><a href="#" onclick="show5()" >ديون</a>    
+							:<span th:text="${somme.doyon}" style="font-size:18px"></span></h4></th>
+								<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>
+							<th><h4 class="aligncenter" style="  text-align:right; color: #31708f;"><a href="#" onclick="show4()" > تجهيز الميت</a> 
+								:<span th:text="${somme.tajhez}" style="font-size:18px"></span></h4></th>
+								
+								<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>	
+							
+						<th>	<h4 class="aligncenter" style="  text-align:right; color: #31708f;">  مقدار <a href="#" onclick="show3()">التركة</a>
+								:<span th:text="${somme.somme}" style="font-size:18px"></span></h4></th>		
+								
+  </tr></table>
+	
+		<br>
+		
+					
+					
+					  <div class="containner">
+    
+    
+    <input type="hidden"   th:value="${idDossier}" id="numero_dossier" name="numero_dossier">
+    <table class="green-white-table">
+      <tr>
+      <th  class=" small-cell" >الإعدادات</th>
+      <th class="large-cell">التوضيـح</th>
+          <th>نصيبه</th>
+        
+        <th> عدد  </th>
+    <th >الوارث</th>
+      
+      </tr>
+      <tr th:each="m : ${masaala}" >
+      <td  class=" small-cell" ><button class=" btn btn-white btn-sm small-btn" onclick="zawjaModal(this)">إضافة</button></td>
+      <td  th:text="${m.cond}" th:value="${m.cond}" name="cond" id="" ></td>
+          <td style="width:20px;" th:text="${m.part}" th:value="${m.part}"  class="part" ></td>
+              <td th:text="${m.nombre}" th:value="${m.nombre}" class="nombre" ></td>
+          <td th:text="${m.relationFamiliale}" th:value="${m.relationFamiliale}" class="relationFamiliale" ></td>
+      </tr>
+    
+    </table>
+    <div class="modal inmodal fade" id="zawjaModal"
+														tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal-dialog custom-modal-dialog ">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close"
+																		data-dismiss="modal">
+																		<span aria-hidden="true">&times;</span><span
+																			class="sr-only">Close</span>
+																	</button>
+																	<h4 class="modal-title">وريث  </h4>
+																</div>
+																<div class="modal-body" id="zawjaModalBody">
+																<div class="row">
+																<label id="labelZawja" name="labelZawja" class="right-align">الوريث 1 </label></div><br>
+																<div class="row">
+																<div class="col-md-13">
+															    <label>: تاريخ الإزدياد  </label><input type="date"
+															placeholder="" class="form-control"
+															name="date_naissance" id="date_naissance">
+														       </div>
+														       </div>
+														       
+														       <div class="row">
+														<div class="col-md-13">
+															<label>: الإسم</label><input type="text" placeholder=""
+																class="form-control" name="prenom_zawja" style="width::60px"
+																id="prenom_zawja" >
+														</div>
+														</div>
+														
+														<div class="row">
+														<div class="col-md-13">
+															<label>: النسب </label><input type="text" placeholder=""
+																class="form-control text_right" name="nom_zawja"
+																id="nom_zawja" >
+														</div>
+														</div>
+																</div>
+																<div class="modal-footer" id="zawjaModalBtn">
+																	<!-- <button type="button" class="btn btn-primary" onclick="nextZawja()"
+																		>التالي </button> -->
+																</div>
+															</div>
+														</div>
+					  </div>
+					  
+					  <div class="modal inmodal fade" id="resultatModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																		<h4 class="modal-title">الوريت</h4>
+																	</div>
+																	<div class="modal-body" id="resultatModalBody"></div>
+																	<div class="modal-footer" id="resultatModalBtn">
+																		<button type="button" class="btn btn-white"
+																			data-dismiss="modal">غلق</button>
+																	</div>
+																</div>
+															</div>
+						</div>
+														
+														
+														
+					   <br>
+					   				    <a class=" button1 btn btn-default" th:href="@{/pdf{idDossier}(idDossier=${idDossier})}" >عقد الاراتة</a>
+					    <a class=" button1 btn btn-default" th:href="@{ClientProfessionnel/index}" th:text="#{label_index.home}">home</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Start blog -->
+		
+		
+		<!-- Start Clients -->
+		<!-- <div id="clients">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="clients-carousel">
+							Single Clients
+							<div class="single-client">
+								<img src="images/client1.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client2.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client3.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client4.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client5.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client6.png" alt="" class="img-responsive">
+							</div>		
+							/ Single Clients
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!--/ End Clients -->	
+		
+		<!-- Start Footer -->
+		<footer id="footer" class="wow fadeIn">
+			<!-- Footer Top -->
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12 ">
+							<!-- Logo -->
+							<div class="logo">
+								<a href="index.html"><span>ABI</span>Soft</a>
+							</div>	
+							<!--/ End Logo -->
+							<!-- Social -->
+							<ul class="social">
+								<li class="active"><a href="https://www.facebook.com/abi6soft" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/abi6soft" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.linkedin.com/company/abisof" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+								<!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+							</ul>	
+							<!--/ End Social -->
+							<!-- Menu -->
+							<ul class="nav">
+								<li><a th:href="@{/}">Home</a></li>
+								<li><a href="https://www.abisoft.ma/produits" target="_blank">Produits</a></li>
+								<li><a href="https://www.abisoft.ma/services" target="_blank">Services</a></li>
+								<li><a th:href="@{/AboutSite}">Contact</a></li>
+							</ul>		
+							<!--/ End Menu -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Footer Top -->
+			
+			<!-- Copyright -->
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="text">
+								<p>Artificial &amp Business Intelligence Soft<span><i class="fa fa-heart"></i></span>2020.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Copyright -->
+		</footer>
+		<!--/ End Footer -->
+
+		<!-- <!-- Jquery JS -->
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script> --> 
+
+		
+		<!-- Colors JS -->
+		<script type="text/javascript" src="js/colors_page.js"></script>
+		
+		<!-- Google Map JS -->
+		<script  type="text/javascript" src="js/gmap_page.js"></script>
+		
+		<!-- Modernizr JS -->
+		<script type="text/javascript"  src="js/modernizr.min_page.js"></script>
+	
+		<!-- <!-- Appear JS-->
+<!-- 		<script  type="text/javascript" src="js/jquery.appear_page.js"></script> --> 
+
+		<!-- Animate JS -->
+    	<script  type="text/javascript" src="js/wow.min_page.js"></script>
+		
+		<!-- Onepage Nav JS -->
+    	<!-- <script  type="text/javascript" src="js/jquery.nav.js"></script> -->
+		
+		<!-- Yt Player -->
+		<script  type="text/javascript" src="js/ytplayer.min_page.js"></script>
+	
+		<!-- <!-- Popup JS -->
+<!-- 		<script type="text/javascript"  src="js/jquery.magnific-popup.min_page.js"></script> --> 
+
+		<!-- Typed JS -->
+		<script  type="text/javascript" src="js/typed.min_page.js"></script>
+		
+		<!-- Scroll Up JS -->
+<!-- 		<script  type="text/javascript" src="js/jquery.scrollUp.min_page.js"></script> -->
+		
+		<!-- Slick Nav JS -->
+<!-- 		<script  type="text/javascript" src="js/jquery.slicknav.min_page.js"></script> -->
+		
+		<!-- Counterup JS -->
+		<script  type="text/javascript" src="js/waypoints.min_page.js"></script>
+		<!-- <script  type="text/javascript" src="js/jquery.counterup.min_page.js"></script> -->
+		
+		
+		
+		<!-- Bootstrap JS -->
+		<script  type="text/javascript" src="js/bootstrap.min_page.js"></script>
+		
+		<!-- Main JS -->
+		<script type="text/javascript"  src="js/main_page.js"></script>
+		
+		<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	    <script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	    
+	    <!-- Steps -->
+	<script src="js1/plugins/steps/jquery.steps.min.js"></script>
+
+	<!-- Jquery Validate -->
+	<script src="js1/plugins/validate/jquery.validate.min.js"></script>
+		
+		<!-- afficher Modal -->
+	<script type="text/javascript" src="js1/api/warataOperation.js"></script>
+    </body>
+</html>

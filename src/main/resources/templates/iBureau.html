@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title th:text="#{label.form.title}"></title>
+	<!-- <link href="css1/bootstrap.min1.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style_registration_ar.css">
+	<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}" rel="stylesheet">
+	<link rel="stylesheet" href="font/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link href="css/bootstrap.rtl.css" rel="stylesheet">
+	
+	<style>
+		.password-verdict {
+			color: #000;
+		}
+	</style>
+	<!-- <script src="js1/jquery-3.1.1.min.js"></script> -->
+	<script src="js1/popper.min.js"></script>
+	<!-- <script src="js1/bootstrap1.js"></script> -->
+	<script src="js/jquery.js"></script>
+	<script th:src="@{/resources/pwstrength.js}"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<script src="path/to/json2.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	
+	
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<title th:text="#{label.form.title}">form</title>
+</head>
+
+<body class="rtls">
+
+
+	<div class="wrapper" id="wrapper" style="background-image: url('img/bg-registration-form-2.jpg');">
+		<div class="inner" id="ibox-content">
+			<h3 th:text="#{label.office.title1}"></h3>
+
+			<form th:action="@{/cities/{regionId}}" method="GET" enctype="utf8">
+				<!-- <h3 th:text="#{label.form.title}">form</h3> -->
+
+
+				<div class="form-group">
+					<div class="form-wrapper">
+						<label for="region">جهة</label>
+
+						<select class="form-control m-b" name="region" id="region" onchange="populateCities(event)">
+							<option disabled selected>اختر جهة</option>
+							<option th:each="r : ${region}" th:value="${r.id}" th:text="${r.nameRegion}"></option>
+
+						</select>
+					</div>
+					<div class="form-wrapper">
+						<label for="city">Select a city:</label>
+						  <select class="form-control m-b" id="city" name="city">
+						  <option disabled selected>اختر مدينة</option>
+            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.cityName}"></option>
+						
+							
+						</select>
+					</div>
+				</div>
+			
+			</form>
+			<a class="button1 btn btn-primary" th:href="@{/login}" th:text="#{label.form.loginLink}">login</a>
+
+		</div>
+
+	</div>
+	
+</body>
+
+   <script>
+        function populateCities(event) {
+        
+        	 event.preventDefault();
+        		
+        	     var regionId = event.target.value; 
+             
+                // alert('regionId'+regionId);
+                 
+                 var citySelect = document.getElementById("city");
+          /*        while (citySelect.firstChild) {
+                     citySelect.removeChild(citySelect.firstChild); */
+                 
+               
+              
+         $.ajax({
+		type: "GET",
+		url: "/IBureau/Charge/"+regionId,
+		processData: false,
+		contentType: false,
+		cache: false,
+		timeout: 600000,
+	
+                success: function(data) {
+                  //  alert(data.length);
+                  console.log(data);
+                 
+         
+		    var html = "<option disabled selected>ختر مدينة</option>";
+		    for(var i=0 ; i<data.length ;i++)
+		   {
+		    	var a=data[i];
+		    	var wlist=a.split("_");
+		    	
+		    
+            html = html +"<option value=\""+ wlist[1]+"\">"+ wlist[0]  +"</option>";
+         	}
+			$("#city").empty();
+			$("#city").append(html);
+               
+                }
+            });
+        }
+    </script>
+
+</html>

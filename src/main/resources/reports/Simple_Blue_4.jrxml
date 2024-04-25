@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-06-13T13:59:56 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue_4" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e683bb2c-324d-4ec4-a348-4333e6883b2d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (4)"/>
+	<queryString language="SQL">
+		<![CDATA[select * from heritage_db.masaala]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="cond" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="part" class="java.lang.String"/>
+	<field name="relationfamiliale" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="rgba(98, 233, 245, 0.26666668)" uuid="d4b6e403-7f27-4110-8bbf-5447d8637705"/>
+				<staticText>
+					<reportElement x="338" y="10" width="234" height="43" forecolor="#609BD1" backcolor="#74BCE3" uuid="8cafefcf-34c8-497c-b263-d9bb45dc8eea"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[نتائج حساب الميراث]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-90" y="60" width="180" height="20" forecolor="#609BD1" uuid="6f7ab6b8-438b-46b5-91bf-7aa3f1a501a4"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ABIsoft]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="90bc4c46-c2eb-420b-b923-2fb2af93f78b"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="7aee4632-a202-4a4b-a153-cc7da9467ed5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cond]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="eb3c975a-a402-4976-a4e0-6dc3f592406d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[نصيبه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="d1930e23-a2c8-4247-bff1-90bfd6d5c8b7"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="ced7b46f-5036-47e3-94eb-7c26a341a8a9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الوارث]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="fb32f45d-9429-4d4a-ab53-eb9840657431"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="0" width="138" height="20" uuid="5064eb47-dbc4-4b41-a32c-ff2c93c8c22a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cond}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="192" y="0" width="138" height="20" uuid="60d95eb4-08a5-4351-9276-20c552360ca4"/>
+				<textElement textAlignment="Left">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{part}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="340" y="-1" width="138" height="20" uuid="afae5211-04b0-4db2-a340-6d3fde27cd4e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="0" width="138" height="20" uuid="c9c0e3e4-19fc-49a5-978b-dde8dae37746"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relationfamiliale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="d4467130-01d1-4a66-aac0-74a7c8d7e711"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="661ec2ed-c597-446f-a1f5-f8c5412628ef"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c46da9b5-b32c-4c09-a7af-44d921b62352"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

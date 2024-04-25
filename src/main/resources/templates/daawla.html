@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Meta tag -->
+		<meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="description" content="welcome to codeglim">
+		<meta name='copyright' content='codeglim'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">	
+		
+		<!-- Title Tag -->
+        <title> نتائج الحساب </title>
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="images/favicon.png">	
+		
+        <!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900" rel="stylesheet"> 
+
+		<!-- Google Map Api -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM" type="text/javascript"></script>	
+	
+		<!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="css/font-awesome.min_page.css">
+
+		<!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.min_page.css">
+
+		<!-- Slicknav CSS -->
+        <link rel="stylesheet" href="css/slicknav.min_page.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="css/owl.theme.default_page.css">
+        <link rel="stylesheet" href="css/owl.carousel.min_page.css">
+		
+		<!-- Magnific Popup CSS -->
+		<link rel="stylesheet" href="css/magnific-popup_page.css">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min_page.css">
+		
+		<!-- Bizpro Style CSS -->
+        <link rel="stylesheet" href="css/style_page.css">
+        <link rel="stylesheet" href="css/style_login.css">
+        <link rel="stylesheet" href="css/default_page.css">	
+        <link rel="stylesheet" href="css/responsive_page.css">	
+		
+		<!-- You Can Use 8 Different color Just remove bottom of the comment tag -->
+		
+		<link rel="stylesheet" href="css/skin/green.css">
+		<!--<link rel="stylesheet" href="css/skin/pink.css">-->
+		<!--<link rel="stylesheet" href="css/skin/yellow.css">-->
+		<!--<link rel="stylesheet" href="css/skin/red.css">-->
+		<!--<link rel="stylesheet" href="css/skin/pink.css">-->
+		<!--<link rel="stylesheet" href="css/skin/orange.css">-->
+		<!--<link rel="stylesheet" href="css/skin/blaze.css">-->
+		<!--<link rel="stylesheet" href="css/skin/blue.css">-->
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="#" id="colors">
+		<style>    .invisible-border {
+    border-collapse: collapse;
+    border-spacing: 80px;
+    
+  }
+  
+  .invisible-border td, .invisible-border th {
+    border: none;
+    padding:-100px;
+width:200px;
+  }
+  .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 585px ;
+  top: 200px;
+  width: 40%;
+  height: 55%;
+  overflow: auto;
+  background-color:#31708f1c;
+             }
+
+.modal-content {
+
+  background-color: #fefefe;
+  margin:  10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width:75%;
+  height:340px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.close {
+  color: rgb(0, 0, 0);
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  font-size:35px;
+  text-decoration: none;
+  cursor: pointer;
+}
+  
+  </style>
+    </head>
+    <body>
+	
+		<!-- Preloader -->
+	<!-- 	<div class="loader">
+			<div class="l-inner">
+				<div class="k-spinner">
+					<div class="k-bubble-1"></div>
+					<div class="k-bubble-2"></div>
+				</div>
+			</div>
+        </div>
+		/ End Preloader
+		
+		Mp Color
+		<div class="mp-color">
+			<div class="icon inOut"><i class="fa fa-cog fa-spin"></i></div>
+			<h4>Choose Color</h4>
+			<span class="color1"></span>
+			<span class="color2"></span>
+			<span class="color3"></span>
+			<span class="color4"></span>
+			<span class="color5"></span>
+			<span class="color6"></span>
+			<span class="color7"></span>
+			<span class="color8"></span>
+		</div>
+		/ ENd Mp Color
+		 -->
+		<!-- Start Header -->
+		<header id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 col-xs-12">
+						<!-- Logo -->
+						<div class="logo">
+						 <a  th:href="@{/}"><img class="displayed1" src="images/logo/abi_cl.svg" width="250" height="70"  /></a>
+						<!-- 	<a href="index.html"><span>biz</span>pro</a> -->
+						</div>
+						<!--/ End Logo -->
+					</div>
+					<div class="col-md-8 col-sm-12 col-xs-12">
+						<div class="nav-area">
+							<!-- Main Menu -->
+							<nav class="mainmenu">
+								<div class="mobile-nav"></div>
+								<!-- <div class="collapse navbar-collapse">
+									<ul class="nav navbar-nav menu">
+										<li class="active"><a href="#j-slider">Home</a></li>
+										<li><a href="#about-us">About Us</a></li>
+										<li><a href="#our-skill">Our Skill</a></li>
+										<li><a href="#why-choose">Why Choose</a></li>
+										<li><a href="#portfolio">Portfolio</a></li>		
+										<li><a href="#blog">Blog</a></li>		
+										<li><a href="#location">Contact</a></li>		
+									</ul>
+								</div> -->
+							</nav>
+							<!--/ End Main Menu -->
+						</div>
+					</div>
+					<div class="col-md-2">
+						<!-- Social -->
+						<ul class="social">
+						<li class="active"><a href="https://www.facebook.com/abi6soft" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/abi6soft" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.linkedin.com/company/abisof" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+							<!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+						</ul>
+						<!--/ End Social -->
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--/ End Header -->
+		
+		<!-- Start Breadcrumbs -->
+		<section id="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>: نتائج حساب الميراث   </h2>
+						<ul style="text-align:right;">
+						<li class="active"><a >نتائج حساب الميراث </a></li>
+							<li><a th:href="@{/}"> الرئيسية</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Breadcrumbs -->
+		
+		<!-- Start blog -->
+		<section id="mail" class="section">
+	
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					<h4 class="aligncenter" style="  color: #31708f;">:  مقدار الميراث    </h4><br>
+
+<table class="invisible-border">
+  <tr>
+    <th>	<h4 class="aligncenter" style=" text-align:right; color: #31708f;"><a href="#" onclick="show6()">مقدار الميراث</a>
+					: <span th:text="${somme.tarika}" style="color: #16A085; font-size:20px"></span></h4></th>
+    <th><h4 class="aligncenter" style="  font-size:20px ;text-align:right; color: #16A085;"> =
+						</h4></th>
+    <th><h4 class="aligncenter" style="  text-align:right; color: #31708f;"> قيمة التوصية
+						:<span th:text="${somme.wasiya}" style="font-size:18px"></span></h4></th>
+						
+						<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>
+							
+		<th>	<h4 class="aligncenter" style="  text-align:right; color: #31708f;"><a href="#" onclick="show5()" >ديون</a>    
+							:<span th:text="${somme.doyon}" style="font-size:18px"></span></h4></th>
+								<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>
+							<th><h4 class="aligncenter" style="  text-align:right; color: #31708f;"><a href="#" onclick="show4()" > تجهيز الميت</a> 
+								:<span th:text="${somme.tajhez}" style="font-size:18px"></span></h4></th>
+								
+								<th><h4 class="aligncenter" style="  text-align:right; font-size:20px; color: #16A085;"> -
+							</h4></th>	
+							
+						<th>	<h4 class="aligncenter" style="  text-align:right; color: #31708f;">  مقدار <a href="#" onclick="show3()">التركة</a>
+								:<span th:text="${somme.somme}" style="font-size:18px"></span></h4></th>		
+								
+  </tr></table>
+
+
+
+
+
+<br><br>
+					    <h3 class="aligncenter">ليس  للهالك وارث</h3>
+					  <h3 class="alert alert-info aligncenter" >. تتولى السلطة المكلفة بأملاك الدولة حيازة الميراث</h3>
+				      
+					   <a class=" button1 btn btn-default" th:href="@{/}" th:text="#{label_index.home}">home</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Start blog -->
+		
+		
+		<!-- Start Clients -->
+		<!-- <div id="clients">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="clients-carousel">
+							Single Clients
+							<div class="single-client">
+								<img src="images/client1.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client2.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client3.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client4.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client5.png" alt="" class="img-responsive">
+							</div>
+							/ Single Clients
+							Single Clients
+							<div class="single-client">
+								<img src="images/client6.png" alt="" class="img-responsive">
+							</div>		
+							/ Single Clients
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!--/ End Clients -->	
+		
+		<!-- Start Footer -->
+		<footer id="footer" class="wow fadeIn">
+			<!-- Footer Top -->
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12 ">
+							<!-- Logo -->
+							<div class="logo">
+								<a href="index.html"><span>ABI</span>Soft</a>
+							</div>	
+							<!--/ End Logo -->
+							<!-- Social -->
+							<ul class="social">
+								<li class="active"><a href="https://www.facebook.com/abi6soft" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/abi6soft" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.linkedin.com/company/abisof" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+								<!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+							</ul>	
+							<!--/ End Social -->
+							<!-- Menu -->
+							<ul class="nav">
+								<li><a th:href="@{/}">Home</a></li>
+								<li><a href="https://www.abisoft.ma/produits" target="_blank">Produits</a></li>
+								<li><a href="https://www.abisoft.ma/services" target="_blank">Services</a></li>
+								<li><a th:href="@{/AboutSite}">Contact</a></li>
+							</ul>	
+							<!--/ End Menu -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Footer Top -->
+			
+  		<div id="myModal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+ 
+
+  <h3 style="color: #31708f" >: التركة   </h3>
+  <br>
+
+ <br>
+
+<div style="text-align:right; color:#11153291 ;" >
+<h4>التركة هي الممتلكات والأصول التي يتركها الشخص بعد وفاته. تشمل التركة جميع الأموال والممتلكات العقارية والمحمولة، والحقوق والالتزامات المالية. عندما يتوفى شخص، يتم تحديد قيمة التركة وتقسيمها وفقًا للقوانين والتشريعات المعمول بها في بلده، وتسمى هذه العملية "توزيع التركة". يتم توزيع التركة بين الورثة الذين قد يشملون أفراد العائلة المباشرة مثل الأبناء والزوجة/الزوج والوالدين، وفقًا لنصوص القانون أو وصية مكتوبة معترف بها قانونًا. إن هدف توزيع التركة هو توفير عدالة وتوازن في توزيع الثروة والممتلكات بين الورثة</h4>
+</div>
+
+
+
+
+  
+    
+  </div>
+  </div> 
+  
+  
+  
+  
+  
+  		<div id="myModal4" class="modal"  style="height:73%; top:70px;">
+  <div class="modal-content"  style="height:525px">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+  <h3 style="color: #31708f" >:  تجهيز الميت  </h3>
+  <br>
+
+ <br>
+
+<div style="text-align:right; color:#11153291 ;" >
+<h4>: قد تشمل بعض النفقات التالية </h4>
+<h4>
+قفف التكفين: يتم شراء قفف التكفين، وهو عبارة عن القماش المستخدم لتكفين الجثمان. يتم اختيار قفف ذي جودة جيدة وفقًا لامتثاله للتقاليد الدينية والثقافية
+<br>
+تكلفة النعش: يتم شراء نعش لوضع الجثمان فيه. يتفاوت سعر النعوش بناءً على نوع المواد المستخدمة والتصميم والحجم
+<br>
+تكاليف غسيل الجثمان: يتم تحمل تكاليف غسيل الجثمان وتطهيره واستخدام مواد التعقيم المناسبة
+<br>
+التكاليف الجنائزية: تشمل تكاليف استئجار القاعة الجنائزية أو المسجد لإقامة الصلاة الجنائزية وتلقي التعازي. قد تشمل أيضًا تكاليف تنظيم وجبة طعام للحاضرين
+<br>
+تكاليف الدفن: تشمل تكاليف الحفرة في المقبرة ووضع الجثمان فيها، وشراء القوالب الخرسانية أو الأحجار الجهنمية اللازمة لتغطية الحفرة
+<br><br>
+يجب الإشارة إلى أن النفقات المحددة قد تختلف من حالة لأخرى وفقًا لرغبات العائلة والموارد المالية المتاحة. يفضل التواصل مع الجهات المختصة، مثل مؤسسات التشريعات الإسلامية ومقابر المسلمين، للحصول على تفاصيل أكثر دقة حول النفقات والإجراءات المتعلقة بتجهيز الميت في المغرب</h4>
+
+</div>
+
+
+
+
+  
+    
+  </div>
+  </div>
+  
+  
+  
+  		<div id="myModal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+   
+ 
+ 
+
+
+  <h3 style="color: #31708f" >: الديون </h3>
+  <br>
+
+ <br>
+
+<div style="text-align:right; color:#11153291 ;" >
+<h4>الديون هي التزامات مالية أو قروض يتعين على شخص أو جهة سدادها لشخص آخر أو جهة أخرى. تكون الديون نتيجة للتعاقد أو الاقتراض، حيث يتعهد الشخص أو الجهة المدينة بسداد المبلغ المستحق للطرف الآخر في فترة زمنية محددة. يشمل مفهوم الديون مختلف أنواع الالتزامات المالية مثل القروض البنكية، والديون الشخصية، والديون التجارية، والديون الضريبية، والديون المستحقة للجهات الحكومية أو الأفراد الآخرين و الديون تجاه الله مثل الزكاة</h4>
+</div>
+
+
+
+
+  
+    
+  </div>
+  </div> 
+  
+  
+  
+  		<div id="myModal6" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+   
+ 
+ 
+
+
+  <h3 style="color: #31708f" >: مقدار الميراث </h3>
+  <br>
+
+ <br>
+
+<div style="text-align:right; color:#11153291 ;" >
+<h4>هو المبلغ الذي يتبقى بعد خصم تكاليف ترتيب جنازة المتوفى وسداد الديون وتنفيذ الوصية الصحيحة، وهذا المبلغ سيتم تقسيمه بين الورثة</h4>
+</div>
+
+
+
+
+  
+    
+  </div>
+  </div>
+			<!-- Copyright -->
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="text">
+								<p>Artificial &amp Business Intelligence Soft<span><i class="fa fa-heart"></i></span>2020.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/
+			 End Copyright -->
+		</footer>
+		<!--/ E
+		
+		nd Footer -->
+
+		<!-- Jquery JS -->
+		<script type="text/javascript" src="js/jquery.min_page.js"></script>
+		
+		<!-- Colors JS -->
+		<script type="text/javascript" src="js/colors_page.js"></script>
+		
+		<!-- Google Map JS -->
+		<script  type="text/javascript" src="js/gmap_page.js"></script>
+		
+		<!-- Modernizr JS -->
+		<script type="text/javascript"  src="js/modernizr.min_page.js"></script>
+	
+		<!-- Appear JS-->
+		<script  type="text/javascript" src="js/jquery.appear_page.js"></script>
+
+		<!-- Animate JS -->
+    	<script  type="text/javascript" src="js/wow.min_page.js"></script>
+		
+		<!-- Onepage Nav JS -->
+    	<script  type="text/javascript" src="js/jquery.nav.js"></script>
+		
+		<!-- Yt Player -->
+		<script  type="text/javascript" src="js/ytplayer.min_page.js"></script>
+	
+		<!-- Popup JS -->
+		<script type="text/javascript"  src="js/jquery.magnific-popup.min_page.js"></script>
+
+		<!-- Typed JS -->
+		<script  type="text/javascript" src="js/typed.min_page.js"></script>
+		
+		<!-- Scroll Up JS -->
+		<script  type="text/javascript" src="js/jquery.scrollUp.min_page.js"></script>
+		
+		<!-- Slick Nav JS -->
+		<script  type="text/javascript" src="js/jquery.slicknav.min_page.js"></script>
+		
+		<!-- Counterup JS -->
+		<script  type="text/javascript" src="js/waypoints.min_page.js"></script>
+		<script  type="text/javascript" src="js/jquery.counterup.min_page.js"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script  type="text/javascript" src="js/owl.carousel.min_page.js"></script>
+		
+		<!-- Bootstrap JS -->
+		<script  type="text/javascript" src="js/bootstrap.min_page.js"></script>
+		
+		<!-- Main JS -->
+		<script type="text/javascript"  src="js/main_page.js"></script>
+		
+		<script>
+
+	
+	function show3(){
+		document.getElementById("myModal3").style.display="block";
+		}
+	function show4(){
+		document.getElementById("myModal4").style.display="block";
+		}
+	function show5(){
+		document.getElementById("myModal5").style.display="block";
+		}
+	function show6(){
+		document.getElementById("myModal6").style.display="block";
+		}
+	function closeModal() {
+	
+		
+
+		document.getElementById("myModal3").style.display="none";
+		
+		document.getElementById("myModal4").style.display="none";
+		document.getElementById("myModal5").style.display="none";
+		document.getElementById("myModal6").style.display="none";
+	
+}
+
+</script>
+    </body>
+</html>

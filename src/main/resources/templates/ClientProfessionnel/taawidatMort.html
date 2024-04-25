@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إدارة الحوادث • التعويضات</title>
+<base href="/" />
+<link href="css1/bootstrap.min1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="css1/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="css1/plugins/steps/jquery.steps.css" rel="stylesheet">
+<link href="css1/animate1.css" rel="stylesheet">
+<link href="css1/style1.css" rel="stylesheet">
+<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- FooTable -->
+<link href="css1/plugins/footable/footable.core.css" rel="stylesheet">
+<style>
+.wizard>.steps>ul>li, .wizard>.actions>ul>li {
+	float: right;
+}
+.obligatoire{
+	color:red ;
+}
+
+.field_form>.col-sm-12>.row {
+	padding-top: 10px;
+}
+</style>
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+
+* {
+	font-family: 'Droid Arabic Kufi';
+}
+
+select.form-control:not([size]):not([multiple]) {
+	height: calc(59% - 12px);
+}
+
+.close-modal{
+	margin: 20px;
+	
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: right;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+#tab1{
+display:block
+}
+.tab{
+	border-radius: 12px 12px 0 0;
+}
+
+</style>
+
+<!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a th:href="@{/Client/index}"><img alt="image"
+								class="rounded-circle" src="img1/justice-green.png" width="120" /></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"
+								th:object="${user}"> <span class="block m-t-xs font-bold"
+								th:text="${user.firstName}+' '+${user.lastName}">Unknown</span>
+								<span class="text-muted text-xs block">محامي<b
+									class="caret"></b></span>
+							</a>
+							
+							<input type="text" id="logged_in_user" th:value="${user.id}" style="display: none">
+							
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a class="dropdown-item" th:href="@{/profile}">الصفحة
+										الشخصية</a></li>
+								<li><a class="dropdown-item" th:href="@{/contacts}">جهات
+										الاتصال</a></li>
+								<li><a class="dropdown-item" th:href="@{/mailbox}">صندوق
+										البريد</a></li>
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/index}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<a th:href="@{/Client/ajouterDossier}"><i class="fa fa-home"></i></a>
+						</div>
+					</li>
+
+					<li><a th:href="@{/Client/ajouterDossier}"><i
+							class="fa fa-plus"></i> <span class="nav-label">إضافة ملف
+								جديد</span></a></li>
+
+					<li><a href="#"><i class="fa fa-gavel"></i> <span
+							class="nav-label">الجلسات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/Client/seancesAujourdhui}">جلسات
+									اليوم</a></li>
+							<li><a th:href="@{/Client/prochainesSeances}">الجلسات
+									المقبلة</a></li>
+						</ul></li>
+
+					<li class="active"><a th:href="@{/Client/consulterDossier}"><i
+							class="fa fa-book-open"></i> <span class="nav-label">إطِّلاع</span></a>
+					</li>
+
+					<li><a th:href="@{/Client/rechercher}"><i
+							class="fa fa-search"></i> <span class="nav-label">بحث</span></a></li>
+
+					<li><a href="#"><i class="fa fa-globe-africa"></i> <span
+							class="nav-label">خدمات أخرى</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/typography}">مكتبة قانونية</a></li>
+							<li><a th:href="@{/icons}">الصفحة الالكترونية</a></li>
+							<li><a th:href="@{/draggable_panels}">دليل المستخدم</a></li>
+						</ul></li>
+
+					<li><a href="#"><i class="fa fa-database"></i> <span
+							class="nav-label">قاعدة البيانات</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/table_basic}">استيراد</a></li>
+							<li><a th:href="@{/table_data_tables}">تصدير</a></li>
+						</ul></li>
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg">
+
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							th:action="@{/Client/rechercher}">
+							<div class="form-group">
+								<input type="text" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li style="padding: 20px"><span
+							class="m-r-sm text-muted welcome-message" th:text="${user.email}"></span>
+						</li>
+
+						<li class="dropdown"><a class="dropdown-toggle count-info"
+							data-toggle="dropdown" th:href="@{/Client/seancesAujourdhui}">
+								<i class="fa fa-bell"></i> <span class="label label-primary"
+								th:text="${nombreSeancesAujourdhui}">0</span>
+						</a></li>
+
+						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
+								خروج
+						</a></li>
+
+					</ul>
+
+				</nav>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+                    <h2>معلومات الضحية</h2><br>
+                    <div class="col-md-10">
+                        <button type="button" class="btn btn-primary" onclick="TreterMort(event);"> حساب تعويضات الضحية </button>
+                    </div>
+                    
+                </div>
+				<div class="col-lg-2" ></div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight" id ="taawidatClcule" style="display: none;">
+
+
+				<div class="row" style="text-align: right">
+					<div class="col-lg-12">
+						<div class="ibox">
+
+							<div class="ibox-content">
+								<h2>التعويضات</h2>
+								<h3 id="numero_dossier"></h3>
+								<h3 id="name_vic"></h3>
+								<div class="col-md-6" id="victime_mort_message"
+									style="display: none"></div>
+								<form id="form" action="#" method="post" class="wizard-big">
+
+									<h1>رأس المال المعتمد</h1>
+									  <fieldset>
+                                            <div class="field_form" id="field_moatamad" style="display: block">
+
+                                                <div class="col-sm-12">
+                                                    <div id="Ra2ssLmal" style="display: block">
+                                                        <h2>الرأس المال المعتمد:</h2>
+                                                        <div class="row">
+                                                            <div class="col-md-4"><input type="text"
+                                                                    class="form-control" name="raasLmal" id="raasLmal">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div id="calculeRa2ssLmal" style="display: block">
+                                                        <h2> طريقة استخراج الرأس المال المعتمد :</h2>
+                                                        <br>
+                                                        <div class="row">
+                                                            <br>
+                                                            <div class="col-md-4" style="display: block">
+                                                                <input type="checkbox" name="check_methode1"
+                                                                    id="check_methode1"
+                                                                    onchange="afficheMethodeMort1()"><span>
+                                                                    الطريقة الأولى </span>
+                                                            </div>
+                                                            <div class="col-md-4" style="display: block">
+                                                                <input type="checkbox" name="check_methode2"
+                                                                    id="check_methode2"
+                                                                    onchange="afficheMethodeMort2()"><span>
+                                                                    الطريقة الثانية </span>
+                                                            </div>
+                                                            <div class="col-md-4" style=" display: block">
+                                                                <input type="checkbox" name="check_methode3"
+                                                                    id="check_methode3"
+                                                                    onchange="afficheMethodeMort3()"><span>
+                                                                    الطريقة الثاثة </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="field_form" id="field_methode1" style="display: none">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+
+                                                                <div class="col-md-4">
+                                                                    <label>رأس المال المعتمد:</label><select class="form-control m-b"
+																		name="Ra2ssLmal_Methode_1" id="Ra2ssLmal_Methode_1"
+																		onchange="value_meth_mort_1();">
+																	</select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br> <br>.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="field_form" id="field_methode2" style="display: none">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12" id="resulta_meth_2">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br> <br>.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="field_form" id="field_methode3" style="display: none">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12" id="resulta_meth_3">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br> <br>.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+									
+									<h1>التعويضات</h1>
+									<fieldset>
+                                            <div class="field_form" id="liste_temoin" style="display: block">
+                                              
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>نسبة مسؤولية المتهم </label> <input type="text"
+                                                            placeholder="نسبة مسؤولية المتهم" class="form-control"
+                                                            name="masaolia_motaham" id="masaolia_motaham">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                  <div class="col-md-12">
+													<div class="float-left">
+															<button type="button" class="btn btn-primary"
+																data-toggle="modal" data-target="#deleteTemoinModal"
+																style="width: 180px">التعويضات المستحقة</button>
+																<br> 
+																
+														</div>
+														<div class="modal inmodal fade" id="deleteTemoinModal"
+															tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal-dialog modal-lg">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">&times;</span><span
+																				class="sr-only">Close</span>
+																		</button>
+																	</div>
+																	<div class="modal-body" id="deleteTemoinModalBody">
+																		<span>التعويض عن الضرر المعنوي يخضع لنسبة المسؤولية حسب ما دأب عليه المجلس الأعلى في عدة قراراته منها قراره الصادر بتاريخ 28/09/2002 تحت عدد 3581</span><br>
+																		<hr>
+																		<span>إخضاع التعريض عن الضرر المعنوي للنسبة المسؤولية</span>
+																	</div>
+																	<div class="modal-footer" id="deleteTemoinModalBtn">
+																		
+																			<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			data-dismiss="modal"
+																			onClick="calculeTotaleDeTa3widateMort(event);">نعم</a>
+																			
+																			<a style="color: white" type="button"
+																			class="btn btn-primary"
+																			data-dismiss="modal"
+																			onClick="calculeTotaleDeTa3widateMort(event);">لا</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+                                            </div>
+                                            </div>
+                                            <div class="float-center" id="ta3widateL2ijamlya" style="display: none;">
+                                            	<h2 class="float-center">التعويضات</h2>
+                                            	<div class="float-center" id="" >
+                                            	<div class="ibox-content">
+													<table
+														class="footable table table-stripped "
+														data-page-size="5">
+														<thead>
+															<tr>
+																 <th>الاسم الشخصي</th>
+															 	 <th>الإسم العائلي</th>	
+															 	 <th>الأقارب</th>
+															 	 <th>التعويض المعنوي </th>	 
+																 <th>التعويض المادي</th>
+															</tr>
+														</thead>
+														<tbody id="ta3widateL2ijamlyaBody"></tbody>
+															<div class="float-left">
+															 <button type="button" id = "enregistre" class="btn btn-primary" onClick="addMort(event);" style="display: block">حفظ</button>
+															 <button type="button" id = "imprimer" class="btn btn-primary" onClick="" style="display: none">طبع</button>
+															 </div>
+														</table>
+														
+													</div>
+                                            	</div>
+                                            	
+                                            </div>
+                                        </fieldset>
+							
+							</form>
+
+						</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="footer">
+				<div class="float-right">
+					<strong>إدارة حوادث السير</strong>
+				</div>
+				<div class="float-left">
+					<strong>جميع الحقوق محفوظة</strong> &copy; 2020-2021
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+
+	<!-- Mainly scripts -->
+	<script src="js1/jquery-3.1.1.min.js"></script>
+	<script src="js1/popper.min.js"></script>
+	<script src="js1/bootstrap1.js"></script>
+	<script src="js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js1/inspinia.js"></script>
+	<script src="js1/plugins/pace/pace.min.js"></script>
+
+	<!-- Steps -->
+	<script src="js1/plugins/steps/jquery.steps.min.js"></script>
+
+	<!-- Jquery Validate -->
+	<script src="js1/plugins/validate/jquery.validate.min.js"></script>
+
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#wizard").steps();
+							$("#form")
+									.steps(
+											{
+												labels : {
+													cancel : "إلغاء",
+													current : "current step:",
+													pagination : "Pagination",
+													finish : "حفظ",
+													next : "التالي",
+													previous : "السابق",
+													loading : "تحميل ..."
+												},
+												bodyTag : "fieldset",
+												onStepChanging : function(
+														event, currentIndex,
+														newIndex) {
+													// Always allow going backward even if the current step contains invalid fields!
+													if (currentIndex > newIndex) {
+														return true;
+													}
+
+													// Forbid suppressing "Warning" step if the user is to young
+													if (newIndex === 3
+															&& Number($("#age")
+																	.val()) < 18) {
+														return false;
+													}
+
+													var form = $(this);
+
+													// Clean up if user went backward before
+													if (currentIndex < newIndex) {
+														// To remove error styles
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") label.error",
+																form).remove();
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") .error",
+																form)
+																.removeClass(
+																		"error");
+													}
+
+													// Disable validation on fields that are disabled or hidden.
+													form.validate().settings.ignore = ":disabled,:hidden";
+
+													// Start validation; Prevent going forward if false
+													return form.valid();
+												},
+												onStepChanged : function(event,
+														currentIndex,
+														priorIndex) {
+													// Suppress (skip) "Warning" step if the user is old enough.
+													if (currentIndex === 2
+															&& Number($("#age")
+																	.val()) >= 18) {
+														$(this).steps("next");
+													}
+
+													// Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+													if (currentIndex === 2
+															&& priorIndex === 3) {
+														$(this).steps(
+																"previous");
+													}
+												},
+												onFinishing : function(event,
+														currentIndex) {
+													var form = $(this);
+
+													// Disable validation on fields that are disabled.
+													// At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+													form.validate().settings.ignore = ":disabled";
+
+													// Start validation; Prevent form submission if false
+													return form.valid();
+												},
+												onFinished : function(event,
+														currentIndex) {
+													var form = $(this);
+
+													// Submit form input
+													form.submit();
+												}
+											}).validate(
+											{
+												errorPlacement : function(
+														error, element) {
+													element.before(error);
+												},
+												rules : {
+													confirm : {
+														equalTo : "#password"
+													}
+												}
+											});
+						});
+	</script>
+
+
+	<script type="text/javascript">
+		
+	</script>
+
+
+	<!-- FooTable -->
+	<script src="js1/plugins/footable/footable.all.min.js"></script>
+
+	<!-- Page-Level Scripts -->
+	<script>
+	
+	
+		/* $(document).ready(function() {
+
+			$('.footable').footable();
+
+			$('#date_added').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			});
+
+			$('#date_modified').datepicker({
+				todayBtn : "linked",
+				keyboardNavigation : false,
+				forceParse : false,
+				calendarWeeks : true,
+				autoclose : true
+			}); 
+			
+			
+
+		});*/
+		
+		// toggle AddDawiBtn
+		
+		function toggleAddDawiBtn(res){
+			if(res===true)
+				document.getElementById('addDawiBtn').style.display = 'block';
+			else
+				document.getElementById('addDawiBtn').style.display = 'none';
+		}
+		
+
+		// toggle Wadifa & salary inputs visibility
+
+		function toggleFields(event) {
+		  event.preventDefault();
+		     if ($("#job_victime").prop("selectedIndex") === 4) {
+		       $("#autre_profession_victime").removeAttr("disabled");
+		       $("#salaire_annuel_victime").removeAttr("disabled");
+		     }
+		     else {
+		       $("#autre_profession_victime").attr("disabled", "disabled");
+		       $("#salaire_annuel_victime").attr("disabled", "disabled");
+		     }
+		}
+		
+	</script>
+	<script type="text/javascript" src="js1/api/ajouterDossier.js"></script>
+	<script type="text/javascript" src="js1/api/scripts.js"></script>
+	<script type="text/javascript" src="js1/api/taawidat.js"></script>
+</body>
+
+</html>

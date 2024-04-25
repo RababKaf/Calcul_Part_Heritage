@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>عن
+								الموقع</title>
+<link th:href="@{/css1/bootstrap.min1.css}" rel="stylesheet">
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}"
+	rel="stylesheet">
+<!-- Toastr style -->
+<link th:href="@{/css1/plugins/toastr/toastr.min.css}" rel="stylesheet">
+
+<!-- Gritter -->
+<!-- <link th:href="@{/js1/plugins/gritter/jquery.gritter.css}" -->
+<!-- 	rel="stylesheet"> -->
+
+
+
+
+<link th:href="@{/css1/animate1.css}" rel="stylesheet">
+<link th:href="@{/css1/style1.css}" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="img1/law-favicon.png">
+
+<style>
+.hide-row {
+	display: none;
+}
+
+.page {
+	margin-left: 2px !important;
+}
+
+.hide {
+	display: none;
+}
+
+.sk-spinner {
+	position: fixed;
+	z-index: 99999;
+	overflow: show;
+	margin: auto;
+	top: 45%;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.sk-spinner:before {
+	content: '';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+</style>
+</head>
+
+<body class="rtls">
+	<div class="sk-spinner sk-spinner-wave hide">
+		<div class="sk-rect1"></div>
+		<div class="sk-rect2"></div>
+		<div class="sk-rect3"></div>
+		<div class="sk-rect4"></div>
+		<div class="sk-rect5"></div>
+	</div>
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side">
+			<!--role="navigation"-->
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a href="#"><img alt="logo" Style="background-color: #fff"
+								class="rounded-circle" src="img1/lsss.png" width="100"
+								height="100" /></a> <a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <span
+								class="text-muted text-xs block">للعموم<b class="caret"></b></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الدخول</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<i class="fa fa-homee"></i>
+						</div>
+					</li>
+					<li ><a th:href="@{/}"><i
+							class="fa fa-home"></i> <span class="nav-label"> الرئيسية
+
+						</span></a></li>
+					<li><a th:href="@{/login}"><i class=" fa fa-calculator"></i>
+							<span class="nav-label"> ميراث تفصيلي</span></a></li>
+  <li><a th:href="@{/chercher}"><i class=" fa fa-search"></i>
+							<span class="nav-label"> مكتب مهني </span></a></li>
+
+					<li class="active"><a th:href="@{/AboutSite}"><i
+							class="fa fa-globe"></i> <span class="nav-label">عن
+								الموقع</span></a></li>
+
+
+				</ul>
+			</div>
+		</nav>
+<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							onsubmit="search(this,event)" action="">
+							<div class="form-group">
+								<input type="search" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+
+						<li><a href="/login"> دخول<i
+								class="fa fa-sign-out out"></i>
+						</a></li>
+					</ul>
+				</nav>
+
+			</div>
+			<div class="wrapper wrapper-content animated fadeIn">
+				<div class="row mb-2">
+					<div class="col-lg-12">
+						<div class="ibox ">
+							<div class="ibox-title" >
+								<h5 style="position: absolute; top: 17px; left: 1200px;">حول الموقع</h5>
+								<div class="ibox-tools">
+									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+									</a>
+								</div>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="col-lg-6">
+										<p class="text-justify pl-2" style="font-size: 16px;">موقع المواريث هو تطبيق أونلاين يعمل على حل جميع أشكال قضايا الميراث المعقدة بدقة مائة بالمائة، وذلك وفقًا لمذاهب وقوانين مدونة الأسرة المغربية. يُقدم هذا التطبيق للمسلمين عمومًا ولطلاب علم الفرائض بصفة خاصة، وهو صدقة جارية لزيادة المحتوى الإسلامي على الإنترنت. يهدف هذا التطبيق أيضًا لتوثيق علم الفرائض بشكل رقمي من خلال برنامج شامل يستند إليه في حل جميع قضايا الميراث بكافة أنواعها، بغض النظر عن صعوبتها، وليس فقط بعض الحالات البسيطة كما يفعل برامج أخرى. يتميز هذا التطبيق بالاعتماد على الكتاب والسنة، بفهم واجتهاد الصحابة والفقهاء المعتبرين، ويأخذ في الاعتبار قوانين المعتمدة. يهدف هذا التطبيق إلى منع استخدام تطبيقات أخرى تتعارض مع تعاليم القرآن والسنة وإجماع الصحابة، والتي تبتعد كثيرًا عن القرآن والسنة. يُلاحظ أن هناك الكثير من المرتزقة والمحاربين للنموذج الإسلامي في قضايا الميراث، حيث يروجون للتلبيس والهجوم على الإسلام</p>
+
+										<p class="text-justify pl-2" style="font-size: 16px;">ويُشير هذا الموقع ليس فقط إلى قسمة التركات وتوزيع الميراث، بل يستهدف أيضًا فئتين: المستخدم العادي الذي يرغب في تقسيم تركته والأشخاص الذين يمارسون مهنة تتطلب حساب القسمة بشكل مفصل، لدينا جناح خاص يمكن الاستفادة منه من خلال التسجيل، وهو عبارة عن مكتب خاص.، </p>
+										<p class="text-justify pl-2" style="font-size: 16px;">يعتبر موقع "المواريث" واحدًا من أهم المواقع لتسهيل حساب الميراث. و يساعد هذا الموقع على توفير المعلومات والتوجيهات القانونية الدقيقة بشأن قوانين الميراث في المغرب. يوفر الموقع معلومات شاملة ومفصلة عن الإرث وحقوق الميراث والإجراءات القانونية المتعلقة بها. من خلال المواريث، يمكن للأفراد الاستفادة من المصادر القانونية الموثوقة والتوجيهات السليمة لفهم وتطبيق قوانين الميراث بدقة وفعالية</p>
+									<!-- 	<ul>
+											<li style="color: black; font-size: 16px;">البحث عن أي
+												كلمة ومشتقاتها بالإعتماد على <span style="color: red">الذكاء
+													الإصطناعي</span>
+											</li>
+											<li style="color: black; font-size: 16px;">مكتبة تحتوي
+												على 32000 نص قانون أي ما يناهز مادة او فصل</li>
+											<li style="color: black; font-size: 16px;">سرعة تصفح أي
+												مادة او فصل بالإضافة الى الإحالات</li>
+											<li style="color: black; font-size: 16px;">إمكانية تحيين
+												واضافة للنصوص القانونية المغربية جديدة عن بعد</li>
+
+										</ul> -->
+										<p class="text-justify pl-2"
+											style="color: red; font-size: 18px;">يعتمد هذا البرنامج
+											على تقنية الذكاء اصطناعي، يتم استخراج المعلومات المطلوبة من قبل المستخدم في مجال قوانين الميراث واجتهادات العلماء فيه. يعمل هذا النظام على تيسير وصول المستخدم إلى جميع المعلومات المرغوبة والضرورية في هذا المجال.</p>
+									</div>
+
+									<div class="col-lg-6 ">
+									                                                                                                                                                                                                                                                                                             <br><br><br><br>
+										
+											<iframe width="560" height="315" src="https://www.youtube.com/embed/VPS_gxOTsho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+									
+										<h3 class="product-name text-center" style="font-size: 20px;">الميراث :
+											من يرث
+من لا يرث</h3>
+
+									<!-- 	<p class="text-justify pl-2 mt-4 " style="font-size: 16px;">من
+											اجل تحميل نسخة سطح المكتب للمكتبة القانونية وتثبتها عى جهاز
+											الحاسوب ، يرجى الإتصال بفريق العمل</p> -->
+									</div>
+
+
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="ibox ">
+									<div class="ibox-title">
+										<h5 style="position: absolute; top: 15px; left: 1098px;">تواصل مع فريق المكتبة القانونية</h5>
+										<div class="ibox-tools">
+											<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+											</a>
+										</div>
+									</div>
+									<div class="ibox-content">
+										<div class="row">
+
+
+											<div class="col-lg-6">
+
+												<iframe
+													src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26451.786298202092!2d-5.018821!3d34.0317286!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b3e5d667157%3A0x70d981cd3ab87bdc!2sVille%20Nouvelle%2C%20F%C3%A8s!5e0!3m2!1sfr!2sma!4v1579272317619!5m2!1sfr!2sma"
+													width="100%" height="380" frameborder="0" style="border: 0"
+													allowfullscreen=""></iframe>
+
+											</div>
+											<div class="col-lg-6" style="direction:rtl; display:inline-block; text-align: right;">
+
+												<h3>Coordonnées</h3>
+												<p>
+													<span class="fa fa-map-marker"></span> <strong>ABIsoft,
+														Rue Abdelkhalek Tores, Printemps bureau, 1ère Étage Bureau
+														N°5, Fès. </strong> <br> <i class="fa fa-phone"></i> <small>(+212)
+														660972646 </small> <br> <i class="fa fa-phone"></i> <small>(+212)
+														770-766849</small> <br> <i class="fa fa-envelope"></i> <small>abi6soft@gmail.com</small>
+													<br> <span class="fa fa-linkedin-square icon-square"></span>
+													<a target="_blank"
+														href="https://www.linkedin.com/company/abisof">www.linkedin.com/company/abisof</a>
+													<br> <span class="fa fa-facebook-official icon-square"></span>
+													<a target="_blank" href="https://www.facebook.com/abi6soft">/www.facebook.com/abi6soft</a>
+													<br> <span class="fa fa-twitter-square icon-square"></span>
+													<a target="_blank" href="https://www.twitter.com/abi6soft">www.twitter.com/abi6soft</a>
+													<br>
+
+												</p>
+
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div><div class="footer">
+				<div class="float-right">
+					<strong>موقع المواريث</strong>
+				</div>
+
+				<div class="float-left">
+					<strong>جميع الحقوق محفوظة</strong> &copy; 2022-2023
+				</div>
+			</div></div>
+
+				</div>
+			</div>
+			<!-- Mainly scripts -->
+	<script src="/js1/jquery-3.1.1.min.js"></script>
+	<script src="/js1/popper.min.js"></script>
+	<script src="/js1/bootstrap1.js"></script>
+	<script src="/js1/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="/js1/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	
+
+	<!-- Custom and plugin javascript -->
+	<script src="/js1/inspinia.js"></script>
+	<script src="/js1/plugins/pace/pace.min.js"></script>
+
+
+			<!-- jQuery UI -->
+			<script src="/js1/plugins/jquery-ui/jquery-ui.min.js"
+				type="text/javascript"></script>
+
+			<!-- GITTER -->
+			<script src="/js1/plugins/gritter/jquery.gritter.min.js"
+				type="text/javascript"></script>
+
+			<!-- Sparkline -->
+			<script src="/js1/plugins/sparkline/jquery.sparkline.min.js"
+				type="text/javascript"></script>
+			<script type="text/javascript">
+       var serverContext = "\/";
+      
+     </script>
+</body>
+
+</html>

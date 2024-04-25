@@ -1,0 +1,149 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style_login_ar.css">
+<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}" rel="stylesheet">
+<link href="css/bootstrap.rtl.css" rel="stylesheet">
+<link rel="icon shortcut" type="image/png" th:href="@{/img1/law-favicon.svg}">
+<title th:text="#{label.pages.login.title}"></title>
+<script th:inline="javascript">
+function mouseDown() {
+	  document.getElementById("emailError").style.display = "none";
+	  document.getElementById("passwordError").style.display = "none";
+	  document.getElementById("usernameError").style.display = "none";
+	}
+function mouseUp() {
+	 
+	}
+
+function validateEmail(email) 
+{
+  var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
+  return re.test(email);
+}
+	function validate() {
+		var userName = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var userNameError1 = false,
+            passwordError1 = false;
+       // document.getElementById('usernameError').innerHTML = ""; emailError
+       // document.getElementById('passwordError').innerHTML = "";
+        if (userName == "") {
+            //passes error requiring something to be entered
+           // document.getElementById('usernameError').innerHTML = "#{champs.user}";
+            document.getElementById('usernameError').style.display = "block"; 
+            //moves cursor to this field if error occurs
+            //document.pageForm.userName.focus();
+            //document.pageForm.userName.select();
+            //checkev=0;
+            userNameError1 = true;
+        //ensures that username meets alphanumberic regex requirements
+        }
+        else{
+        	if(!validateEmail(userName)){
+        		document.getElementById('emailError').style.display = "block"; 
+        		 userNameError1 = true;
+        	}
+        }
+        if (password == "") {
+            //passes error requiring something to be entered
+           // document.getElementById('usernameError').innerHTML = "#{champs.user}";
+            document.getElementById('passwordError').style.display = "block"; 
+            //moves cursor to this field if error occurs
+            //document.pageForm.userName.focus();
+            //document.pageForm.userName.select();
+            //checkev=0;
+            passwordError1 = true;
+        //ensures that username meets alphanumberic regex requirements
+        } 
+        
+        
+        if (userNameError1 === true) {
+            document.getElementById('username').focus();
+            return false;
+        }
+        else if (passwordError1 === true) {
+            document.getElementById('password').focus();
+            return false;
+        }
+        
+    }
+    
+</script>
+
+<style type="text/css">
+img.displayed1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+</style>
+</head>
+<body class="rtls">
+<div th:if="${param.message != null}" class="alert1 alert alert-info" th:text="${param.message[0]}">message</div>
+<div th:if="${param.error != null}" class="alert alert-danger" th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">error</div>
+
+    <div class="wrapper" style="background-image: url('img/bg-registration-form-2.jpg');">
+        <div class="inner">
+             <!-- <a href="?lang=en" th:text="#{label.form.loginEnglish}">login</a> | 
+         <a href="?lang=es_ES" th:text="#{label.form.loginSpanish}">login</a> -->
+           <a  th:href="@{/login}"><img th:src="@{/img1/justice-blue.png}" width="150" alt="Menu principal"  class="logologin" style="display: block;margin: 0 auto;padding-top: 5px;"/></a>
+            <br/><br/>
+             <h3 th:text="#{label.form.loginTitle}">Header</h3>
+            <form name='f' onsubmit="return validate();" action="login" method='POST' >
+<!--              <h3 th:text="#{label.form.loginTitle}">Header</h3> -->
+                 <span id="welcometext">&nbsp;</span>
+                <div class="form-wrapper">
+                    <label  th:text="#{label.form.loginEmail}">email</label>
+                    <input  class="form-control" id='username' name='username' value='' onmousedown="mouseDown()" autocomplete="on"/>                  
+                     <span th:text="#{champs.user}" id="usernameError"  class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                      <span th:text="#{ValidEmail.user.email}" id="emailError"  class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                     
+                 </div> 
+                 <div class="form-wrapper">
+                    <label  th:text="#{label.form.loginPass}">password</label>
+                    <input  class="form-control" id="password" name="password" value="" type="password" onmousedown="mouseDown()"/>
+                    <span th:text="#{champs.user}" id="passwordError"  class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div>  
+                 
+                <div class=" form-check">
+                 <input  class="form-check-input" name="remember-me"  type="checkbox" />
+                    <label th:text="#{label.form.remember-me}" class="form-check-label mr-4 ml-4">remember me </label>
+                    
+                 </div>    
+               <!--  <div class="form-wrapper">
+                    <label  th:text="#{label.form.login2fa}">Google Authenticator Verification</label>
+                    <input  class="form-control" name="code" value="" type="text" />
+                 </div>   -->
+                
+                 <button class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" >إرسال</button>
+ 
+            </form>
+<!--             <br/> Current Locale :  <span th:text="${#locale}"></span><br/><br/>  -->
+             <a class=" button1 btn btn-default" th:href="@{/registration.html}" th:text="#{label.form.loginSignUp}">signup</a>
+            <!--  <a class="btn btn-default button1" th:href="@{/registrationCaptcha_ar.html}" th:text="#{label.form.loginSignUpCaptcha}">captcha signup</a> -->
+            <a class="btn btn-default button1" th:href="@{/forgetPassword.html}" th:text="#{message.resetPassword}">reset</a>
+        </div>
+    </div>
+    
+   <!--  <script>
+        document.forms[0].addEventListener("submit", function(evenement) { 
+            if (document.getElementById("username").value == "") {
+                evenement.preventDefault();
+                $("#usernameError").show().html(/*[[#{champs.user}]]*/);
+    	    	return;
+                
+            }
+            else if (document.getElementById("password").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper un message !");
+                document.getElementById("message").focus();
+            }
+        });
+    </script> -->
+</body>
+
+</html>

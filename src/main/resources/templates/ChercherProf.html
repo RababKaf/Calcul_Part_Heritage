@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ar" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>الرئيسية</title>
+	<link th:href="@{/css1/bootstrap.min1.css}" rel="stylesheet">
+	<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}" rel="stylesheet">
+	<!-- Toastr style -->
+	<link th:href="@{/css1/plugins/toastr/toastr.min.css}" rel="stylesheet">
+
+	<!-- Gritter -->
+	<!-- <link th:href="@{/js1/plugins/gritter/jquery.gritter.css}" -->
+	<!-- 	rel="stylesheet"> -->
+
+	<link th:href="@{/css1/animate1.css}" rel="stylesheet">
+	<link th:href="@{/css1/style1.css}" rel="stylesheet">
+	<link th:href="@{/css1/stylish.css}" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="img1/law-favicon.png">
+	<style>
+	
+/* Button Style */
+.more-information-button {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 0px 0px;
+  background-color: #1ab394 ;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.more-information-button:hover {
+  background-color: #17856f;
+}
+
+/* Text Style */
+.more-information-button span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Icon Style */
+.more-information-button i {
+  margin-right: 5px;
+}
+
+/* Animation */
+@keyframes shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+.more-information-button:hover {
+  animation: shimmer 1s infinite linear;
+}
+		.hide-row {
+			display: none;
+		}
+
+		.page {
+			margin-left: 2px !important;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.sk-spinner {
+			position: fixed;
+			z-index: 99999;
+			overflow: show;
+			margin: auto;
+			top: 45%;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+
+		.sk-spinner:before {
+			content: '';
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+
+
+		#region-container {
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/* Adjust the top position as per your requirement */
+		}
+
+
+.search-button {
+
+}
+
+.search-button:hover {
+  background-color: #f3f3f4;
+}
+
+.search-button:active {
+  background-color: #1ab394;
+}
+
+.search-button:focus {
+  outline: none;
+}
+
+		#tbl {
+			position: absolute;
+			top: 150px;
+			/*     left: 50%;
+    transform: translate(-50%, -50%); */
+			/* Adjust the top position as per your requirement */
+		}
+		.my-text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+		
+ .a {
+ 
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top:-50px;
+  font-size: 16px;
+  color: #fff;
+  background-color: rgb(192, 192, 192);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.a:before,
+.a:after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+.a:before {
+  animation: slideRight 1.5s infinite;
+}
+
+.a:after {
+  animation: slideLeft 1.5s infinite;
+}
+
+@keyframes slideRight {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+ .fa {
+    font-size: 25px; /* Adjust the size to your preference */
+  }
+.modal {
+  display: none; /* Hide the modal by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 170%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 80% width */
+   height: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.cc{
+background-color:white; border: none; outline: none; padding:0px;}
+  .cc:hover {
+    background-color: #f3f3f4;
+    
+  }
+.ho{display: inline-block;
+  border-radius: 50%; /* Applique une bordure arrondie pour créer une forme de cercle */
+   /* Couleur de fond du bouton */
+   
+  border: none; /* Supprime la bordure par défaut du bouton */
+  color: #20c997; /* Couleur du texte du bouton */
+  text-align: center; /* Centre le texte horizontalement */
+  font-size: 5px; /* Taille du texte */
+  padding: 5px 15px; /* Espacement intérieur du bouton */
+  text-decoration: none; /* Supprime le soulignement du texte */
+  border-color: #6fd1bd;
+  cursor: pointer;}
+.ho:hover{background-color:#e7eaec;  font-size: 5px;}
+
+.ho:active {background-color:#e7eaec;}		
+	</style>
+</head>
+
+<body class="rtls">
+	<div class="sk-spinner sk-spinner-wave hide">
+		<div class="sk-rect1"></div>
+		<div class="sk-rect2"></div>
+		<div class="sk-rect3"></div>
+		<div class="sk-rect4"></div>
+		<div class="sk-rect5"></div>
+	</div>
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side">
+			<!--role="navigation"-->
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a href="#"><img alt="logo" Style="background-color: #fff" class="rounded-circle"
+									src="img1/lsss.png" width="100" height="100" /></a> <a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <span class="text-muted text-xs block">للعموم<b
+										class="caret"></b></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الدخول</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<i class="fa fa-homee"></i>
+						</div>
+					</li>
+					<li><a th:href="@{/}"><i class="fa fa-home"></i> <span class="nav-label"> الرئيسية
+
+							</span></a></li>
+					<li><a th:href="@{/login}"><i class=" fa fa-calculator"></i>
+							<span class="nav-label"> ميراث تفصيلي</span></a></li>
+
+					<li class="active"><a th:href="@{/chercher}"><i class=" fa fa-search"></i>
+							<span class="nav-label"> مكتب مهني </span></a></li>
+
+					<li><a th:href="@{/AboutSite}"><i class="fa fa-globe"></i> <span class="nav-label">عن
+								الموقع</span></a></li>
+
+
+				</ul>
+			</div>
+		</nav>
+<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							onsubmit="search(this,event)" action="">
+							<div class="form-group">
+								<input type="search" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+
+						<li><a href="/login"> دخول<i
+								class="fa fa-sign-out out" style="font-size:15px"></i>
+						</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		
+	<div class="wrapper wrapper-content animated fadeIn">
+				<div class="row mb-2">
+					<div class="col-lg-12">
+						<div class="ibox ">
+							<div class="ibox-title">
+								<h5 style="margin-right:20px;">لائحة المكاتب</h5>
+								<div class="ibox-tools">
+								
+								
+									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+									</a>
+								</div>
+							</div>
+							<div class="ibox-content">
+									<div class="row justify-content-center align-items-center" >	
+  <div class="col-md-2">
+<!--     <label for="region">جهة:</label> -->
+    <select style="width:200px ; background-color:#f3f3f4;" class="form-control m-b" name="region" id="region" onchange="populateCities(event)">
+      <option disabled selected>اختر جهة</option>
+      <option th:each="r : ${region}" th:value="${r.id}" th:text="${r.nameRegion}"></option>
+    </select>
+  </div>
+  <div class="col-md-2">
+  <!--   <label for="city">مدينة:</label> -->
+    <select onclick="stateinit()" style="width:200px; background-color:#f3f3f4;" class="form-control m-b" id="city" name="city" onchange="showTable(event)">
+      <option disabled selected>اختر مدينة</option>
+      <option  th:each="city : ${cities}" th:value="${city.id}" th:text="${city.cityName}"></option>
+      
+    </select>
+    <span id="villeError" style="display:none; color:red">لم تختر المدينة بعد</span>
+  
+  </div>
+     <div class="col-md-2" style="top:-8px;">
+<a id="button-link" href="#"><button onclick="updateUrl()" style="color:#1ab394 ; border-color:#1ab394 ;" type="button" class="btn btn-outline-primary ms-1 search-button"> <i class="fa fa-search"></i></button></a>
+ 
+</div>
+</div><br>
+
+								<div class="row">
+
+									<div class="col-md-3 mb-1" th:each="o: ${office}">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 10px !important">
+													<img th:if="${o.image != null}" th:src="@{${'/display?id=' + o.id}}" 
+														style="max-width: 30%; max-height: 50%" alt="" />
+														<img th:if="${o.image == null}" src="/img1/justice-green.png"
+														style="max-width: 30%; max-height: 50%" alt="" />
+												</div><!-- src="/img1/justice-green.png" -->
+												<div class="product-desc">
+
+													<a th:href="@{/{id}(id=${o.id})}" class="product-name"  style="text-align:center;">
+														<span style="color:#1e4738">  مكتب  [[${o.label}]]</span></a>
+												<div class="row">	 <span style="color:#1e4738"> </span>  ب[[${o.ville.cityName}]],[[${o.adresse}]] 
+
+												
+													<div style="text-align:right;">
+														<a th:href="@{/{id}(id=${o.id})}"
+															class="btn btn-xs btn-outline btn-primary" style="margin-top:-5px ; border-color:white; margin-right:220px;">
+															 <i class="fa fa-long-arrow-left" ></i>
+															 
+														</a>
+													
+												</div></div>
+											</div></div>
+										
+
+</div>
+										
+										</div>		
+		<div class="row justify-content-center align-items-center">
+ 
+   <div class="col-md-5">
+    <button id="previousBtn" class="btn btn-outline-primary ho" style=" top:550px; position:fixed !important;  color:#2f4050; font-size: 40px; border: 1px solid transparent; right:12%; "><</button></div>
+  
+ 
+ <div class="col-md-5">
+
+  <button id="nextBtn" class="btn btn-outline-primary ho" style="   top:550px; position:fixed !important; font-size: 40px; color: #2f4050;  border:1px solid transparent; right:97%;">></button>
+   
+  </div>
+					
+					
+		
+					
+									</div></div></div></div></div></div>
+									
+									
+									
+									
+									
+									</div>	
+		
+		
+					<!-- <div th:insert="Client/index :: footer"></div> -->
+					<div>
+						<div class="footer">
+							<div class="float-right">
+								<strong>موقع المواريث</strong>
+							</div>
+
+							<div class="float-left">
+								<strong>جميع الحقوق محفوظة</strong> &copy; 2022-2023
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mainly scripts -->
+			<script th:src="@{/js1/jquery-3.1.1.min.js}"></script>
+			<script th:src="@{/js1/popper.min.js}"></script>
+			<script th:src="@{/js1/bootstrap1.js}"></script>
+			<script th:src="@{/js1/plugins/metisMenu/jquery.metisMenu.js}"></script>
+			<script th:src="@{/js1/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+
+			<!-- Custom and plugin javascript -->
+			<script th:src="@{/js1/inspinia.js}"></script>
+			<script th:src="@{/js1/plugins/pace/pace.min.js}"></script>
+
+			<!-- jQuery UI -->
+			<script th:src="@{/js1/plugins/jquery-ui/jquery-ui.min.js}"></script>
+
+			<!-- 	<script th:inline="javascript"> -->
+			// var serverContext = [[@{/}]];
+
+			<!--      </script> -->
+
+
+
+
+			<script>
+				function populateCities(event) {
+
+					event.preventDefault();
+
+					var regionId = event.target.value;
+
+					// alert('regionId'+regionId);
+
+					var citySelect = document.getElementById("city");
+					/*        while (citySelect.firstChild) {
+							   citySelect.removeChild(citySelect.firstChild); */
+
+
+
+					$.ajax({
+						type: "GET",
+						url: "/IBureau/Charge/" + regionId,
+						processData: false,
+						contentType: false,
+						cache: false,
+						timeout: 600000,
+
+						success: function (data) {
+							//  alert(data.length);
+							console.log(data);
+
+
+							var html = "<option disabled selected>اختر مدينة</option>";
+							for (var i = 0; i < data.length; i++) {
+								var a = data[i];
+								var wlist = a.split("_");
+
+
+								html = html + "<option value=\"" + wlist[1] + "\">" + wlist[0] + "</option>";
+							}
+							$("#city").empty();
+							$("#city").append(html);
+
+						}
+					});
+				}
+			</script>
+			<script>	function showTable(event) {
+
+					var tableElement = document.getElementById("myTable");
+				 
+				      var rowCount = tableElement.rows.length;
+
+				      // Iterate through each row and remove it
+				      for (var i = rowCount - 1; i > 0; i--) {
+				        tableElement.deleteRow(i);
+				      }
+					tableElement.style.display = "block";
+					var cityId = event.target.value;
+					$.ajax({
+						url: "/office",
+						type: "POST",
+						data: {cityId: cityId},
+						success: function (data) {
+
+							;
+							// Populate table with office data
+							for (var i = 0; i < data.length; i++) {
+								var a = data[i];
+								var wlist = a.split("_");
+								var row = "<tr><td>" + wlist[0] + "</td><td>" + wlist[1] + "</td><td>" + wlist[2] + "</td><td>" + wlist[3] + "</td></tr>"+ "</td><td>" + wlist[4] + "</td></tr>";
+								$("#myTable tbody").append(row);
+
+							}
+						}
+					});
+				}
+			</script>
+			
+			<script>
+			
+			  var officeItems = document.querySelectorAll('.ibox-content.product-box');
+			  var currentPage = 1;
+			  var itemsPerPage = 12;
+			  var totalPages = Math.ceil(officeItems.length / itemsPerPage);
+
+			  function showItems() {
+			    var startIndex = (currentPage - 1) * itemsPerPage;
+			    var endIndex = startIndex + itemsPerPage;
+
+			    officeItems.forEach(function(item, index) {
+			      if (index >= startIndex && index < endIndex) {
+			        item.style.display = 'block';
+			      } else {
+			        item.style.display = 'none';
+			      }
+			    });
+			  }
+
+			  function updateButtons() {
+			    if (currentPage === 1) {
+			      previousBtn.disabled = true;
+			    } else {
+			      previousBtn.disabled = false;
+			    }
+
+			    if (currentPage === totalPages) {
+			      nextBtn.disabled = true;
+			    } else {
+			      nextBtn.disabled = false;
+			    }
+			  }
+
+			  function goToPreviousPage() {
+			    if (currentPage > 1) {
+			      currentPage--;
+			      showItems();
+			      updateButtons();
+			    }
+			  }
+
+			  function goToNextPage() {
+			    if (currentPage < totalPages) {
+			      currentPage++;
+			      showItems();
+			      updateButtons();
+			    }
+			  }
+
+			  var previousBtn = document.getElementById('previousBtn');
+			  var nextBtn = document.getElementById('nextBtn');
+
+			  previousBtn.addEventListener('click', goToPreviousPage);
+			  nextBtn.addEventListener('click', goToNextPage);
+
+			  showItems();
+			  updateButtons();
+	
+			
+
+
+
+
+
+			  
+			  
+			  
+				</script>
+
+				<script >document.getElementById("j").addEventListener("click", function() {
+					  document.getElementById("*{'exampleModalCenter'+{o.id}}").style.display = "block";
+				});
+
+				// Close the modal
+				document.getElementsByClassName("close")[0].addEventListener("click", function() {
+				  document.getElementById("*{'exampleModalCenter'+{o.id}}").style.display = "none";
+				});
+
+				// Close the modal when the close button inside the modal is clicked
+				document.getElementsByClassName("modal-button")[0].addEventListener("click", function() {
+				  document.getElementById("*{'exampleModalCenter'+{o.id}}").style.display = "none";
+				});</script>
+
+
+
+
+
+<script>function loadImage(event) {
+	  var image = document.getElementById('myImage');
+	  var file = event.target.files[0];
+	  
+	  if (file) {
+	    var reader = new FileReader();
+	    
+	    reader.onload = function(e) {
+	      image.src = e.target.result;
+	    };
+	    
+	    reader.readAsDataURL(file);
+	  }
+	}
+
+	function selectImage() {
+	  var fileInput = document.getElementById('fileInput');
+	  fileInput.click();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+
+
+
+<script>
+    function updateUrl() {
+    	
+    	
+ 
+    	if(document.getElementById("city").value=="اختر مدينة")
+    		{document.getElementById("villeError").style.display="block";
+    		document.getElementById("city").style.borderColor="red";
+    		}
+    	else{
+        var selectElement = document.getElementById("city");
+        var selectedValue = selectElement.value;
+        var buttonLinkElement = document.getElementById("button-link");
+        buttonLinkElement.href = "/chercher" + selectedValue + "";}
+    }
+    
+  function  stateinit(){
+	  
+	  document.getElementById("villeError").style.display="none";
+		document.getElementById("city").style.borderColor="#f3f3f4";
+  }
+</script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

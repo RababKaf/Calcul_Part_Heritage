@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>روابط مفيدة</title>
+<link th:href="@{/css1/bootstrap.min1.css}" rel="stylesheet">
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}"
+	rel="stylesheet">
+<!-- Toastr style -->
+<link th:href="@{/css1/plugins/toastr/toastr.min.css}" rel="stylesheet">
+
+<!-- Gritter -->
+<link th:href="@{/js1/plugins/gritter/jquery.gritter.css}"
+	rel="stylesheet">
+
+<link th:href="@{/css1/animate1.css}" rel="stylesheet">
+<link th:href="@{/css1/style1.css}" rel="stylesheet">
+<link rel="shortcut icon" type="image/png"
+	th:href="@{/img1/law-favicon.png}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	th:href="@{/img1/law-favicon.png}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	th:href="@{/img1/law-favicon.png}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	th:href="@{/img1/law-favicon.png}">
+<link rel="apple-touch-icon-precomposed"
+	th:href="@{/img1/law-favicon.png}">
+<style>
+.hide-row {
+	display: none;
+}
+</style>
+</head>
+
+<body class="rtls">
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a href="#"><img alt="logo" Style="background-color: #fff"
+								class="rounded-circle" src="img1/logo-site.svg" width="100"
+								height="100" /></a> <a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <span
+								class="block m-t-xs font-bold">[[${#request.userPrincipal.principal.firstName}]]
+									[[${#request.userPrincipal.principal.lastName}]]</span> <span
+								class="text-muted text-xs block">Client<b class="caret"></b></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/logout}">تسجيل
+										الخروج</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<i class="fa fa-homee"></i>
+						</div>
+					</li>
+					<li><a th:href="@{/Client/index}"><i class="fa fa-home"></i>
+							<span class="nav-label"> الإطلاع </span></a></li>
+					<li><a href="#"><i class=" fa fa-search"></i> <span
+							class="nav-label">بحث</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/Client/search}"> بحث شامل</a></li>
+							<li><a th:href="@{/Client/smartSearch}">بحث متطور</a></li>
+						</ul></li>
+
+					<li class="active"><a th:href="@{/Client/links}"><i
+							class="fa fa-external-link"></i> <span class="nav-label">روابط
+								إلكترونية</span></a></li>
+					<li><a th:href="@{/Client/about}"><i
+							class="fa fa-address-book"></i> <span class="nav-label">عن
+								المكتبة</span></a></li>
+
+				</ul>
+			</div>
+		</nav>
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							onsubmit="search(this,event)">
+							<div class="form-group">
+								<input type="search" placeholder="ابحث عن شيء ما..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li class="dropdown"><a class="count-info"
+							href="/Client/favourite"> <i class="fa fa-heart"></i> <span
+								class="label label-warning">[[${nbFav}]]</span>
+						</a></li>
+						<li class="dropdown"><a class="count-info"
+							href="/Client/messages"> <i class="fa fa-bell"></i> <span
+								class="label label-primary ml-2">[[${msg}]]</span>
+						</a></li>
+
+						<li><a th:href="@{/logout}"> خروج<i
+								class="fa fa-sign-out out"></i>
+						</a></li>
+					</ul>
+				</nav>
+
+			</div>
+			<div class="wrapper wrapper-content animated fadeIn">
+				<div class="row mb-2">
+					<div class="col-lg-12">
+						<div class="ibox ">
+							<div class="ibox-title">
+								<h5>روابط مفيدة</h5>
+								<div class="ibox-tools">
+									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+									</a>
+								</div>
+							</div>
+							<div class="ibox-content">
+
+								<div class="row">
+
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="/img1/justice-green.png"
+														style="max-width: 50%; max-height: 50%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="https://www.cspj.ma" class="product-name">
+														المجلس الأعلى للسلطة القضائية</a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+														<a href="https://www.cspj.ma"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="img1/image6.jpg"
+														style="max-width: 100%; max-height: 100%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="https://www.justice.gov.ma" class="product-name">
+														وزارة العدل </a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+
+														<a href="https://www.justice.gov.ma"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="img1/image2.jpg"
+														style="max-width: 100%; max-height: 100%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="https://www.pmp.ma" class="product-name">
+														رئاسة النيابة العامة</a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+
+														<a href="https://www.pmp.ma"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="img1/image3.png"
+														style="max-width: 100%; max-height: 100%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="http://www.sgg.gov.ma/arabe/Accueil.aspx"
+														class="product-name"> الأمانة العامة للحكومة</a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+
+														<a href="http://www.sgg.gov.ma/arabe/Accueil.aspx"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="img1/image4.png"
+														style="max-width: 100%; max-height: 100%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="https://www.cour-constitutionnelle.ma/"
+														class="product-name"> المحكمة الدستورية </a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+
+														<a href="https://www.cour-constitutionnelle.ma/"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-4 mb-2">
+										<div class="ibox">
+											<div class="ibox-content product-box">
+
+												<div class="product-imitation"
+													style="padding: 0px !important">
+													<img src="img1/image5.png"
+														style="max-width: 100%; max-height: 100%" alt="" />
+												</div>
+												<div class="product-desc">
+
+													<a href="https://www.parlement.ma" class="product-name">
+														برلمان المملكة المغربية </a>
+
+													<div class="small m-t-xs"></div>
+													<div class="m-t text-righ">
+
+														<a href="https://www.parlement.ma"
+															class="btn btn-xs btn-outline btn-primary">زيارة
+															الموقع الرسمي <i class="fa fa-long-arrow-left"></i>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		
+
+		</div>
+	</div>
+	<!-- Mainly scripts -->
+	<script th:src="@{/js1/jquery-3.1.1.min.js}"></script>
+	<script th:src="@{/js1/popper.min.js}"></script>
+	<script th:src="@{/js1/bootstrap1.js}"></script>
+	<script th:src="@{/js1/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/js1/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+
+	<!-- Custom and plugin javascript -->
+	<script th:src="@{/js1/inspinia.js}"></script>
+	<script th:src="@{/js1/plugins/pace/pace.min.js}"></script>
+
+
+	<!-- jQuery UI -->
+	<script th:src="@{/js1/plugins/jquery-ui/jquery-ui.min.js}"></script>
+
+	<!-- GITTER -->
+	<script th:src="@{/js1/plugins/gritter/jquery.gritter.min.js}"></script>
+
+	<!-- Sparkline -->
+	<script th:src="@{/js1/plugins/sparkline/jquery.sparkline.min.js}"></script>
+	<script th:inline="javascript">
+    
+      
+     </script>
+	<script th:src="@{/js1/api/search.js}" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+  /* CSS styles for the article grid */
+    .article-grid {
+      display: flex;
+      margin-right: 900px;
+
+
+  
+    }
+
+    .article-item {
+      margin-top: -400px;
+      flex: 0 0 auto;
+      display: flex;
+   
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-right: 1px;
+        
+    }
+
+    .article-image {
+      width: 50%;
+      height: auto;
+      max-height: 150px;
+    }
+
+    .article-info {
+      margin-top: 20px;
+    }
+    
+      .hidden {
+      display: none;
+    }

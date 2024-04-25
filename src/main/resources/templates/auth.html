@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link href=
+'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  
+    <script src=
+'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'>
+    </script>
+  
+    <script src=
+'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
+    </script>
+  
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+  
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7 
+                col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+                <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+                    <form id="form">
+<!--                         <ul id="progressbar"> -->
+<!--                             <li  id="step1"  class="active"> -->
+<!--                                 <strong> مرحلة 1</strong> -->
+<!--                             </li> -->
+<!--                             <li id="step2"><strong> مرحلة 2</strong></li> -->
+<!--                             <li id="step3"><strong>مرحلة 3  </strong></li> -->
+<!--                             <li id="step4" ><strong>مرحلة 4</strong></li> -->
+<!--                         </ul> -->
+<!--                         <div class="progress"> -->
+<!--                             <div class="progress-bar"></div> -->
+<!--                         </div> <br> -->
+<!--                         <fieldset> -->
+<!--                             <h2>مرحلة 1</h2> -->
+<!--                             <input type="button" name="next-step"  -->
+<!--                                 class="next-step" value="التالي" /> -->
+<!--                         </fieldset> -->
+<!--                         <fieldset> -->
+<!--                             <h2>مرحلة 2</h2> -->
+<!--                             <input type="button" name="next-step"  -->
+<!--                                 class="next-step" value="التالي" /> -->
+<!--                             <input type="button" name="previous-step"  -->
+<!--                                 class="previous-step"  -->
+<!--                                 value="السابق" /> -->
+<!--                         </fieldset> -->
+<!--                         <fieldset> -->
+<!--                             <h2>مرحلة 3</h2> -->
+<!--                             <input type="button" name="next-step"  -->
+<!--                                 class="next-step" value="مرحلة الأخيرة" /> -->
+<!--                             <input type="button" name="previous-step"  -->
+<!--                                 class="previous-step"  -->
+<!--                                 value="السابق" /> -->
+<!--                         </fieldset> -->
+<!--                         <fieldset> -->
+<!--                             <div class="finish"> -->
+<!--                                 <h2 class="text text-center"> -->
+<!--                                     <strong>انتهينا</strong> -->
+<!--                                 </h2> -->
+<!--                             </div> -->
+<!--                             <input type="button" name="previous-step"  -->
+<!--                                 class="previous-step"  -->
+<!--                                 value="السابق" /> -->
+<!--                         </fieldset> -->
+
+
+	<select class="form-control m-b" name="ville" id="ville" onchange="populateCities()">
+							<option disabled selected>اختر  </option>
+							<option th:each="v : ${ville}" th:value="${v.id}" th:text="${v.cityName}"></option>
+
+						</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/script.js"></script>
+  
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Afficher une carte et récupérer les coordonnées</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cliquez sur la carte pour obtenir les coordonnées</h1>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: 0, lng: 0 },
+          zoom: 4
+        });
+
+        map.addListener('click', function(event) {
+          var latLng = event.latLng;
+          var lat = latLng.lat();
+          var lng = latLng.lng();
+          console.log('Coordonnées du clic : ' + lat + ', ' + lng);
+
+          // Afficher les coordonnées sur la page
+          document.getElementById('coordinates').innerText = 'Coordonnées du clic : ' + lat + ', ' + lng;
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=77&callback=initMap" async defer></script>
+
+    <div id="coordinates"></div>
+  </body>
+</html> -->

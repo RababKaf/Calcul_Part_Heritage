@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ar" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>الرئيسية</title>
+	<link th:href="@{/css1/bootstrap.min1.css}" rel="stylesheet">
+	<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{/css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css}" rel="stylesheet">
+	<!-- Toastr style -->
+	<link th:href="@{/css1/plugins/toastr/toastr.min.css}" rel="stylesheet">
+
+	<!-- Gritter -->
+	<!-- <link th:href="@{/js1/plugins/gritter/jquery.gritter.css}" -->
+	<!-- 	rel="stylesheet"> -->
+
+	<link th:href="@{/css1/animate1.css}" rel="stylesheet">
+	<link th:href="@{/css1/style1.css}" rel="stylesheet">
+	<link th:href="@{/css1/stylish.css}" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="img1/law-favicon.png">
+	<style>
+	
+/* Button Style */
+.more-information-button {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 3px 7px;
+  background-color: #4e4e4e;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.more-information-button:hover {
+  background-color: #333333;
+}
+
+/* Text Style */
+.more-information-button span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Icon Style */
+.more-information-button i {
+  margin-right: 5px;
+}
+
+/* Animation */
+@keyframes shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+.more-information-button:hover {
+  animation: shimmer 1s infinite linear;
+}
+		.hide-row {
+			display: none;
+		}
+
+		.page {
+			margin-left: 2px !important;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.sk-spinner {
+			position: fixed;
+			z-index: 99999;
+			overflow: show;
+			margin: auto;
+			top: 45%;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+
+		.sk-spinner:before {
+			content: '';
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+
+
+		#region-container {
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/* Adjust the top position as per your requirement */
+		}
+
+
+
+
+		#tbl {
+			position: absolute;
+			top: 150px;
+			/*     left: 50%;
+    transform: translate(-50%, -50%); */
+			/* Adjust the top position as per your requirement */
+		}
+		.my-text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+		
+ .a {
+ 
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top:-50px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #5f7934;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.a:before,
+.a:after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+.a:before {
+  animation: slideRight 1.5s infinite;
+}
+
+.a:after {
+  animation: slideLeft 1.5s infinite;
+}
+
+@keyframes slideRight {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.modal {
+  display: none; /* Hide the modal by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 170%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 80% width */
+   height: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+	.hide-row {
+			display: none;
+		}
+
+		.page {
+			margin-left: 2px !important;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.sk-spinner {
+			position: fixed;
+			z-index: 99999;
+			overflow: show;
+			margin: auto;
+			top: 45%;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+
+		.sk-spinner:before {
+			content: '';
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+
+
+		#region-container {
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/* Adjust the top position as per your requirement */
+		}
+		
+
+  	#overlay {
+  display: none;
+  position: fixed;
+  top: 700px;
+  left: 0;
+  width: 100%;
+  height: 50%;
+ 
+  z-index: 999;
+  cursor: pointer;
+}
+
+#image-container {
+  display: none;
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-5%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+#enlarged-image {
+
+  min-width: 200%;
+  min-height: 200%;
+  text-align:center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}              		
+	
+	</style>
+</head>
+
+<body class="rtls">
+	<div class="sk-spinner sk-spinner-wave hide">
+		<div class="sk-rect1"></div>
+		<div class="sk-rect2"></div>
+		<div class="sk-rect3"></div>
+		<div class="sk-rect4"></div>
+		<div class="sk-rect5"></div>
+	</div>
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side">
+			<!--role="navigation"-->
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a href="#"><img alt="logo" Style="background-color: #fff" class="rounded-circle"
+									src="img1/lsss.png" width="100" height="100" /></a> <a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <span class="text-muted text-xs block">للعموم<b
+										class="caret"></b></span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li class="dropdown-divider"></li>
+								<li><a class="dropdown-item" th:href="@{/login}">تسجيل
+										الدخول</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">
+							<i class="fa fa-homee"></i>
+						</div>
+					</li>
+					<li><a th:href="@{/}"><i class="fa fa-home"></i>الرئيسية <span class="nav-label"> 
+
+							</span></a></li>
+					<li><a th:href="@{/IBureau}"><i class=" fa fa-calculator"></i>
+							<span class="nav-label"> ميراث تفصيلي</span></a></li>
+
+					<li class="active"><a th:href="@{/chercher}"><i class=" fa fa-search"></i>
+							<span class="nav-label"> مكتب مهني </span></a></li>
+
+					<li><a th:href="@{/AboutSite}"><i class="fa fa-globe"></i> <span class="nav-label">عن
+								الموقع</span></a></li>
+
+
+				</ul>
+			</div>
+		</nav>
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+								class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom" onsubmit="search(this,event)">
+							<div class="form-group">
+								<input type="search" placeholder="ابحث عن شيء ما..." class="form-control"
+									name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li><a th:href="@{/login}"> دخول<i class="fa fa-sign-in in"></i>
+							</a></li>
+					</ul>
+				</nav>
+
+			</div>
+	
+			
+
+								
+							
+									<div id="region-container">
+									
+									
+									
+									
+		<section style="background-color:#21252915; margin-top:700px ;width:1200px; height:700px;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0" >
+            <li class="breadcrumb-item" style="color:#2f4050;"><a th:href="@{/}">الرئيسية</a></li>
+            <li class="breadcrumb-item" style="color:#2f4050;"><a th:href="@{/chercher}">البحث عن مكتب مهني</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:#2f4050;">معلومات عن المكتب</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+          <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="enlargedImage" alt="enlarged image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+            <img  th:if="${u.image != null}" th:src="@{${'/displayy?id=' + u.id}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;" onclick="showImage(this)">
+                  <img  th:if="${u.image == null}" src="img1/inconue.jpeg" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;" onclick="showImage(this)">
+                 <div id="overlay" onclick="hideImage()" ></div>
+      <div id="image-container">
+  <img id="enlarged-image" src="" alt="enlarged image">
+  </div>
+            <h5 class="my-3" style="color:black"> العادل : [[${u.firstName}]] [[${u.lastName}]]</h5>
+            <p class="text-muted mb-4"><span style="color:green;"> رقم الهاتف </span> :  [[${u.tel}]]</p>
+         
+            <div class="d-flex justify-content-center mb-2">
+         <a th:href="'https://wa.me/+' + ${u.tel}"> <button type="button" class="btn btn-primary" style="width:66px; height:45px;"><i class="fa fa-whatsapp" aria-hidden="true"></i></button></a>
+         <a th:href="'mailto:' + ${u.email} + '?subject=Message&amp;body=ABIsoft '">    <button style="width:66px; margin-right: 20px;" type="button" class="btn btn-outline-primary ms-1"  ><img src="https://www.gstatic.com/images/branding/product/1x/gmail_2020q4_32dp.png" alt="Gmail Icon"></button></a>
+            </div>
+          </div>
+        </div><br>
+        
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+             <i class="fa fa-envelope" aria-hidden="true" style="color:orange;"></i>
+                <p class="mb-0">[[${u.email}]] </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row"  >
+              <div class="col-sm-3">
+              <br>
+                <p class="mb-0" style="color:#2f4050;">اسم المكتب :</p>
+              </div>
+              <div class="col-sm-9">
+              <br>
+                <p class="text-muted mb-0" style="color:#ffc3ad;">[[${o.label}]]</p>
+              </div>
+            </div><br>
+              <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;"> الجهة :</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${o.ville.region.nameRegion}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row" >
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;">المدينة :</p>
+              </div>
+              <div class="col-sm-9" >
+                <p class="text-muted mb-0">[[${o.ville.cityName}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;"> عنوان المكتب :</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${o.adresse}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;">  الهاتف الثابت  :</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${o.fix}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;"> رقم الفاكس :  </p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">  [[${o.fax}]] </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0" style="color:#2f4050;">البريد الإلكتروني :</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${o.officeEmail}]]</p>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+        
+         
+    </div></div>
+  </div>
+</section>						
+									
+							
+									<!--	<div class="col-md-6">
+											<label for="region">جهة:</label>
+											<select style="width:300px ;;" class="form-control m-b" name="region"
+												id="region" onchange="populateCities(event)">
+												<option disabled selected>اختر جهة</option>
+												<option th:each="r : ${region}" th:value="${r.id}"
+													th:text="${r.nameRegion}"></option>
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label for="city">مدينة:</label>
+											<select style="width: 300px;" class="form-control m-b" id="city" name="city"
+												onchange="showTable(event)">
+												<option disabled selected>اختر مدينة</option>
+												<option th:each="city : ${cities}" th:value="${city.id}"
+													th:text="${city.cityName}"></option>
+
+
+											</select>
+
+
+
+
+
+
+
+
+
+										</div>
+										
+										
+									-->
+										
+										
+										
+
+										
+										
+													
+										
+								
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+								
+	
+								
+							
+
+
+
+<!-- 									<div class="article-grid"> -->
+<!--     <div class="article-item"> -->
+<!--       <img src="img1/im.jpg" alt="Article 1" class="article-image"> -->
+<!--       <div class="article-info"> -->
+<!--         <h3>Article 1</h3> -->
+<!--         <p>Price: $10</p> -->
+<!--       </div> -->
+      
+<!--     </div> -->
+<!--     <div class="article-item"> -->
+<!--       <img src="img1/im.jpg" alt="Article 2" class="article-image"> -->
+<!--       <div class="article-info"> -->
+<!--         <h3>Article 2</h3> -->
+<!--         <p>Price: $15</p> -->
+<!--       </div> -->
+<!--     </div> -->
+    
+    
+    
+    
+    
+<!--     </div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<!-- <div th:insert="Client/index :: footer"></div> -->
+					<div>
+						<div class="footer">
+							<div class="float-right">
+								<strong>موقع المواريث</strong>
+							</div>
+
+							<div class="float-left">
+								<strong>جميع الحقوق محفوظة</strong> &copy; 2022-2023
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mainly scripts -->
+			<script th:src="@{/js1/jquery-3.1.1.min.js}"></script>
+			<script th:src="@{/js1/popper.min.js}"></script>
+			<script th:src="@{/js1/bootstrap1.js}"></script>
+			<script th:src="@{/js1/plugins/metisMenu/jquery.metisMenu.js}"></script>
+			<script th:src="@{/js1/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+
+			<!-- Custom and plugin javascript -->
+			<script th:src="@{/js1/inspinia.js}"></script>
+			<script th:src="@{/js1/plugins/pace/pace.min.js}"></script>
+
+			<!-- jQuery UI -->
+			<script th:src="@{/js1/plugins/jquery-ui/jquery-ui.min.js}"></script>
+
+			<!-- 	<script th:inline="javascript"> -->
+			// var serverContext = [[@{/}]];
+
+			<!--      </script> -->
+
+
+
+
+			<script>
+				function populateCities(event) {
+
+					event.preventDefault();
+
+					var regionId = event.target.value;
+
+					// alert('regionId'+regionId);
+
+					var citySelect = document.getElementById("city");
+					/*        while (citySelect.firstChild) {
+							   citySelect.removeChild(citySelect.firstChild); */
+
+
+
+					$.ajax({
+						type: "GET",
+						url: "/IBureau/Charge/" + regionId,
+						processData: false,
+						contentType: false,
+						cache: false,
+						timeout: 600000,
+
+						success: function (data) {
+							//  alert(data.length);
+							console.log(data);
+
+
+							var html = "<option disabled selected>اختر مدينة</option>";
+							for (var i = 0; i < data.length; i++) {
+								var a = data[i];
+								var wlist = a.split("_");
+
+
+								html = html + "<option value=\"" + wlist[1] + "\">" + wlist[0] + "</option>";
+							}
+							$("#city").empty();
+							$("#city").append(html);
+
+						}
+					});
+				}
+			</script>
+			<script>	function showTable(event) {
+
+					var tableElement = document.getElementById("myTable");
+				 
+				      var rowCount = tableElement.rows.length;
+
+				      // Iterate through each row and remove it
+				      for (var i = rowCount - 1; i > 0; i--) {
+				        tableElement.deleteRow(i);
+				      }
+					tableElement.style.display = "block";
+					var cityId = event.target.value;
+					$.ajax({
+						url: "/office",
+						type: "POST",
+						data: {cityId: cityId},
+						success: function (data) {
+
+							;
+							// Populate table with office data
+							for (var i = 0; i < data.length; i++) {
+								var a = data[i];
+								var wlist = a.split("_");
+								var row = "<tr><td>" + wlist[0] + "</td><td>" + wlist[1] + "</td><td>" + wlist[2] + "</td><td>" + wlist[3] + "</td></tr>"+ "</td><td>" + wlist[4] + "</td></tr>";
+								$("#myTable tbody").append(row);
+
+							}
+						}
+					});
+				}
+			
+			function hideImage() {
+				  var overlay = document.getElementById("overlay");
+				  overlay.style.display = "none";
+
+				  var imageContainer = document.getElementById("image-container");
+				  imageContainer.style.display = "none";
+				}
+
+			function showImage(element) {
+				  var imageUrl = element.src;
+				  var enlargedImage = document.getElementById("enlarged-image");
+				  enlargedImage.src = imageUrl;
+
+				  var overlay = document.getElementById("overlay");
+				  overlay.style.display = "block";
+
+				  var imageContainer = document.getElementById("image-container");
+				  imageContainer.style.display = "block";
+				}
+			</script>
+			
+	
+</body>
+
+</html>
